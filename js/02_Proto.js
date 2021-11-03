@@ -17,4 +17,16 @@ console.log(a1.constructor === Animal);
 
 console.log(Animal.__proto__ === Function.prototype);
 console.log(a1.__proto__.__proto__ === Object.prototype);
+console.log(Animal.prototype.__proto__ === Object.prototype);
+// console.log(Animal.prototype.__proto__ === Object.prototype);
+
 console.log(Object.prototype.__proto__);
+
+//TODO: 查看class 类定义属性，查看原型情况
+
+// class Person {
+//     name:"123";
+//     say(params) {
+//         console.log("说话");
+//     }
+// }
