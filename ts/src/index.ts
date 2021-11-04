@@ -82,7 +82,7 @@ interface P2 {
     age: number
 }
 
-type IC<T> {
+type IC<T> = {
     [K in keyof T]: T[K];
 }
 
@@ -99,6 +99,18 @@ interface Fish {
 type ISelect<T extends Bird | Fish> = T extends Bird ? P1 : P2;
 
 type MyColor = ISelect<Fish>;
+
+
+class Animal {
+    name: number = 123;
+    say() {
+        console.log("说话");
+    }
+}
+
+let animal:Animal = new Animal();
+console.log(animal);
+console.log("xxx");
 
 //-------------------------------------------------------------------------
 export { }
