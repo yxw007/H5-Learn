@@ -7,20 +7,50 @@
         this.arr = [1,2,3];
     }
 
+    Animal.prototype.address = {location:"山里"};
+
     let a1 = new Animal("猴子");
     let a2 = new Animal("鸭子");
-    console.log(a1.arr === a2.arr);
-    console.log(a1.address === a2.address);
-    console.log(a1.__proto__ === Animal.prototype);
-    console.log(a1.constructor === Animal);
+    console.log("不同实例上的属性是否相等：" + (a1.arr === a2.arr));
+    console.log("不同实例上的原型属性是否相等：" + (a1.address === a2.address));
+    console.log("实例__proto是否与类型原型相等:" + (a1.__proto__ === Animal.prototype));
+    console.log("实例constructor是否与类型相等：" + (a1.constructor === Animal));
+    console.log("实例constructor是否与类型原型的constructor相等："+(a1.constructor === Animal.prototype.constructor));
 
-    console.log(Animal.__proto__ === Function.prototype);
-    console.log(a1.__proto__.__proto__ === Object.prototype);
-    console.log(Animal.prototype.__proto__ === Object.prototype);
-    console.log(Animal.prototype.__proto__ === Object.prototype);
-    console.log(Object.prototype.__proto__);
+    console.log("类型__proto__是否与Function原型相等：" + (Animal.__proto__ === Function.prototype));
+    console.log("Function.prototype.__proto__ === Object.prototype: " + (Function.prototype.__proto__ === Object.prototype));
+
+    console.log("实例__proto__.__proto__是否与Object.prototype相等：" + (a1.__proto__.__proto__ === Object.prototype));
+    console.log("类型Animal.prototype.__proto__是否与Object.prototype相等：" + (Animal.prototype.__proto__ === Object.prototype));
+    console.log("Object.prototype.__proto__：" + (Object.prototype.__proto__));
     console.log("-------------------------------------------------------------------------");
 })();
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+(function testProto(){
+    console.log("testProto: 原型属性和方法测试");
+
+    class Animal{
+        constructor(name){
+            this.name = name;
+        }
+
+        move(){
+            console.log("move");
+        }
+
+        get live(){
+            return "地球";
+        }
+    }
+
+    let a = new Animal("小狗");
+    a.move();
+    console.log(a.live);
+
+    console.log(a.__proto__.live);
+
+})()
 //-------------------------------------------------------------------------
 (function testProtoExtend(){
     console.log("testProtoExtend: 原型继承，放法一: 利用__proto__ or Object.setPrototypeOf");
