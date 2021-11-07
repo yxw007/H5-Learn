@@ -1,3 +1,11 @@
+/**
+* 创建日期: 2021-11-07
+* 文件名称：02_Proto.js
+* 创建作者：Potter
+* 开发版本：1.0.0
+* 相关说明：
+*/
+
 //-------------------------------------------------------------------------
 (function testProto(){
     console.log("testProto: 测试原型关系");
@@ -26,19 +34,30 @@
     console.log("-------------------------------------------------------------------------");
 })();
 //-------------------------------------------------------------------------
-//-------------------------------------------------------------------------
-(function testProto(){
-    console.log("testProto: 原型属性和方法测试");
+(function testClass(){
+    console.log("testClass: 原型属性、方法,类属性 测试");
 
     class Animal{
+        //实例属性
+        color="颜色"
+
+        //实例属性和方法
+        static material = "材质"
+        static sex(){
+            return "未知"
+        }
+
         constructor(name){
+            //实例属性
             this.name = name;
         }
 
+        //原型方法
         move(){
             console.log("move");
         }
-
+        
+        //原型属性
         get live(){
             return "地球";
         }
@@ -49,8 +68,8 @@
     console.log(a.live);
 
     console.log(a.__proto__.live);
-
-})()
+    console.log("-------------------------------------------------------------------------");
+})();
 //-------------------------------------------------------------------------
 (function testProtoExtend(){
     console.log("testProtoExtend: 原型继承，放法一: 利用__proto__ or Object.setPrototypeOf");
