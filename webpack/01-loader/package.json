@@ -19,7 +19,6 @@
     "babel-jest": "^27.3.1",
     "jest": "^27.3.1",
     "memfs": "^3.3.0",
-    "memory-fs": "^0.5.0",
     "webpack": "^5.64.0",
     "webpack-cli": "^4.9.1"
   }
