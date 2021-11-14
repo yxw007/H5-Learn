@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --progress --config webpack.dev.conf.js",
     "debug":"webpack",
     "build": "webpack"
   },
