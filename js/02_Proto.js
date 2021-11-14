@@ -8,7 +8,40 @@
 
 //-------------------------------------------------------------------------
 (function testProto(){
-    console.log("testProto: 测试原型关系");
+    console.log("testProto: 测试原型关系1");
+    console.log("-------------------------------------------------------------------------");
+    function Parent(name){
+        this.name = name;
+    }
+
+    let p1 = new Parent("xxx");
+    console.log("p1.constructor === Parent:" + (p1.constructor === Parent));
+    console.log("Parent.constructor === Function:" + (Parent.constructor === Function));
+    console.log("Function.constructor === Function:" + (Function.constructor === Function));
+
+    console.log("Parent.__proto__ === Function.prototype:" + (Parent.__proto__ === Function.prototype));
+    console.log("Parent.prototype.constructor === Parent:" + (Parent.prototype.constructor === Parent));
+
+    console.log("p1.__proto__ === Parent.prototype:" + (p1.__proto__ === Parent.prototype));
+    console.log("Parent.prototype.__proto__ === Object.prototype:" + (Parent.prototype.__proto__ === Object.prototype));
+    console.log("Object.prototype.__proto__:" + (Object.prototype.__proto__));
+
+    console.log("Object.prototype.constructor === Object:" + (Object.prototype.constructor === Object));
+    console.log("Object.constructor === Function:" + (Object.constructor === Function));
+    console.log("Object.prototype === Object.prototype:" + (Object.prototype === Object.prototype));
+
+    console.log("Object.__proto__ === Function.prototype:" + (Object.__proto__ === Function.prototype));
+    
+    console.log("Function.__proto__ === Function.prototype:" + (Function.__proto__ === Function.prototype));
+    console.log("Function.prototype === Function.prototype:" + (Function.prototype === Function.prototype));
+
+    console.log("Function.prototype.__proto__ === Object.prototype:" + (Function.prototype.__proto__ === Object.prototype));
+
+    console.log("-------------------------------------------------------------------------");
+})();
+//-------------------------------------------------------------------------
+(function testProto(){
+    console.log("testProto: 测试原型关系2");
     console.log("-------------------------------------------------------------------------");
     function Animal(name){
         this.name = name;
@@ -31,6 +64,8 @@
     console.log("实例__proto__.__proto__是否与Object.prototype相等：" + (a1.__proto__.__proto__ === Object.prototype));
     console.log("类型Animal.prototype.__proto__是否与Object.prototype相等：" + (Animal.prototype.__proto__ === Object.prototype));
     console.log("Object.prototype.__proto__：" + (Object.prototype.__proto__));
+
+    console.log();
     console.log("-------------------------------------------------------------------------");
 })();
 //-------------------------------------------------------------------------

@@ -1,0 +1,26 @@
+{
+  "name": "01-loader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "debugger": "node ./node_modules/.bin/webpack --config webpack.config.js"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "babel-jest": "^27.3.1",
+    "jest": "^27.3.1",
+    "memfs": "^3.3.0",
+    "memory-fs": "^0.5.0",
+    "webpack": "^5.64.0",
+    "webpack-cli": "^4.9.1"
+  }
+}
