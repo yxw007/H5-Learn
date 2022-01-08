@@ -1,0 +1,22 @@
+{
+  "name": "h5-learn",
+  "version": "1.0.0",
+  "description": "> 注意：本项目不会罗列所有的知识点，只会记录自己有疑惑的知识点或觉得很坑的知识点",
+  "main": "prettier.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yxw007/H5-Learn.git"
+  },
+  "author": "Potter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yxw007/H5-Learn/issues"
+  },
+  "homepage": "https://github.com/yxw007/H5-Learn#readme",
+  "devDependencies": {
+    "chalk": "^5.0.0"
+  }
+}
