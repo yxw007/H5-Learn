@@ -4,7 +4,7 @@
   "description": "> 注意：本项目不会罗列所有的知识点，只会记录自己有疑惑的知识点或觉得很坑的知识点",
   "main": "prettier.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "commit": "git-cz"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,12 @@
   },
   "homepage": "https://github.com/yxw007/H5-Learn#readme",
   "devDependencies": {
-    "chalk": "^5.0.0"
+    "chalk": "^5.0.0",
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
