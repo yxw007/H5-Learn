@@ -1,2 +1,4 @@
 ts/dist/
 /**/node_modules/
+.vscode/*
+.vscode/launch.json
