@@ -16,7 +16,7 @@
   \***************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ sum)\n/* harmony export */ });\nfunction sum(a, b) {\n  console.log(\"sum\");\n  return a + b;\n}\n\n//# sourceURL=webpack://04-tracelogpos/./src/base/utils.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ sum)\n/* harmony export */ });\nfunction sum(a, b) {\n  console.log(\"sum\", \"                                                                                                     /src/base/utils.js 2\");\n  return a + b;\n}\n\n//# sourceURL=webpack://04-tracelogpos/./src/base/utils.js?");
 
 /***/ }),
 
@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _base_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base/utils */ \"./src/base/utils.js\");\n\nconsole.log(\"sum:\" + (0,_base_utils__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(1, 2));\n\n//# sourceURL=webpack://04-tracelogpos/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _base_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base/utils */ \"./src/base/utils.js\");\n\nconsole.log(\"sum:\" + (0,_base_utils__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(1, 2), \"                                                                                                     /src/index.js 2\");\n\n//# sourceURL=webpack://04-tracelogpos/./src/index.js?");
 
 /***/ })
 
