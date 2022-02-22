@@ -6,7 +6,7 @@
     "configurations": [
         {
             "name": "current file",
-            "program": "${workspaceFolder}\\js\\00_String.js",
+            "program": "${workspaceFolder}\\js\\03_HightOrderFunction.js",
             "request": "launch",
             "skipFiles": [
                 ""
