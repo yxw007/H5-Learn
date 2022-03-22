@@ -1,26 +1,35 @@
 {
-    // 使用 IntelliSense 了解相关属性。 
-    // 悬停以查看现有属性的描述。
-    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "current file",
-            "program": "${workspaceFolder}\\js\\03_HightOrderFunction.js",
-            "request": "launch",
-            "skipFiles": [
-                ""
-            ],
-            "type": "pwa-node"
-        },
-        {
-            "type": "pwa-node",
-            "request": "launch",
-            "name": "Launch Program",
-            "skipFiles": [
-                ""
-            ],
-            "program": "${workspaceFolder}\\js\\05_test.js"
-        }
-    ]
+  // 使用 IntelliSense 了解相关属性。 
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debugger KOA",
+      "program": "${workspaceFolder}/koa/index.js",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "pwa-node"
+    },
+    {
+      "name": "current file",
+      "program": "${workspaceFolder}\\js\\03_HightOrderFunction.js",
+      "request": "launch",
+      "skipFiles": [
+        ""
+      ],
+      "type": "pwa-node"
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "Launch Program",
+      "skipFiles": [
+        ""
+      ],
+      "program": "${workspaceFolder}\\js\\05_test.js"
+    }
+  ]
 }
