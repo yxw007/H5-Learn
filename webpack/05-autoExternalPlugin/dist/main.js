@@ -15,17 +15,18 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const A = __webpack_require__(/*! ./utils */ \"./src/utils.js\");\r\nconsole.log(new A());\r\n\n\n//# sourceURL=webpack://auto-external-plugin/./src/index.js?");
+eval("let _ = __webpack_require__(/*! lodash */ \"?4105\");\r\nconsole.log(_);\n\n//# sourceURL=webpack://auto-external-plugin/./src/index.js?");
 
 /***/ }),
 
-/***/ "./src/utils.js":
-/*!**********************!*\
-  !*** ./src/utils.js ***!
-  \**********************/
+/***/ "?4105":
+/*!********************!*\
+  !*** external "_" ***!
+  \********************/
 /***/ ((module) => {
 
-eval("class A {}\r\n\r\nmodule.exports = A;\r\n\n\n//# sourceURL=webpack://auto-external-plugin/./src/utils.js?");
+"use strict";
+module.exports = _;
 
 /***/ })
 

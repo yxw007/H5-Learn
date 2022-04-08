@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>title</title>
+		<style>
+			.wrapper {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				grid-auto-rows: 100px;
+			}
+			.box1 {
+				grid-column-start: 1;
+				grid-column-end: 4;
+				grid-row-start: 1;
+				grid-row-end: 3;
+				background-color: #7c7c7c;
+				z-index: 2;
+			}
+			.box2 {
+				grid-column-start: 1;
+				grid-row-start: 2;
+				grid-row-end: 4;
+				background-color: #ff6262;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<div class="box box1">One</div>
+			<div class="box box2">Two</div>
+			<div class="box box3">Three</div>
+			<div class="box box4">Four</div>
+			<div class="box box5">Five</div>
+		</div>
+	</body>
+</html>

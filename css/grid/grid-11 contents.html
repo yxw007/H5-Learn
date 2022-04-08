@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style>
+      .wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+      }
+
+      .box1 {
+        /* display: contents; */
+        grid-column-start: 1;
+        grid-column-end: 4;
+      }
+
+      .nested {
+        background-color: aqua;
+      }
+
+      .box-two {
+        background-color: rgb(82, 165, 103);
+        border: 1px solid;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div>
+        dddd
+        <div class="box box1">
+          <div class="nested">a</div>
+          <div class="nested">b</div>
+          <div class="nested">c</div>
+        </div>
+      </div>
+      <div class="box-two box2">Two</div>
+      <div class="box-two box3">Three</div>
+      <div class="box-two box4">Four</div>
+      <div class="box-two box5">Five</div>
+    </div>
+  </body>
+</html>
