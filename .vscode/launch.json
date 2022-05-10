@@ -15,7 +15,7 @@
 		},
 		{
 			"name": "current file",
-			"program": "${workspaceFolder}\\js\\14\\ArrayBuffer.js",
+			"program": "${workspaceFolder}\\js\\14\\Set.js",
 			"request": "launch",
 			"skipFiles": [
 				""
