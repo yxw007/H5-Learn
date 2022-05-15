@@ -1,0 +1,5 @@
+function* invalidGeneratorA() {
+	return () => {
+		yield;
+	}
+}
