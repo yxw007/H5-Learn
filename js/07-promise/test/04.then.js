@@ -45,7 +45,7 @@ p.then((val) => {
 	console.error("catch:", error);
 }); */
 
-
+//-------------------------------------------------------------------------
 
 //! 说明：如果new Promise 不调用提供的resolve,reject 并且不throw 异常，就不会往后执行了
 p.then((val) => {
