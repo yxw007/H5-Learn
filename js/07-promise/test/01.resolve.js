@@ -9,6 +9,8 @@ p.then((val) => {
 });
  */
 
+const Promise = require("../Promise");
+
 //! 说明：异步调用
 const p = new Promise((resolve, reject) => {
 	setTimeout(() => {
