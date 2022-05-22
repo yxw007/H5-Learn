@@ -12,7 +12,7 @@ p.then((val) => {
 const Promise = require("../Promise");
 
 //! 说明：异步调用
-const p = new Promise((resolve, reject) => {
+/* const p = new Promise((resolve, reject) => {
 	setTimeout(() => {
 		resolve("success");
 	}, 1000);
@@ -20,4 +20,5 @@ const p = new Promise((resolve, reject) => {
 
 p.then((val) => {
 	console.log(val);
-});
+}); */
+

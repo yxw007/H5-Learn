@@ -26,30 +26,37 @@ class Promise {
 				return;
 			}
 
-			this.status = this.REJECTED;
+			this.status = REJECTED;
 			this.reason = reason;
 			this.rejectCallbacks.forEach(cb => cb(reason));
 		}
 
-		executor(resolve, reject);
+		try {
+			executor(resolve, reject);
+		} catch (error) {
+			reject(error);
+		}
 	}
 
 	then(onResolve, onReject) {
 		let promise = new Promise((resolve, reject) => {
 			if (this.status == FULFILLED) {
-				onResolve(this.value);
+				let value = onResolve(this.value);
+				resolve(value);
 				return;
 			} else if (this.status == REJECTED) {
-				onReject(this.reason);
+				let value = onReject(this.reason);
+				reject(value);
 				return;
 			}
 
-			//TODO: 如何实现then 的链式调用呢?
 			this.resolveCallbacks.push(() => {
-				onResolve(this.value);
+				let value = onResolve(this.value);
+				resolve(value);
 			});
 			this.rejectCallbacks.push(() => {
-				onReject(this.reason);
+				let value = onReject(this.reason);
+				reject(value);
 			});
 		});
 
