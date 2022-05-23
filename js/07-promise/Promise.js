@@ -24,13 +24,16 @@ function resolvePromise(x, promise2, resolve, reject) {
 		let called = false;
 		if ((x !== null && typeof x === "object") || typeof x === "function") {
 			try {
+				//! 说明：为了避免x.then 第二次获取失败的问题
 				let then = x.then;
 				if (typeof then === 'function') {
 					then.call(x, (y) => {
+						//! 说明：避免调用回调多次的问题，执行多次的问题
 						if (called) {
 							return;
 						}
 						called = true;
+						//! 说明：then 里面可能继续返回promise
 						resolvePromise(y, promise2, resolve, reject);
 					}, (r) => {
 						if (called) {
@@ -92,9 +95,11 @@ class Promise {
 	then(onResolve, onReject) {
 		let promise2 = new Promise((resolve, reject) => {
 			if (this.status == FULFILLED) {
+				//! 说明：为了确保promise2有值，否则new Promise还没有完成，promise2是拿不到值的
 				setTimeout(() => {
 					try {
 						let value = onResolve(this.value);
+						//! 说明：value 可能未promise，所以需要单独解析处理
 						resolvePromise(value, promise2, resolve, reject);
 					} catch (error) {
 						reject(error);
