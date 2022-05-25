@@ -9,13 +9,17 @@ const p = new Promise((resolve, reject) => {
 });
 
 //! 循环引用
-/* const p2 = p.then((val) => {
+const p2 = p.then((val) => {
 	return p2;
 }, error => {
-	console.log("p2-error:", error);
-}) */
+	console.log("p1-error:", error);
+}).then((val2) => {
+	console.log("p2-success:", val2);
+}, erro2 => {
+	console.log("p2-error:", erro2);
+});
 
-const p2 = p.then((val) => {
+/* const p2 = p.then((val) => {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
 			resolve("xxxx");
@@ -25,7 +29,7 @@ const p2 = p.then((val) => {
 	console.log("p2.then-success:", val);
 }, err => {
 	console.log("p2.then-fail:", err);
-});
+}); */
 
 
 /* const p = new Promise((resolve, reject) => {

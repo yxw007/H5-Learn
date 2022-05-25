@@ -4,8 +4,9 @@ const REJECTED = "rejected";
 
 function resolvePromise(x, promise2, resolve, reject) {
 	if (x === promise2) {
-		console.error("Chaining cycle detected for promise #<Promise>");
-		return reject(new TypeError("Chaining cycle detected for promise #<Promise>"));
+		// console.error("Chaining cycle detected for promise #<Promise>");
+		// return reject(new TypeError("Chaining cycle detected for promise #<Promise>"));
+		throw new TypeError("Chaining cycle detected for promise #<Promise>")
 	}
 
 	if (x instanceof Promise) {
@@ -93,6 +94,7 @@ class Promise {
 	}
 
 	then(onResolve, onReject) {
+		console.log("then");
 		let promise2 = new Promise((resolve, reject) => {
 			if (this.status == FULFILLED) {
 				//! 说明：为了确保promise2有值，否则new Promise还没有完成，promise2是拿不到值的
