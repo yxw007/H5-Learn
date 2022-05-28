@@ -9,23 +9,21 @@
 	console.log("catch:", error);
 }); */
 
-/* 
 //! 说明：如果error回调为空，那么抛出的异常就会走到catch回调
+/* 
 p.then(null, null).catch(error => {	
 	console.log("catch:", error);
 }); 
 */
 
 
-/* 
 //! 说明：此种情况和上一种情况输出一样
+/* 
 p.catch(error => {
 	console.log("catch:", error);
 }); */
 
-/* 
 //! 如果p既不then处理error回调，也不catch捕获异常，底层就会直接把异常抛出
-*/
 
 //! 说明：then onReject 如何返回不是throw 或 promise reject,返回值都会传递给下一个then onResolve 参数
 //-------------------------------------------------------------------------

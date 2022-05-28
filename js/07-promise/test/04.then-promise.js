@@ -17,8 +17,12 @@ const p = new Promise2((resolve, reject) => {
 const p2 = p.then((val) => {
 	return p2;
 }, error => {
-	console.log("p2-error:", error);
-})
+	console.log("p1-error:", error);
+}).then((val2) => {
+	console.log("p2-success:", val2);
+}, erro2 => {
+	console.log("p2-error:", erro2);
+});
 
 /* const p2 = p.then((val) => {
 	return new Promise((resolve, reject) => {
