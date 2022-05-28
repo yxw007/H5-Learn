@@ -31,7 +31,7 @@ const Promise = require("../Promise");
 
 //! 说明：then onReject 如何返回不是throw 或 promise reject,返回值都会传递给下一个then 当作onResolve 参数
 //-------------------------------------------------------------------------
-/* const p = new Promise((resolve, reject) => {
+const p = new Promise((resolve, reject) => {
 	reject("fail");
 }).then(null, error => {
 	return error;
@@ -40,9 +40,9 @@ const Promise = require("../Promise");
 }, error => {
 	console.log("then2-erro:", error);
 });
- */
 
-const p = new Promise((resolve, reject) => {
+
+/* const p = new Promise((resolve, reject) => {
 	reject("fail");
 }).then(null, error => {
 	return new Promise((resolve, reject) => reject("new Promise ->reject"));
@@ -50,6 +50,6 @@ const p = new Promise((resolve, reject) => {
 	console.log("then2-success:", val);
 }, error => {
 	console.log("then2-erro:", error);
-});
+}); */
 
 //-------------------------------------------------------------------------

@@ -153,6 +153,31 @@ class Promise {
 	catch(onReject) {
 		return this.then(null, onReject);
 	}
+
+	static reject(reason) {
+		return new Promise((resolve, reject) => {
+			reject(reason);
+		});
+	}
+
+	static resolve(value) {
+		return new Promise((resolve, reject) => {
+			resolve(value);
+		});
+	}
+
+	finally(callback) {
+		//! 说明：finally 就是在then 后面执行一下callback
+		return this.then((val) => {
+			//! 说明：finally 需要把之前的成功或失败的值传递给后面，不然会导致finally 执行后导致值丢失
+			return Promise.resolve(callback()).then(() => val);
+		}, (error) => {
+			//! 特别说明：Promise.resolve(callback()) 的promise 调用的一直是成功，所以回调放到第一个参数中，而不是第二个参数
+			return Promise.resolve(callback()).then(() => {
+				throw error
+			});
+		});
+	}
 }
 
 module.exports = Promise;
