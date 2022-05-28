@@ -4,9 +4,8 @@ const REJECTED = "rejected";
 
 function resolvePromise(x, promise2, resolve, reject) {
 	if (x === promise2) {
-		// console.error("Chaining cycle detected for promise #<Promise>");
-		// return reject(new TypeError("Chaining cycle detected for promise #<Promise>"));
-		throw new TypeError("Chaining cycle detected for promise #<Promise>")
+		console.error("Chaining cycle detected for promise #<Promise>");
+		return reject(new TypeError("Chaining cycle detected for promise #<Promise>"));
 	}
 
 	if (x instanceof Promise) {
@@ -57,6 +56,9 @@ function resolvePromise(x, promise2, resolve, reject) {
 	}
 }
 
+function isFunction(val) {
+	return typeof val === "function";
+}
 class Promise {
 	constructor(executor) {
 		this.status = PENDING;
@@ -93,14 +95,19 @@ class Promise {
 		}
 	}
 
-	then(onResolve, onReject) {
-		console.log("then");
+	then(onFulfilled, onRejected) {
+		//! 说明：避免onFullfilled 和 onRejected 都传null的情况 比如：then(null,null).catch(err=>{...})
+		onFulfilled = isFunction(onFulfilled) ? onFulfilled : (data) => data;
+		onRejected = isFunction(onRejected) ? onRejected : (err) => {
+			throw err
+		};
+
 		let promise2 = new Promise((resolve, reject) => {
 			if (this.status == FULFILLED) {
 				//! 说明：为了确保promise2有值，否则new Promise还没有完成，promise2是拿不到值的
 				setTimeout(() => {
 					try {
-						let value = onResolve(this.value);
+						let value = onFulfilled(this.value);
 						//! 说明：value 可能未promise，所以需要单独解析处理
 						resolvePromise(value, promise2, resolve, reject);
 					} catch (error) {
@@ -110,7 +117,7 @@ class Promise {
 			} else if (this.status == REJECTED) {
 				setTimeout(() => {
 					try {
-						let value = onReject(this.reason);
+						let value = onRejected(this.reason);
 						resolvePromise(value, promise2, resolve, reject);
 					} catch (error) {
 						reject(error);
@@ -120,7 +127,7 @@ class Promise {
 				this.resolveCallbacks.push(() => {
 					setTimeout(() => {
 						try {
-							let value = onResolve(this.value);
+							let value = onFulfilled(this.value);
 							resolvePromise(value, promise2, resolve, reject);
 						} catch (error) {
 							reject(error);
@@ -130,7 +137,7 @@ class Promise {
 				this.rejectCallbacks.push(() => {
 					setTimeout(() => {
 						try {
-							let value = onReject(this.reason);
+							let value = onRejected(this.reason);
 							resolvePromise(value, promise2, resolve, reject);
 						} catch (error) {
 							reject(error);
@@ -144,7 +151,7 @@ class Promise {
 	}
 
 	catch(onReject) {
-		//TODO:
+		return this.then(null, onReject);
 	}
 }
 
