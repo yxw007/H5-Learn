@@ -3,21 +3,21 @@ const Promise = require("../Promise");
 // delete global.Promise;
 // const Promise = require("core-js-pure/actual/promise");
 
-/* const p = new Promise((resolve, reject) => {
+const p = new Promise((resolve, reject) => {
 	reject("fail");
 });
- */
+
 //! 说明：如果有error处理，就不会继续往后抛异常，catch也就不会执行
 /* p.then(null, error => {
 	console.error("error:", error);
 }).catch(error => {
 	console.log("catch:", error);
-}); */
-
+});
+ */
 //! 说明：如果error回调为空，那么抛出的异常就会走到catch回调
-/* p.then(null, null).catch(error => {
+p.then(null, null).catch(error => {
 	console.log("catch:", error);
-}); */
+});
 
 //! 说明：此种情况和上一种情况输出一样
 /* p.catch(error => {
@@ -31,7 +31,7 @@ const Promise = require("../Promise");
 
 //! 说明：then onReject 如何返回不是throw 或 promise reject,返回值都会传递给下一个then 当作onResolve 参数
 //-------------------------------------------------------------------------
-const p = new Promise((resolve, reject) => {
+/* const p = new Promise((resolve, reject) => {
 	reject("fail");
 }).then(null, error => {
 	return error;
@@ -40,7 +40,7 @@ const p = new Promise((resolve, reject) => {
 }, error => {
 	console.log("then2-erro:", error);
 });
-
+ */
 
 /* const p = new Promise((resolve, reject) => {
 	reject("fail");
