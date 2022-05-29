@@ -141,6 +141,19 @@ class Promise {
 		return this.then(null, onReject);
 	}
 
+	finally(callback) {
+		//! 说明：finally 就是在then 后面执行一下callback
+		return this.then((val) => {
+			//! 说明：finally 需要把之前的成功或失败的值传递给后面，不然会导致finally 执行后导致值丢失
+			return Promise.resolve(callback()).then(() => val);
+		}, (error) => {
+			//! 特别说明：Promise.resolve(callback()) 的promise 调用的一直是成功，所以回调放到第一个参数中，而不是第二个参数
+			return Promise.resolve(callback()).then(() => {
+				throw error
+			});
+		});
+	}
+
 	static reject(reason) {
 		return new Promise((resolve, reject) => {
 			reject(reason);
@@ -187,17 +200,27 @@ class Promise {
 		});
 	}
 
-	finally(callback) {
-		//! 说明：finally 就是在then 后面执行一下callback
-		return this.then((val) => {
-			//! 说明：finally 需要把之前的成功或失败的值传递给后面，不然会导致finally 执行后导致值丢失
-			return Promise.resolve(callback()).then(() => val);
-		}, (error) => {
-			//! 特别说明：Promise.resolve(callback()) 的promise 调用的一直是成功，所以回调放到第一个参数中，而不是第二个参数
-			return Promise.resolve(callback()).then(() => {
-				throw error
-			});
-		});
+	static race(arr) {
+		return new Promise((resolve, reject) => {
+			let flag = true;
+			let i = 0;
+			while (i < arr.length && flag) {
+				let p = arr[i];
+				if (p && isFunction(p.then)) {
+					p.then((val) => {
+						resolve(val);
+						flag = false;
+					}, (err) => {
+						resolve(err);
+						flag = false;
+					});
+				} else {
+					resolve(p);
+					flag = false;
+				}
+				++i;
+			}
+		})
 	}
 }
 
