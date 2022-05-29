@@ -8,57 +8,44 @@ function resolvePromise(x, promise2, resolve, reject) {
 		return reject(new TypeError("Chaining cycle detected for promise #<Promise>"));
 	}
 
-	if (x instanceof Promise) {
-		if (x.status === PENDING) {
-			x.then((val) => {
-				resolve(val);
-			}, (error) => {
-				reject(error);
-			});
-		} else if (x.status === FULFILLED) {
-			resolve(x.value);
-		} else if (x.status === REJECTED) {
-			reject(x.reason);
+	let called = false;
+	if ((x !== null && typeof x === "object") || typeof x === "function") {
+		try {
+			//! 说明：为了避免x.then 第二次获取失败的问题
+			let then = x.then;
+			if (typeof then === 'function') {
+				then.call(x, (y) => {
+					//! 说明：避免调用回调多次的问题，执行多次的问题
+					if (called) {
+						return;
+					}
+					called = true;
+					//! 说明：then 里面可能继续返回promise
+					resolvePromise(y, promise2, resolve, reject);
+				}, (r) => {
+					if (called) {
+						return;
+					}
+					called = true;
+					reject(r);
+				});
+			} else {
+				resolve(x);
+			}
+		} catch (e) {
+			if (called) return;
+			called = true;
+			reject(e);
 		}
 	} else {
-		let called = false;
-		if ((x !== null && typeof x === "object") || typeof x === "function") {
-			try {
-				//! 说明：为了避免x.then 第二次获取失败的问题
-				let then = x.then;
-				if (typeof then === 'function') {
-					then.call(x, (y) => {
-						//! 说明：避免调用回调多次的问题，执行多次的问题
-						if (called) {
-							return;
-						}
-						called = true;
-						//! 说明：then 里面可能继续返回promise
-						resolvePromise(y, promise2, resolve, reject);
-					}, (r) => {
-						if (called) {
-							return;
-						}
-						called = true;
-						reject(r);
-					});
-				} else {
-					resolve(x);
-				}
-			} catch (e) {
-				if (called) return;
-				called = true;
-				reject(e);
-			}
-		} else {
-			resolve(x);
-		}
+		resolve(x);
 	}
 }
 
 function isFunction(val) {
 	return typeof val === "function";
 }
+
 class Promise {
 	constructor(executor) {
 		this.status = PENDING;
@@ -166,6 +153,40 @@ class Promise {
 		});
 	}
 
+	static all(arr) {
+		return new Promise((resolve, reject) => {
+			let ret = [];
+			let flag = true;
+			let i = 0;
+
+			function tryResolve(ret, arr) {
+				//! 说明：全部处理完才resolve
+				if (ret.length === arr.length) {
+					resolve(ret);
+				}
+			}
+
+			while (i < arr.length && flag) {
+				let p = arr[i];
+				if (p && isFunction(p.then)) {
+					p.then((val) => {
+						ret.push(val);
+						tryResolve(ret, arr);
+					}, (err) => {
+						//! 说明：只要一个失败就reject
+						ret = err;
+						flag = false;
+						reject(ret);
+					});
+				} else {
+					ret.push(p);
+					tryResolve(ret, arr);
+				}
+				++i;
+			}
+		});
+	}
+
 	finally(callback) {
 		//! 说明：finally 就是在then 后面执行一下callback
 		return this.then((val) => {
@@ -179,5 +200,14 @@ class Promise {
 		});
 	}
 }
+
+Promise.deferred = function () {
+	let dfd = {};
+	dfd.promise = new Promise((resolve, reject) => {
+		dfd.resolve = resolve;
+		dfd.reject = reject;
+	});
+	return dfd;
+};
 
 module.exports = Promise;

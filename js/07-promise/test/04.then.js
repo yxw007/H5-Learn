@@ -1,5 +1,4 @@
 const Promise = require("../Promise");
-// const Promise = require("../4.promise");
 
 // delete global.Promise;
 // const Promise = require("core-js-pure/actual/promise");
