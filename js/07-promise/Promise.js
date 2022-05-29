@@ -1,3 +1,13 @@
+/**
+ * 创建日期: 2022-05-29
+ * 文件名称：Promise.js
+ * 创建作者：Potter
+ * 开发版本：1.0.0
+ * 相关说明：实现Promise A+规范
+ * PromiseA+ 规范：https://promisesaplus.com/
+ */
+
+
 const PENDING = "PENDING";
 const FULFILLED = "FULFILLED";
 const REJECTED = "rejected";
