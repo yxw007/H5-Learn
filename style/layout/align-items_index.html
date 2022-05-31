@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>align-items</title>
+    <style>
+        #baseline {
+            width: 220px;
+            height: 150px;
+            border: 1px solid black;
+            display: flex;
+            align-items: baseline;
+        }
+
+        #baseline div {
+            flex: 1;
+            display: inline-block;
+        }
+
+        #center {
+            width: 220px;
+            height: 150px;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+        }
+
+        #center div {
+            flex: 1;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="baseline">
+        <div style="background-color:coral;"> align-items</div>
+        <div style="background-color:lightblue;">baseline</div>
+    </div>
+    <div id="center">
+        <div style="background-color:coral;"> align-items</div>
+        <div style="background-color:lightblue;">center</div>
+    </div>
+
+</body>
+
+</html>
