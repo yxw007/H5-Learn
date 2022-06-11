@@ -15,7 +15,7 @@
 		},
 		{
 			"name": "current file",
-			"program": "${workspaceFolder}\\js\\14\\Set.js",
+			"program": "${file}",
 			"request": "launch",
 			"skipFiles": [
 				""
