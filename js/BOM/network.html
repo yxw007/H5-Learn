@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <script>
+      const connectionStateChange = () => console.log(navigator.onLine);
+      window.addEventListener("online", connectionStateChange);
+      window.addEventListener("offline", connectionStateChange);
+    </script>
+  </body>
+</html>

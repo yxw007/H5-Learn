@@ -6,7 +6,7 @@
  * 相关说明：
  */
 
-exports.autoRun = function (name, fn) {
+exports.autoRun = function (name, execute) {
 	console.log(`-------------------------------------${name}------------------------------------`);
-	fn();
+	execute();
 }
