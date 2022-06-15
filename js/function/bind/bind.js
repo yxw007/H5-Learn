@@ -16,12 +16,19 @@ Function.prototype.myBind = function (context) {
 	}
 
 	let originArgs = Array.from(arguments).slice(1);
-	context.fn = this;
+	let originFn = this;
 
-	return function () {
-		let args = Array.from(arguments).slice(1);
+	function innerFn() {
+		//! 注意：此处slice(0) 而不是slice(1), 因为不像bind函数的调用，前面有对象。所以此处为slice(0)
+		let args = Array.from(arguments).slice(0);
+		if (this instanceof innerFn) {
+			context = this;
+		}
+		context.fn = originFn;
 		let ret = context.fn(...originArgs.concat(args));
 		delete context.fn;
 		return ret;
-	};
+	}
+
+	return innerFn;
 }

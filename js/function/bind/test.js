@@ -58,40 +58,79 @@ autoRun("3.传3个参数", () => {
 	myBindFn("d");
 });
 
-//TODO: 学习到此处?
-autoRun("4. new bindFn", () => {
-	function fn(name) {
+autoRun("4. bind obj", () => {
+	function fn(name, age) {
 		this.name = name;
-		this.say = function () {
-			console.log(`${name} say hello !`);
-		}
+		this.age = age;
 		console.log("fn: this:", this, ",arguments:", arguments);
 	}
 
-	const bindFn = fn.bind("a", "b", "c");
-	const bindFnObj = new bindFn("pt");
-	console.log(bindFnObj);
-
-	const myBindFn = fn.myBind("a", "b", "c");
-	const myBindFnObj = new myBindFn("pt");
-	console.log(myBindFnObj);
-});
-
-autoRun("5. new bindFn", () => {
-	function fn(name) {
-		this.name = name;
-		console.log("fn: this:", this, ",arguments:", arguments);
-	}
-
-	fn.prototype.say = function () {
-		console.log(`say hello !`);
+	const obj = {
+		address: "sz"
 	};
 
-	const bindFn = fn.bind("a", "b", "c");
-	const bindFnObj = new bindFn("pt");
-	console.log("bindFnObj:", bindFnObj);
+	const bindFn = fn.bind(obj, "猫");
+	bindFn(9);
+	//! 执行绑定后，将参数添加至绑定的对象上了
+	console.log("obj:", obj);
 
-	const myBindFn = fn.myBind("a", "b", "c");
-	const myBindFnObj = new myBindFn("pt");
-	console.log("myBindFnObj:", myBindFnObj);
+	const obj2 = {
+		address: "sz"
+	};
+	const myBindFn = fn.myBind(obj2, "猫");
+	myBindFn(9);
+	//! 执行绑定后，将参数添加至绑定的对象上了
+	console.log("obj2:", obj2);
+});
+
+autoRun("5. new bindFn ", () => {
+	function fn(name, age) {
+		this.name = name;
+		this.age = age;
+		console.log("fn: this:", this, ",arguments:", arguments);
+	}
+
+	const obj = {
+		address: "sz"
+	};
+
+	const bindFn = fn.bind(obj, "猫");
+	//! new bindFn 绑定的this就是new 出来的对象，而不是原来的obj了
+	const instance = new bindFn(9);
+	console.log("instance:", instance);
+
+	const obj2 = {
+		address: "sz"
+	};
+
+	const myBindFn = fn.myBind(obj2, "猫");
+	//! new bindFn 绑定的this就是new 出来的对象，而不是原来的obj了
+	const myBindInstance = new myBindFn(9);
+	console.log("myBindInstance:", myBindInstance);
+});
+
+autoRun("6. new bindFn instance proto ", () => {
+	function fn(name, age) {
+		this.name = name;
+		this.age = age;
+		console.log("fn: this:", this, ",arguments:", arguments);
+	}
+
+	const obj = {
+		address: "sz"
+	};
+
+	//TODO: 学习到此处?
+	fn.prototype.flag = "动物";
+
+	const bindFn = fn.bind(obj, "猫");
+	const instance = new bindFn(9);
+	console.log("instance.flag:", instance.flag);
+
+	const obj2 = {
+		address: "sz"
+	};
+	const myBindFn = fn.bind(obj2, "猫");
+	const myBindInstance = new myBindFn(9);
+	console.log("instance.flag:", myBindInstance.flag);
 });
