@@ -6,6 +6,14 @@
     <style></style>
   </head>
   <body>
-    <div id="app">app<span>abc</span></div>
+    <div id="app" abc="dd" class="xx">app</div>
+    <script>
+      let el = document.getElementById("app");
+      console.log(el.parentNode);
+      console.log(el.tagName);
+      console.log(el.getAttribute("id"));
+      console.log(el.getAttribute("class"));
+      console.log(el.className);
+    </script>
   </body>
 </html>
