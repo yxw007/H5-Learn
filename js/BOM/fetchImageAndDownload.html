@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+    <a href="http://e7show-resouce.oss-cn-shenzhen.aliyuncs.com/template/QW_ORDER_LIST_TEMPLATE.xlsx" onclick="fetchImageAndDownload"
+      >Download</a
+    >
+  </head>
+
+  <body>
+    <script>
+      let url = "http://e7show-resouce.oss-cn-shenzhen.aliyuncs.com/template/QW_ORDER_LIST_TEMPLATE.xlsx";
+
+      url = "http://e7show-resouce.oss-cn-shenzhen.aliyuncs.com/template/test.png";
+
+      const downloadImg = async (url, name) => {
+        var canvas = document.createElement("canvas"),
+          ctx = canvas.getContext("2d"),
+          img = new Image();
+        img.crossOrigin = "Anonymous";
+        img.onload = function () {
+          canvas.height = img.height;
+          canvas.width = img.width;
+          ctx.drawImage(img, 0, 0);
+          var dataURL = canvas.toDataURL("image/png");
+          let a = document.createElement("a");
+          a.href = dataURL;
+          a.download = name;
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(() => {
+            document.body.removeChild(a);
+            canvas = null;
+          }, 1000);
+        };
+        img.src = url;
+      };
+
+      downloadImg(url);
+    </script>
+  </body>
+</html>

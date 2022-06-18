@@ -120,7 +120,6 @@ autoRun("6. new bindFn instance proto ", () => {
 		address: "sz"
 	};
 
-	//TODO: 学习到此处?
 	fn.prototype.flag = "动物";
 
 	const bindFn = fn.bind(obj, "猫");
@@ -130,7 +129,8 @@ autoRun("6. new bindFn instance proto ", () => {
 	const obj2 = {
 		address: "sz"
 	};
-	const myBindFn = fn.bind(obj2, "猫");
+	const myBindFn = fn.myBind(obj2, "猫");
 	const myBindInstance = new myBindFn(9);
 	console.log("instance.flag:", myBindInstance.flag);
 });
+

@@ -30,5 +30,14 @@ Function.prototype.myBind = function (context) {
 		return ret;
 	}
 
+	function Fn() {
+	}
+	Fn.prototype = originFn.prototype;
+	/* 
+	! 不要innerFn.prototype 直接指向originFn.prototype, 否则会导致两个方法的原型指向同一个原型了，违背原型链设计
+	! 所以采用一个中间对象，构建原型链是最安全的搞法
+	 */
+	innerFn.prototype = new Fn();
+
 	return innerFn;
 }
