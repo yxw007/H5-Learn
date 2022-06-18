@@ -11,7 +11,7 @@ exports.mockNew = function (fn) {
 	const args = Array.from(arguments).slice(1);
 
 	const obj = {};
-	//! 说明：是对象上的原型的隐藏属性__proto__，而不是obj.prototype, 对象实例上是无prototype属性的，只有方法有
+	//! 说明：是对象上的原型的隐藏属性__proto__，而不是obj.prototype, 对象实例上是无prototype属性的，只有方法上有
 	obj.__proto__ = constructor.prototype;
 
 	/* const bindFn = constructor.bind(obj, ...args);
