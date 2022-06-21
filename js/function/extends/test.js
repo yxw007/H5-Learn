@@ -15,7 +15,7 @@ function Animal(name, age) {
 }
 
 Animal.prototype.sleep = function () {
-	console.log(`睡觉啦`);
+	console.log(`${this.name} 睡觉啦`);
 }
 
 const animal = new Animal("dog", 3);
@@ -27,6 +27,9 @@ console.log("-----------------------------------");
 function People(name, age, sex) {
 	Animal.call(this, name, age);//! 1.继承实例上的属性和方法
 	this.sex = sex;
+	this.eat = function () {// 重写父类方法
+		console.log(`${name} 吃大餐`);
+	}
 	this.thinkSomething = function () {
 		console.log(`${name} 在想事情`);
 	}
@@ -46,11 +49,11 @@ inheritProtoType(People, Animal);
 // People.prototype = new Animal();//! 2.继承原型上的属性和方法, 避免new Animal 可借助Object创建obj实例
 People.prototype.live = "地球";
 People.prototype.work = function () {
-	console.log("人需要工作");
+	console.log(`${this.name} 需要工作`);
 }
 
 const p1 = new People("小明", 18, "男")
-console.log(`name:${p1.name} sex:${p1.sex}`);
+console.log(`name: ${p1.name} sex: ${p1.sex}`);
 p1.eat();
 p1.sleep();
 p1.thinkSomething();
