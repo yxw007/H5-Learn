@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <script>
+      Promise.resolve().then(() => {
+        console.log("Promise1"); //1
+        setTimeout(() => {
+          console.log("setTimeout2"); //4
+        }, 0);
+      });
+      setTimeout(() => {
+        console.log("setTimeout1"); //2
+        Promise.resolve().then(() => {
+          console.log("Promise2"); //3
+        });
+      }, 0);
+
+      //宏任务[main,timout1] [timeout1,timeout2] [timeout2]
+      //微任务[promise1] [Promise2]
+
+      /* 
+			[main,timout1]
+			[Promise1]
+
+			[timeout1] => main
+			[promise1]
+
+			[timeout1,timout2]
+			[] => promise1
+
+			[timeout2] => timeout1
+			[promise2]
+
+			[timeout2] 
+			[] => promise2
+
+			[] =>timeout2
+			[] 
+			
+			*/
+
+      //promise1 setTimeout1
+    </script>
+  </body>
+</html>
