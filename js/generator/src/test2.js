@@ -1,4 +1,4 @@
-function* generator(args) {
+/* function* generator(args) {
 	let a = yield;
 	console.log(a);
 	let b = yield;
@@ -9,10 +9,10 @@ const g = generator();
 console.log(g);
 console.log(g.next(1));
 console.log(g.next(2));
-console.log(g.next(3));
-
+console.log(g.next(3)); */
 
 "use strict";
+const regeneratorRuntime = require('regenerator-runtime')
 
 var _marked = /*#__PURE__*/regeneratorRuntime.mark(generator);
 

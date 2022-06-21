@@ -1,1 +1,1 @@
-generator
+regeneratorRuntime
