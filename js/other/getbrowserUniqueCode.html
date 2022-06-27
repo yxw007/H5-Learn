@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style>
+      #canvas {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>asdfas</div>
+    <canvas id="canvas"></canvas>
+    <div>asdfas</div>
+    <script src="https://cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+    <script>
+      function getCanvasFp() {
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        /*  ctx.font = "14px Arial";
+        ctx.fillStyle = "#ccc";
+        ctx.fillText("hello, shanyue", 2, 2); */
+        return canvas.toDataURL("image/jpeg");
+      }
+
+      let fp = getCanvasFp();
+      console.log(md5(fp));
+    </script>
+  </body>
+</html>
