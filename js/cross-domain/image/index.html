@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+  <body>
+    <div>this is a cors example </div>
+    <script>
+      const image = new Image();
+      /* 
+				图片探测
+				说明：只能client往服务端发送数据，client接收不到server的返回数据-单向数据流
+			*/
+      image.src = "http://localhost:3000/image?name=client";
+      image.onload = image.onerror = function () {
+        console.log("done:", arguments);
+      };
+    </script>
+  </body>
+</html>
