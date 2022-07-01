@@ -7,13 +7,9 @@ const whiteList = [
 	"http://localhost:4000"
 ];
 
-app.post("/say", upload.none(), (req, res) => {
-	const { name, message } = req.body;
+app.use((req, res, next) => {
 	const origin = req.headers.origin;
 	console.log("origin:", origin);
-	console.log(`${name}:${message}`);
-
-	const response = "server: fine thank you"
 	if (whiteList.includes(origin)) {
 		// 设置哪个源可以访问我
 		res.setHeader('Access-Control-Allow-Origin', origin);
@@ -28,9 +24,17 @@ app.post("/say", upload.none(), (req, res) => {
 		// 允许返回的头
 		res.setHeader('Access-Control-Expose-Headers', 'name');
 		if (req.method === 'OPTIONS') {
-			res.end();
+			//! 说明：此处要return 掉，后缀会导致执行next 然后再次运行的底层处理逻辑导致报错：Cannot set headers after they are sent to the client
+			return res.end();
 		}
 	}
+	next();
+});
+
+app.post("/say", upload.none(), (req, res) => {
+	const { name, message } = req.body;
+	console.log(`${name}:${message}`);
+	const response = "server: fine thank you"
 	res.end(response);
 });
 

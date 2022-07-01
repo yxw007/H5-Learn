@@ -16,7 +16,7 @@
       };
       xhr.open("POST", "http://localhost:3000/say", true);
       // 说明：添加header后跨域出问题
-      // xhr.setRequestHeader("name", "dd");
+      xhr.setRequestHeader("name", "dd");
       var formdata = new FormData();
       formdata.append("name", "client");
       formdata.append("message", "how are you");

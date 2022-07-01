@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <button id="button"> 点我 </button>
+    <script>
+      button.addEventListener("click", () => {
+        console.log("listener1");
+        Promise.resolve().then(() => console.log("micro task1"));
+      });
+      button.addEventListener("click", () => {
+        console.log("listener2");
+        Promise.resolve().then(() => console.log("micro task2"));
+      });
+      button.click(); // click1() click2()
+    </script>
+  </body>
+</html>

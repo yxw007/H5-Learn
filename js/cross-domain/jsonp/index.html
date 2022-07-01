@@ -22,7 +22,11 @@
           for (const key in parmas) {
             urlParamsPair.push(`${key}=${parmas[key]}`);
           }
-
+          /* 
+					缺点：
+					1. 不安全：因为jsonp 回调函数可添加恶意代码
+					2. jsonp 不好确认请求是否失败，只能通过添加定时器来处理
+					 */
           let requestUrl = `${url}?${urlParamsPair.join("&")}`;
           console.log(requestUrl);
           script.src = requestUrl;
