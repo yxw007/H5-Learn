@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <script>
+      function jsonp({ url, parmas, callback }) {
+        return new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+
+          window[callback] = function (message) {
+            resolve(message);
+            document.body.removeChild(script);
+          };
+
+          parmas = { ...parmas, callback };
+          let urlParamsPair = [];
+          for (const key in parmas) {
+            urlParamsPair.push(`${key}=${parmas[key]}`);
+          }
+
+          let requestUrl = `${url}?${urlParamsPair.join("&")}`;
+          console.log(requestUrl);
+          script.src = requestUrl;
+          document.body.appendChild(script);
+        });
+      }
+      /* 
+			- 仅支持get，不支持post、put、delete
+			- 不安全，容易导致xss攻击
+			*/
+      jsonp({ url: "http://localhost:3000/say", parmas: { name: "client", message: "how are you?" }, callback: "cb" }).then((res) => {
+        console.log(res);
+      });
+    </script>
+  </body>
+</html>
