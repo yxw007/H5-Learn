@@ -24,12 +24,19 @@
           }
           /* 
 					缺点：
-					1. 不安全：因为jsonp 回调函数可添加恶意代码
-					2. jsonp 不好确认请求是否失败，只能通过添加定时器来处理
+					1. 仅支持get，不支持post、put、delete
+					2. 不安全：因为访问的是不安全的网站jsonp接口，回调函数可添加恶意代码
+					3. jsonp 出来当时浏览器还未支持onerror(目前都已支持)接口，所以不好确认请求是否失败，只能通过添加定时器来处理
 					 */
           let requestUrl = `${url}?${urlParamsPair.join("&")}`;
           console.log(requestUrl);
           script.src = requestUrl;
+          script.onload = () => {
+            console.log("onload:", arguments);
+          };
+          script.onerror = () => {
+            console.error("onerror:", arguments);
+          };
           document.body.appendChild(script);
         });
       }

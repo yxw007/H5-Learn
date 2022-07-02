@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>3000</title>
+    <style></style>
+  </head>
+  <body>
+    <iframe src="http://localhost:4000/4000.html" frameborder="0" id="iframe" onload="onloaded()"></iframe>
+    <div>3000</div>
+    <script>
+      /* 说明：如果将回调设置成onload，会导致死循环 */
+      function onloaded() {
+        const iframe = document.getElementById("iframe");
+        iframe.contentWindow.postMessage("3000: how are you !=====>", "http://localhost:4000");
+        window.onmessage = function (e) {
+          console.log("3000: ------>receive data=", e.data, ",e=", e);
+        };
+      }
+    </script>
+  </body>
+</html>

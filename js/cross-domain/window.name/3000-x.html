@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>x</title>
+    <style></style>
+  </head>
+  <body>
+    <iframe src="http://localhost:4000/4000-z.html" frameborder="0" id="iframe" onload="onloaded()"></iframe>
+    <script>
+      let isFirst = true;
+      const iframe = document.getElementById("iframe");
+      function onloaded() {
+        if (isFirst) {
+          // 将4000-z.html 将结果存至window.name中，然后将iframe.src指向一个同源地址，然后再从window.name获取数据
+          iframe.src = "http://localhost:3000/3000-y.html";
+          isFirst = false;
+        } else {
+          //注意：此时是取值的iframe.contentWindow.name 而不是window.name
+          console.log("onloaded: name=", iframe.contentWindow.name);
+        }
+      }
+    </script>
+  </body>
+</html>
