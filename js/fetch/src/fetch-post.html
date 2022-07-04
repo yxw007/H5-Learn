@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+  <body>
+    <div>this is a cors example </div>
+    <script>
+      /* 注意：传json数据，需要设置content-type为application/json 否则会导致服务端从body拿不到数据 */
+      fetch("http://localhost:3000/login", {
+        method: "post",
+        body: JSON.stringify({ user: "pt", password: "123456" }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+        });
+    </script>
+  </body>
+</html>
