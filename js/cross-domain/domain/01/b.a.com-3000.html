@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>b.a.com</title>
+    <style></style>
+  </head>
+
+  <body>
+    <div>b.a.com-3000</div>
+    <iframe src="http://c.b.a.com:4000/c.b.a.com-4000.html" frameborder="0" id="iframe" onload="onloaded()"></iframe>
+    <script>
+      //注意：父子页面的document.domain都设置成一级域名(或者都设置成子域名的上一级域名也是可以的)
+      //以下两种都是可以的
+      // document.domain = "b.a.com";
+      document.domain = "a.com";
+      function onloaded() {
+        const iframe = document.getElementById("iframe");
+        console.log(iframe.contentWindow.message);
+      }
+    </script>
+  </body>
+</html>

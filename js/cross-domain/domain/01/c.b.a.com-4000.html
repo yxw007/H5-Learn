@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>c.b.a.com</title>
+    <style></style>
+  </head>
+
+  <body>
+    <div>c.b.a.com-4000</div>
+    <script>
+      //注意：父子页面的document.domain都设置成一级域名
+      //以下两种都是可以的
+      // document.domain = "b.a.com";
+      document.domain = "a.com";
+      var message = "I'm c.b.a.com";
+    </script>
+  </body>
+</html>
