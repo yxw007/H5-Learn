@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>aa.com</title>
+    <style></style>
+  </head>
+
+  <body>
+    <div>aa.com-3000</div>
+    <iframe src="http://bb.aa.com:4000/bb.aa.com-4000.html" frameborder="0" id="iframe" onload="onloaded()"></iframe>
+    <script>
+      //注意：父子页面的document.domain都设置成一级域名
+      document.domain = "aa.com";
+      function onloaded() {
+        const iframe = document.getElementById("iframe");
+        console.log(iframe.contentWindow.message);
+      }
+    </script>
+  </body>
+</html>
