@@ -10,10 +10,6 @@
     <script>
       const xhr = new XMLHttpRequest();
       xhr.onreadystatechange = () => {};
-      const parmas = {
-        name: "client",
-        message: "how are you",
-      };
       xhr.open("POST", "http://localhost:3000/say", true);
       // 说明：添加header后跨域出问题
       xhr.setRequestHeader("name", "dd");

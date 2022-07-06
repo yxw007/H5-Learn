@@ -9,10 +9,6 @@
     <div>this is a cors example </div>
     <script>
       const xhr = new XMLHttpRequest();
-      const parmas = {
-        name: "client",
-        message: "how are you",
-      };
       xhr.open("POST", "http://localhost:8090/api/say", true);
       // 说明：添加header后跨域出问题
       xhr.setRequestHeader("name", "dd");
