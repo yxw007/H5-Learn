@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+  <body>
+    <div>this is a cors example </div>
+    <script>
+      const xhr = new XMLHttpRequest();
+      const parmas = {
+        name: "client",
+        message: "how are you",
+      };
+      xhr.open("POST", "http://localhost:8090/api/say", true);
+      // 说明：添加header后跨域出问题
+      xhr.setRequestHeader("name", "dd");
+      var formdata = new FormData();
+      formdata.append("name", "client");
+      formdata.append("message", "how are you");
+      xhr.onload = () => {
+        console.log(xhr.responseText);
+      };
+      xhr.send(formdata);
+    </script>
+  </body>
+</html>
