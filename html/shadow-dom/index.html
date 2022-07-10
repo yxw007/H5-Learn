@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <script>
+      document.body.innerHTML = `
+			<div id="foo">
+				<span>xxx</span>
+				<p>Foo</p>
+			</div>
+			`;
+
+      //说明：由于影子dom具有最高优先级，会优先渲染影子dom中的内容，原来的影子宿主内的内容会被隐藏，如果想让其显示就需要添加slot
+      document.querySelector("div").attachShadow({ mode: "open" }).innerHTML = `
+				<div>
+					<span>shadow span 1</span>
+					<slot></slot>
+					<span>shadow span 2</span>
+				</div>
+			`;
+
+      //!结论：仍然能找到div下的dom节点，因为原本就在div下，只是div中原本的内容映射显示到了影子下面
+      console.log(document.querySelector("p").parentElement);
+    </script>
+  </body>
+</html>
