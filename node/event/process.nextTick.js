@@ -3,7 +3,7 @@ const { EventEmitter, once } = require('events');
 const { autoRun } = require('../common');
 
 
-autoRun("1. 事件问题", () => {
+autoRun("1. once事件问题", () => {
 	const myEE = new EventEmitter();
 
 	async function foo() {
