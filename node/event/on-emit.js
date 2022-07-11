@@ -71,6 +71,7 @@ autoRun("5.on once", () => {
 
 autoRun("6.error", () => {
 	const myEmitter = new MyEmitter();
+	//! 说明：如果不订阅error 事件，会直接导致程序退出
 	myEmitter.on('error', (err) => {
 		console.error(`there was an error,message: ${err.message}`);
 	});
@@ -86,10 +87,19 @@ autoRun("6.error", () => {
 	myEmitter.emit('error', new Error('whoops!'));
 }); */
 
-autoRun("8.captureRejections", () => {
+/* autoRun("8.captureRejections", () => {
+	//TODO: 没搞懂captureRejections这示例有啥卵用
 	const ee1 = new EventEmitter({ captureRejections: true });
-	ee1.on('something', async (value) => {
-		throw new Error('kaboom');
+
+	ee1.on('something', async function () {
+		async function fn1(value) {
+			throw new Error('kaboom');
+		}
+
+		//利用promise.then(null,注册异常回调处理函数)
+		await fn1().then(null, (err) => {
+			ee1.emit("error", "xx:" + err);
+		});
 	});
 
 	ee1.on('error', console.log);
@@ -98,5 +108,26 @@ autoRun("8.captureRejections", () => {
 	ee2.on('something', async (value) => {
 		throw new Error('kaboom');
 	});
+
+	ee2[Symbol.for('nodejs.rejection')] = console.log;
+
+	ee1.emit("something");
+}); */
+
+
+autoRun("9.捕获错误，然后再发布错误消息", () => {
+	const myEmitter = new MyEmitter();
+	myEmitter.on('error', (err) => {
+		console.error(`there was an error,message: ${err.message}`);
+	});
+	myEmitter.on("something", function () {
+		console.log("do something");
+		try {
+			throw new Error("whoops!");
+		} catch (error) {
+			this.emit("error", error);
+		}
+	});
+	myEmitter.emit('something');
 });
 
