@@ -1,6 +1,6 @@
 
 const { EventEmitter, once } = require('events');
-const { autoRun } = require('../common');
+const { autoRun } = require('../../common');
 
 
 autoRun("1. once事件问题", () => {

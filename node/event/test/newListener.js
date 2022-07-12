@@ -1,9 +1,9 @@
 const EventEmitter = require('node:events');
-class MyEmitter extends EventEmitter { }
+const MyEventEmitter = require("../EventEmitter");
 
-const myEmitter = new MyEmitter();
+const myEmitter = new MyEventEmitter();
 let pending = false;
-myEmitter.on('newListener', (event, listener) => {
+myEmitter.on('newListener', (eventName, listener) => {
 	//! 说明：需要添加pending, 否则newListener事件会导致死循环
 	if (!pending) {
 		pending = true;
@@ -18,14 +18,6 @@ myEmitter.on('newListener', (event, listener) => {
 
 myEmitter.on('event', () => {
 	console.log('A');
-
-	myEmitter.removeAllListeners("event");
 });
-
-setTimeout(() => {
-	myEmitter.on('event', () => {
-		console.log('AA');
-	});
-}, 0);
 
 myEmitter.emit('event');
