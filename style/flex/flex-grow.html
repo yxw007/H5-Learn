@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style>
+      #content {
+        display: flex;
+
+        justify-content: space-around;
+        flex-flow: row wrap;
+        align-items: stretch;
+      }
+
+      .box {
+        width: 100px;
+        flex-grow: 1;
+        border: 3px solid rgba(0, 0, 0, 0.2);
+      }
+
+      /* 
+			flex-grow 
+			flex 中 所有元素和的宽高，剩余空间宽高，按比列放大
+			*/
+      .box1 {
+        width: 100px;
+        flex-grow: 2;
+        border: 3px solid rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="content">
+      <div class="box" style="background-color: red">A</div>
+      <div class="box" style="background-color: lightblue">B</div>
+      <div class="box" style="background-color: yellow">C</div>
+      <div class="box1" style="background-color: brown">D</div>
+      <div class="box1" style="background-color: lightgreen">E</div>
+    </div>
+  </body>
+</html>

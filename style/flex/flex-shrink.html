@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style>
+      #content {
+        display: flex;
+        width: 500px;
+      }
+
+      #content div {
+        flex-basis: 120px;
+        border: 3px solid rgba(0, 0, 0, 0.2);
+        box-sizing: border-box;
+      }
+
+      /* 
+				flex-shrink
+				flex 中 所有元素和的宽高，超出容器宽高时，按比列压缩
+			 */
+      .box {
+        flex-shrink: 1;
+      }
+
+      .box1 {
+        flex-shrink: 2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="content">
+      <div class="box" style="background-color: red">A</div>
+      <div class="box" style="background-color: lightblue">B</div>
+      <div class="box" style="background-color: yellow">C</div>
+      <div class="box1" style="background-color: brown">D</div>
+      <div class="box1" style="background-color: lightgreen">E</div>
+    </div>
+  </body>
+</html>
