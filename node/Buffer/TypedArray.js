@@ -16,52 +16,45 @@ autoRun("1. buffer to typeArray", () => {
 	console.log("uint32array:", uint32array);
 });
 
-autoRun("2. ", () => {
+autoRun("2. copy typeArray to other buffer", () => {
 	const arr = new Uint16Array(2);
-	arr[0] = 5000;
-	arr[1] = 4000;
-
+	arr[0] = 6;
+	arr[1] = 8;
+	console.log("arr:", arr);
 	console.log("arr.length 类型数组元素个数:", arr.length);
 	console.log("arr.byteLength 字节长度:", arr.byteLength);
 
-	// 复制 `arr` 的内容, 会用arr的length 创建buffer个字节
+	//1.复制arr全部内容, 会用arr的length 创建buffer个字节
 	const buf1 = Buffer.from(arr);
 	console.log("buf1:", buf1);
-	// 打印: <Buffer 88 a0>
+	// 输出: <Buffer 88 a0>
 
-	//! 第2个参数，byteOffset 不生效，需要使用TypeArray.buffer 才可以
-	const buf2 = Buffer.from(arr.buffer, 2);
+	//2.复制arr内容，从偏移byteOffset位置开始copy至最后
+	const buf2 = Buffer.from(arr, 2);
 	console.log("buf2:", buf2);
 
-	const buf3 = Buffer.from(arr.buffer, 2, 1);
+	//3.复制arr内容,从偏移byteOffset位置开始copy length个字节内容
+	const buf3 = Buffer.from(arr, 2, 1);
 	console.log("buf3:", buf3);
 
-	// 与 `arr` 共享内存。
-	const buf4 = Buffer.from(arr.buffer);
-	console.log(buf4);
-	// 打印: <Buffer 88 13 a0 0f>
+	console.log("arr:", arr);
+	console.log("buf1:", buf1);
+	console.log("buf2:", buf2);
+	console.log("buf3:", buf3);
 });
 
-autoRun("3.", () => {
-	const ab = [];
-	for (let i = 0; i < 10; i++) {
-		ab[i] = i + 1;
-	}
+autoRun("3.使用Buffer.from(buf.buffer)会内存共享", () => {
+	const buf = Buffer.from([1, 2, 3, 4]);
+	console.log("buf:", buf);
+	console.log("buf.length:", buf.length);
 
-	try {
-		const buf = Buffer.from(ab);
-		console.log("buf:", buf);
-		console.log("buf.length:", buf.length);
+	//TODO: 学习到此处?
+	//! 为啥buf2是5c? 使用的默认内存空间数据
+	const buf2 = Buffer.from(buf.buffer, 0, 1);
+	console.log("buf2:", buf2);
 
-		//! 为啥buf2是5c? 使用的默认内存空间数据  学习到此处：http://nodejs.cn/api-v16/buffer.html#static-method-bufferfromarraybuffer-byteoffset-length
-		const buf2 = Buffer.from(buf.buffer, 0, 1);
-		console.log("buf2:", buf2);
-
-		const buf3 = Buffer.from(buf, 2);
-		console.log("buf3:", buf3);
-	} catch (error) {
-		console.error(error);
-	}
+	const buf3 = Buffer.from(buf, 2);
+	console.log("buf3:", buf3);
 });
 
 
