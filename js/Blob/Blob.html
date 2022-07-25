@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <a id="h">点此进行下载</a>
+    <input type="file" id="f" />
+    <img id="img" style="width: 200px; height: 200px" />
+
+    <script type="module">
+      async function autoRun(name, executor) {
+        console.log(name);
+        console.log(`-------------------------------------------------------------------------`);
+        await new Promise((resolve) => {
+          executor(resolve);
+        });
+        console.log(`-------------------------------------------------------------------------\n`);
+      }
+
+      await autoRun("1.将字符串放进blob中", (resolve) => {
+        let debug = { hello: "abc" };
+        let json = JSON.stringify(debug, null, 2);
+        console.log("json:", json);
+        console.log("len:", json.length);
+
+        let blob = new Blob([json], { type: "application/json" });
+        console.log(blob);
+        resolve();
+      });
+
+      await autoRun("2.读取blob数据为ArrayBuffer", (resolve) => {
+        let debug = { hello: "abc" };
+        let json = JSON.stringify(debug, null, 2);
+
+        let blob = new Blob([json], { type: "application/json" });
+
+        let reader = new FileReader();
+        reader.addEventListener("loadend", function () {
+          // reader.result 包含被转化为类型数组 typed array 的 blob
+          console.log(reader.result);
+          resolve();
+        });
+        reader.readAsArrayBuffer(blob);
+      });
+
+      await autoRun("3.读取blob数据为text", (resolve) => {
+        let debug = { hello: "abc" };
+        let json = JSON.stringify(debug, null, 2);
+
+        let blob = new Blob([json], { type: "application/json" });
+
+        let reader = new FileReader();
+        reader.addEventListener("loadend", function () {
+          console.log(reader.result);
+          resolve();
+        });
+        reader.readAsText(blob);
+      });
+
+      await autoRun("4.读取blob数据为DataURL", (resolve) => {
+        let debug = { hello: "abc" };
+        let json = JSON.stringify(debug, null, 2);
+
+        let blob = new Blob([json], { type: "application/json" });
+
+        let reader = new FileReader();
+        reader.addEventListener("loadend", function () {
+          console.log(reader.result);
+          resolve();
+        });
+        reader.readAsDataURL(blob);
+      });
+
+      await autoRun("5.读取blob数据为BinaryString", (resolve) => {
+        let debug = { hello: "abc" };
+        let json = JSON.stringify(debug, null, 2);
+
+        let blob = new Blob([json], { type: "application/json" });
+
+        let reader = new FileReader();
+        reader.addEventListener("loadend", function () {
+          console.log(reader.result);
+          resolve();
+        });
+        //! 疑问：为啥读出来不是二进制字符串形式
+        reader.readAsBinaryString(blob);
+      });
+
+      await autoRun("6.应用：将canvas内容转成图片", (resolve) => {
+        var canvas = document.createElement("canvas");
+        var height = 200;
+        var width = 200;
+
+        canvas.width = width;
+        canvas.height = height;
+
+        var ctx = canvas.getContext("2d");
+
+        ctx.strokeStyle = "#090";
+        ctx.beginPath();
+        ctx.arc(width / 2, height / 2, width / 2 - width / 10, 0, Math.PI * 2);
+        ctx.stroke();
+
+        canvas.toBlob(function (blob) {
+          var reader = new FileReader();
+
+          reader.onloadend = function () {
+            console.log(reader.result);
+            resolve();
+          };
+
+          reader.readAsBinaryString(blob);
+        });
+      });
+
+      await autoRun("7.应用：将字符串转成blob对象，然后利用createObjectURL创建下载URL 提供下载", (resolve) => {
+        var blob = new Blob(["123"]);
+        var url = window.URL.createObjectURL(blob);
+        console.log(url);
+
+        var a = document.getElementById("h");
+        a.download = "helloworld.txt";
+        a.href = url;
+
+        resolve();
+      });
+
+      await autoRun("8.应用：将文件内容利用createObjectURL创建ObjectURL,提供图片显示", (resolve) => {
+        document.getElementById("f").addEventListener(
+          "change",
+          function (e) {
+            var file = this.files[0];
+            const img = document.getElementById("img");
+            const url = window.URL.createObjectURL(file);
+            img.src = url;
+            img.onload = function () {
+              // 释放一个之前通过调用 URL.createObjectURL创建的 URL 对象
+              window.URL.revokeObjectURL(url);
+              resolve();
+            };
+          },
+          false
+        );
+      });
+    </script>
+  </body>
+</html>

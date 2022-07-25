@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <input type="file" id="f" />
+  </body>
+  <script>
+    function upload(blob) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "http://localhost:3000/ajax", true);
+      xhr.setRequestHeader("Content-Type", "text/plain");
+      xhr.onreadystatechange = function () {
+        console.log("onreadystatechange", xhr.readyState);
+        if (xhr.readyState == 4) {
+          console.log("responseText:", xhr.responseText);
+        }
+      };
+      xhr.send(blob);
+    }
+
+    document.getElementById("f").addEventListener(
+      "change",
+      function (e) {
+        var blob = this.files[0];
+        const CHUNK_SIZE = 20;
+        const SIZE = blob.size;
+        var start = 0;
+        var end = CHUNK_SIZE;
+        while (start < SIZE) {
+          upload(blob.slice(start, end));
+          start = end;
+          end = start + CHUNK_SIZE;
+        }
+      },
+      false
+    );
+  </script>
+</html>
