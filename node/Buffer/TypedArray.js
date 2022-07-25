@@ -48,9 +48,8 @@ autoRun("3.使用Buffer.from(buf.buffer)会内存共享", () => {
 	console.log("buf:", buf);
 	console.log("buf.length:", buf.length);
 
-	//TODO: 学习到此处?
 	//! 为啥buf2是5c? 使用的默认内存空间数据
-	const buf2 = Buffer.from(buf.buffer, 0, 1);
+	const buf2 = Buffer.from(b1.buffer, 0, 1);
 	console.log("buf2:", buf2);
 
 	const buf3 = Buffer.from(buf, 2);
