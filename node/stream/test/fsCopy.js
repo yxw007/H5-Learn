@@ -14,7 +14,7 @@ const sourcePath = path.join(__dirname, "../res/Source.txt");
 const targetPath = path.join(__dirname, "../res/Target.txt");
 
 (async () => {
-	await autoRunPromise("1.最原始的方式[整文件]copy文件", (next) => {
+	/* await autoRunPromise("1.最原始的方式[整文件]copy文件", (next) => {
 		fs.open(sourcePath, "r", (error, fd) => {
 			if (error) {
 				console.error("open source error:", error);
@@ -146,5 +146,93 @@ const targetPath = path.join(__dirname, "../res/Target.txt");
 		});
 	});
 
-})()
+	await autoRunPromise("3.通过createReadStream的方式读取[整文件]文件", (next) => {
+		const rs = fs.createReadStream(sourcePath);
+		rs.on("open", (fd) => {
+			console.log("open:fd=", fd);
+		});
+		rs.on("ready", () => {
+			console.log("ready");
+		})
+		rs.on("data", (chunk) => {
+			console.log("data:chunk=", chunk.toString());
+		});
+		rs.on("error", (err) => {
+			console.log("error:err=", err);
+		});
+		rs.on("close", () => {
+			console.log("close");
 
+			next();
+		});
+	});
+
+	await autoRunPromise("4.通过Stream copy整个文件", (next) => {
+		const rs = fs.createReadStream(sourcePath);
+		const ws = fs.createWriteStream(targetPath);
+		rs.on("data", (chunk) => {
+
+			console.log("read: data chunk=", chunk.toString());
+
+			ws.write(chunk, (error) => {
+				if (error) {
+					console.log("write:error=", error);
+				}
+				console.log("write finish");
+				ws.close();
+			});
+		});
+
+		rs.on("close", () => {
+			console.log("close rs");
+			next();
+		});
+
+		ws.on("close", () => {
+			console.log("close ws");
+			rs.close();
+		});
+	}); */
+
+	await autoRunPromise("5.通过Stream [分片]copy整个文件", (next) => {
+		const rs = fs.createReadStream(sourcePath, { highWaterMark: 3 });
+		const ws = fs.createWriteStream(targetPath, { highWaterMark: 2 });
+
+		rs.on("data", (chunk) => {
+			console.log("read: data chunk=", chunk.toString());
+
+			const canContinueWrite = ws.write(chunk, (error) => {
+				if (error) {
+					console.log("write:error=", error);
+				}
+				console.log("write finish");
+			});
+
+			//说明：没有实现读多次，然后第一次全部写入文件，剩余的写入缓存，清空缓存。然后再次恢复读取的过程?
+			if (!canContinueWrite) {
+				rs.pause();
+				console.log("fs pause");
+				ws.once("drain", () => {
+					console.log("fs resume");
+					rs.resume();
+				});
+			}
+		});
+
+		//读取结束
+		rs.on("end", () => {
+			console.log("end rs");
+			ws.end();
+		});
+
+		rs.on("close", () => {
+			console.log("close rs");
+			next();
+		});
+
+		ws.on("close", () => {
+			console.log("close ws");
+			next();
+		});
+	});
+})();
