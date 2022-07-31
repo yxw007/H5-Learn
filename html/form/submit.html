@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <form action="">
+      <input id="1" type="submit" value="submit form" />
+      <br />
+      <button id="2" type="submit">submit</button>
+      <br />
+      <input id="3" type="image" src="./submit.png" />
+    </form>
+  </body>
+  <script>
+    //type为submit 到底有啥意义?
+    let el1 = document.getElementById("1");
+    let el2 = document.getElementById("2");
+    let el3 = document.getElementById("3");
+    let arr = [el1, el2, el2];
+    for (const item of arr) {
+      item.addEventListener("submit", (e) => {
+        console.log(e.target.id);
+      });
+    }
+  </script>
+</html>

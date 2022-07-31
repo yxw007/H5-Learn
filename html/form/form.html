@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style>
+      form {
+        /* 居中表单 */
+        margin: 0 auto;
+        width: 400px;
+        /* 显示表单的轮廓 */
+        padding: 1em;
+        border: 1px solid #ccc;
+        border-radius: 1em;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      form li + li {
+        margin-top: 1em;
+      }
+
+      label {
+        /* 确保所有 label 大小相同并正确对齐 */
+        display: inline-block;
+        width: 90px;
+        text-align: right;
+      }
+
+      input,
+      textarea {
+        /* 确保所有文本输入框字体相同
+     textarea 默认是等宽字体 */
+        font: 1em sans-serif;
+
+        /* 使所有文本输入框大小相同 */
+        width: 300px;
+        box-sizing: border-box;
+
+        /* 调整文本输入框的边框样式 */
+        border: 1px solid #999;
+      }
+
+      input:focus,
+      textarea:focus {
+        /* 给激活的元素一点高亮效果 */
+        border-color: #000;
+      }
+
+      textarea {
+        /* 使多行文本输入框和它们的 label 正确对齐 */
+        vertical-align: top;
+
+        /* 给文本留下足够的空间 */
+        height: 5em;
+      }
+
+      .button {
+        /* 把按钮放到和文本输入框一样的位置 */
+        padding-left: 90px; /* 和 label 的大小一样 */
+      }
+
+      button {
+        /* 这个外边距的大小与 label 和文本输入框之间的间距差不多 */
+        margin-left: 0.5em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="/my-handling-form-page" method="post" enctype="multipart/form-data">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="user_name" />
+      </div>
+      <div>
+        <label for="mail">E-mail:</label>
+        <input type="email" id="mail" name="user_email" />
+      </div>
+      <div>
+        <label for="msg">Message:</label>
+        <textarea id="msg" name="user_message"></textarea>
+      </div>
+      <div class="button">
+        <button type="submit">Send your message</button>
+        <button type="reset">Reset</button>
+      </div>
+    </form>
+  </body>
+</html>
