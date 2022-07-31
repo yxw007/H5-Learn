@@ -166,6 +166,31 @@ const targetPath = path.join(__dirname, "../res/Target.txt");
 		});
 	}); */
 
+	await autoRunPromise("2.通过createWriteStream的方式写入文件", (next) => {
+		//highWaterMark 高水位线，预计写入的最大字节数，超过此数就会占用更多的内存空间
+		const ws = fs.createWriteStream(targetPath, { highWaterMark: 2 });
+		ws.write("123", null, () => {
+			console.log("1");
+		});
+		ws.write("456", null, () => {
+			console.log("2");
+		});
+		ws.write("789", null, () => {
+			console.log("3");
+		});
+		ws.write("0", null, () => {
+			console.log("4");
+			next();
+		});
+		ws.on("drain", () => {
+			console.log("drain");
+		});
+		//说明：会按顺序输出1 2 3 4
+		//1.首次写入不管写入多少字节，都会依次新写入
+		//2.如果文件正在写入，以后写入的数据将会缓存队列cache中，等正在写入chunk完成后依次pop清空缓存队列
+		//3.清空完缓存队列后回调drain事件
+	});
+
 	/* await autoRunPromise("4.通过Stream copy整个文件", (next) => {
 		const rs = fs.createReadStream(sourcePath);
 		const ws = fs.createWriteStream(targetPath);
@@ -193,7 +218,7 @@ const targetPath = path.join(__dirname, "../res/Target.txt");
 		});
 	}); */
 
-	await autoRunPromise("5.通过Stream [分片]copy整个文件", (next) => {
+	/* await autoRunPromise("5.通过Stream [分片]copy整个文件", (next) => {
 		const rs = fs.createReadStream(sourcePath, { highWaterMark: 4 });
 		const ws = fs.createWriteStream(targetPath, { highWaterMark: 2 });
 
@@ -230,18 +255,18 @@ const targetPath = path.join(__dirname, "../res/Target.txt");
 			console.log("close ws");
 			next();
 		});
-	});
+	}); */
 
-	/*await autoRunPromise("6.通过Stream pipe[分片]copy整个文件", (next) => {
+	/* await autoRunPromise("6.通过Stream pipe[分片]copy整个文件", (next) => {
 		const rs = fs.createReadStream(sourcePath, { highWaterMark: 3 });
 		const ws = fs.createWriteStream(targetPath, { highWaterMark: 2 });
-	
+
 		rs.pipe(ws);
-	
+
 		rs.on("close", () => {
 			console.log("close rs");
 		});
-	
+
 		ws.on("close", () => {
 			console.log("close ws");
 			next();

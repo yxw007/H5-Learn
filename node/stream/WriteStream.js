@@ -42,19 +42,23 @@ class WriteStream extends EventEmitter {
 		this.needDrain = !canContinueWrite;
 
 		let wrapperCallback = () => {
-			callback && callback();
 			this.clearCache();
+			callback && callback();
 		}
 
 		if (!this.writting) {
+			this.writting = true;
+			console.log("is writing chunk:", chunk.toString());
 			this.__write(chunk, wrapperCallback);
 		} else {
+			console.log("push once cache chunk:", chunk.toString());
 			this.cache.push({ chunk, callback: wrapperCallback });
 		}
 
 		return canContinueWrite;
 	}
 	clearCache() {
+		console.log("clearCache");
 		if (this.cache.length <= 0) {
 			//说明：需要drain才重置状态
 			if (this.needDrain) {
@@ -64,8 +68,9 @@ class WriteStream extends EventEmitter {
 			}
 			return;
 		}
-
+		console.log("cache.len=", this.cache.length);
 		const { chunk, callback } = this.cache.shift();
+		console.log("cache pop a chunk:", chunk.toString());
 		this.__write(chunk, callback);
 	}
 	__write(chunk, callback) {
@@ -76,12 +81,13 @@ class WriteStream extends EventEmitter {
 			return;
 		}
 
+		console.log("begin write a chunk:", chunk.toString());
 		fs.write(this.fd, chunk, 0, chunk.length, this.offset, (error, written) => {
 			if (error) {
 				this.destory(error);
 				return;
 			}
-
+			console.log("write once finish ! chunk:", chunk.toString());
 			this.offset += written;
 			this.len -= written;
 			callback();

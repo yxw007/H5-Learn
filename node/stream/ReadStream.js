@@ -60,6 +60,8 @@ class ReadStream extends EventEmitter {
 				return;
 			}
 
+			//说明：最后不够buffer的长度就截取实际长度内容
+			buf = bytesRead < buf.length ? Uint8Array.prototype.slice.call(buf, 0, bytesRead) : buf;
 			this.offset += bytesRead;
 			this.emit("data", buf);
 
@@ -79,7 +81,22 @@ class ReadStream extends EventEmitter {
 		if (!ws) {
 			throw new Error("params invalid !");
 		}
-		//TODO:
+
+		this.on("data", (chunk) => {
+			console.log("read once data:", chunk.toString());
+			const canContinueWrite = ws.write(chunk, () => {
+				console.log("write once");
+			});
+
+			if (!canContinueWrite) {
+				this.pause();
+				console.log("rs pause");
+				ws.once("drain", () => {
+					console.log("rs resume");
+					this.resume();
+				});
+			}
+		})
 	}
 	destroy(error) {
 		if (error) {
