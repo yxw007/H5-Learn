@@ -59,7 +59,6 @@ const targetPath = path.join(__dirname, "../res/Target.txt");
 		});
 	});
 
-
 	await autoRunPromise("2.最原始的方式[分片]copy文件", (next) => {
 
 		function closeFile(fd) {
@@ -144,10 +143,10 @@ const targetPath = path.join(__dirname, "../res/Target.txt");
 				});
 			});
 		});
-	});
+	}); */
 
-	await autoRunPromise("3.通过createReadStream的方式读取[整文件]文件", (next) => {
-		const rs = fs.createReadStream(sourcePath);
+	/* await autoRunPromise("3.通过createReadStream的方式读取[整文件]文件", (next) => {
+		const rs = fs.createReadStream(sourcePath, { highWaterMark: 4 });
 		rs.on("open", (fd) => {
 			console.log("open:fd=", fd);
 		});
@@ -165,9 +164,9 @@ const targetPath = path.join(__dirname, "../res/Target.txt");
 
 			next();
 		});
-	});
+	}); */
 
-	await autoRunPromise("4.通过Stream copy整个文件", (next) => {
+	/* await autoRunPromise("4.通过Stream copy整个文件", (next) => {
 		const rs = fs.createReadStream(sourcePath);
 		const ws = fs.createWriteStream(targetPath);
 		rs.on("data", (chunk) => {
@@ -195,16 +194,13 @@ const targetPath = path.join(__dirname, "../res/Target.txt");
 	}); */
 
 	await autoRunPromise("5.通过Stream [分片]copy整个文件", (next) => {
-		const rs = fs.createReadStream(sourcePath, { highWaterMark: 3 });
+		const rs = fs.createReadStream(sourcePath, { highWaterMark: 4 });
 		const ws = fs.createWriteStream(targetPath, { highWaterMark: 2 });
 
 		rs.on("data", (chunk) => {
 			console.log("read: data chunk=", chunk.toString());
 
-			const canContinueWrite = ws.write(chunk, (error) => {
-				if (error) {
-					console.log("write:error=", error);
-				}
+			const canContinueWrite = ws.write(chunk, () => {
 				console.log("write finish");
 			});
 
@@ -235,4 +231,20 @@ const targetPath = path.join(__dirname, "../res/Target.txt");
 			next();
 		});
 	});
+
+	/*await autoRunPromise("6.通过Stream pipe[分片]copy整个文件", (next) => {
+		const rs = fs.createReadStream(sourcePath, { highWaterMark: 3 });
+		const ws = fs.createWriteStream(targetPath, { highWaterMark: 2 });
+	
+		rs.pipe(ws);
+	
+		rs.on("close", () => {
+			console.log("close rs");
+		});
+	
+		ws.on("close", () => {
+			console.log("close ws");
+			next();
+		});
+	}); */
 })();
