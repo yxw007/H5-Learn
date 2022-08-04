@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style>
+      #pic {
+        transform: rotate(90deg);
+      }
+      #text {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <image id="pic" src="./image/1.png" onclick="clickRotate('pic')"></image>
+    <span id="text" onclick="clickRotate('text')"> ^ </span>
+  </body>
+  <script>
+    let flag = false;
+    function clickRotate(id) {
+      let el = document.getElementById(id);
+      flag = !flag;
+      el.style.transform = flag ? "rotate(-90deg)" : "rotate(90deg)";
+    }
+  </script>
+</html>
