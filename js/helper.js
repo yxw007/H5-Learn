@@ -10,3 +10,4 @@ exports.autoRun = function (name, execute) {
 	console.log(`-------------------------------------${name}------------------------------------`);
 	execute();
 }
+
