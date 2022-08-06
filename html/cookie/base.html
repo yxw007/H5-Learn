@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+  <body>
+    <div>base</div>
+  </body>
+  <script type="module">
+    async function handleResponse(reader) {
+      return new Promise((resolve) => {
+        let arr = [];
+        let decoder = new TextDecoder("utf-8");
+        reader.read().then(function processRes(result) {
+          if (result.done) {
+            resolve(decoder.decode(Uint8Array.from(arr)));
+          } else {
+            arr.push(...result.value);
+            reader.read().then(processRes);
+          }
+        });
+      });
+    }
+
+    async function say() {
+      const ret = await fetch("/say?name=pt", { method: "get", responseType: "text" });
+      const reader = ret.body.getReader();
+      const result = await handleResponse(reader);
+      console.log("say response:", result);
+    }
+
+    async function getName() {
+      const ret = await fetch("/getName?id=1", { method: "get", responseType: "text" });
+      const reader = ret.body.getReader();
+      const result = await handleResponse(reader);
+      console.log("getName response:", result);
+    }
+
+    document.cookie = "name=abc&address=sz";
+    document.cookie = "info=kkkd&age=12";
+
+    /* 
+		疑问：TODO:
+		1. cookie 设置后，是否会将cookie携带至每一个请求中
+		2. cookie 设置成指定域名后，是不是指定域名请求才会携带此cookie?
+		*/
+
+    say();
+    getName();
+  </script>
+</html>
