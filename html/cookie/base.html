@@ -33,9 +33,7 @@
 
     async function getName() {
       const ret = await fetch("/getName?id=1", { method: "get", responseType: "text" });
-      const reader = ret.body.getReader();
-      const result = await handleResponse(reader);
-      console.log("getName response:", result);
+      console.log(ret.text());
     }
 
     document.cookie = "name=abc&address=sz";
