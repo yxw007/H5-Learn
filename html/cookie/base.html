@@ -24,28 +24,41 @@
       });
     }
 
+    document.cookie = "name=pt&age=3";
     async function say() {
       const ret = await fetch("/say?name=pt", { method: "get", responseType: "text" });
       const reader = ret.body.getReader();
       const result = await handleResponse(reader);
       console.log("say response:", result);
+
+      document.cookie = "address=sz&province=gz";
+
+      await getName();
     }
 
     async function getName() {
       const ret = await fetch("/getName?id=1", { method: "get", responseType: "text" });
-      console.log(ret.text());
+      const res = await ret.text();
+      console.log("getName response:", res);
+
+      await getAddress();
     }
 
-    document.cookie = "name=abc&address=sz";
-    document.cookie = "info=kkkd&age=12";
+    async function getAddress() {
+      document.cookie = "fav=eat&s";
+      const ret = await fetch("http://localhost:4000/getAddress?id=1", { method: "get", responseType: "text" });
+      const res = await ret.text();
+      console.log("getAddress response:", res);
+    }
 
     /* 
 		疑问：TODO:
-		1. cookie 设置后，是否会将cookie携带至每一个请求中
-		2. cookie 设置成指定域名后，是不是指定域名请求才会携带此cookie?
+		1. cookie 设置后，是否会将cookie携带至每一个请求中(相同域才会携带，域名和端口只要一个不同都不会携带 - 反过来想就是跨域，带过去就不安全了)
+		2. cookie 增加后，会将所有相同域的cookie携带至每一个请求中
+
+		3. cookie 设置成指定域名后，是不是指定域名请求才会携带此cookie?
 		*/
 
-    say();
-    getName();
+    await say();
   </script>
 </html>
