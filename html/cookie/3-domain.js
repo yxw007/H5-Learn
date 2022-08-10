@@ -1,6 +1,6 @@
 const http = require('http');
 
-/* 2. 写domain */
+/* 3. domain */
 const server = http.createServer((req, res) => {
 
 	res.setCookie = function (name, value, options = {}) {
