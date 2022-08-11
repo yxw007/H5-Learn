@@ -4,8 +4,12 @@ const secretKey = "123";
 const qs = require("querystring");
 
 function sign(item) {
-	//说明：不能用base64，需要改用base64url，[+,/,=]
-	return createHmac('sha256', secretKey).update(JSON.stringify(item)).digest("base64url");
+	//说明：不能用base64，需要改用base64url，[+,/,=] 转成url规范字符
+	let base64 = createHmac('sha256', secretKey).update(JSON.stringify(item)).digest("base64");
+	let base64url = createHmac('sha256', secretKey).update(JSON.stringify(item)).digest("base64url");
+	console.log("base64:", base64);
+	console.log("base64url:", base64url);
+	return base64url
 }
 
 /* 6. sign */
@@ -55,7 +59,7 @@ const server = http.createServer((req, res) => {
 	}
 
 	if (req.url === '/write') {
-		res.setCookie("name", "pt", { signed: true });
+		res.setCookie("name", JSON.stringify({ n: "pt", a: 32 }), { signed: true });
 		return res.end("write ok");
 	}
 
