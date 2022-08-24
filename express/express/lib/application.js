@@ -15,7 +15,7 @@ function Application() {
 
 methods.forEach(method => {
 	Application.prototype[method] = function (path, handlers) {
-		//TODO:
+		this.router[method](path, handlers);
 	}
 });
 

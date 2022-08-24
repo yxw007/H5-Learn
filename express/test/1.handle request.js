@@ -10,11 +10,27 @@ const express = require('../express');
 // const express = require("express");
 const app = express();
 
-app.get("/user", (req, res) => {
+app.get("/user", (req, res, next) => {
+	console.log("/user 1");
 	console.log("req.params:", req.params);
 	console.log("req.path:", req.path);
 	console.log("req.url:", req.url);
-	res.end("user");
+	next();
+});
+
+app.get("/user", (req, res) => {
+	console.log("/user 2");
+	console.log("req.params:", req.params);
+	console.log("req.path:", req.path);
+	console.log("req.url:", req.url);
+	res.end("user 2");
+});
+
+app.get("/manager", (req, res) => {
+	console.log("req.params:", req.params);
+	console.log("req.path:", req.path);
+	console.log("req.url:", req.url);
+	res.end("manager");
 });
 
 app.listen(3000, () => {
