@@ -31,8 +31,11 @@ methods.forEach(method => {
 
 Route.prototype.dispatch = function (req, res, out) {
 	let index = 0;
-	let next = () => {
-		//TODO: 处理函数抛出错误来为考虑怎么处理?
+	let next = (error) => {
+		if (error) {
+			return out(error);
+		}
+
 		if (index >= this.stack.length) {
 			out();
 			return;

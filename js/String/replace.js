@@ -26,3 +26,20 @@ autoRun("2.正则替换", () => {
 	let replace2 = path.replace(/\\/g, "/");
 	console.log("replace2:", replace2);
 });
+
+autoRun("3.正则替换转换路径", () => {
+	const regex = /(\/pages\/)(.*)\//gm;
+	const str = `/pages/receive-address/edit/index`;
+	let m;
+
+	while ((m = regex.exec(str)) !== null) {
+		if (m.index === regex.lastIndex) {
+			regex.lastIndex++;
+		}
+
+		if (m.length > 2) {
+			let target = m[2];
+			let arr = target.replace(/-/g, "/").split("/");
+		}
+	}
+});

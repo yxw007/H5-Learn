@@ -39,7 +39,7 @@ Router.prototype.handleRequest = function (req, res, out) {
 	console.log("query:", query);
 
 	let index = 0;
-	let next = () => {
+	let next = (error) => {
 		if (index >= this.stack.length) {
 			out();
 			return;

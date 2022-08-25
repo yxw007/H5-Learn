@@ -24,7 +24,11 @@ Layer.prototype.match = function (path) {
 }
 
 Layer.prototype.handleRequest = function (req, res, out) {
-	this.handler(req, res, out);
+	try {
+		this.handler(req, res, out);
+	} catch (error) {
+		out(error);
+	}
 }
 
 module.exports = Layer;
