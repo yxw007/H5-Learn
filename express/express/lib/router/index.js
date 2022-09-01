@@ -10,12 +10,20 @@ const url = require("url");
 const methods = require("methods");
 const Layer = require("./layer");
 const Route = require("./route");
+const proto = Object.create(null);
 
 function Router() {
-	this.stack = [];
+	//! 伪造成中间件函数，express.Router()又可以承当子路由处理
+	let middleware = (req, res, next) => {
+		middleware.handleRequest(req, res, next);
+	};
+	//! 说明：让middleware继承proto原型上的属性和方法
+	Object.setPrototypeOf(middleware, proto);
+	middleware.stack = [];
+	return middleware;
 }
 
-Router.prototype.use = function (path, ...handlers) {
+proto.use = function (path, ...handlers) {
 	if (typeof path !== 'string' && typeof path !== 'function') {
 		throw new Error("params is invalid !");
 	}
@@ -32,7 +40,7 @@ Router.prototype.use = function (path, ...handlers) {
 }
 
 methods.forEach(method => {
-	Router.prototype[method] = function (path, handers) {
+	proto[method] = function (path, handers) {
 		let route = new Route();
 		route[method](handers);
 
@@ -43,7 +51,7 @@ methods.forEach(method => {
 	}
 });
 
-Router.prototype.handleRequest = function (req, res, out) {
+proto.handleRequest = function (req, res, out) {
 	const { pathname, query } = url.parse(req.url, true);
 	console.log("handleRequest:---------->");
 	console.log("pathname:", pathname);
@@ -65,7 +73,16 @@ Router.prototype.handleRequest = function (req, res, out) {
 					next(error);
 				}
 			} else {
-				layer.handleRequest(req, res, next);
+				if (layer.isMiddleWare()) {
+					//TODO: 需要区分子路由中间件还是普通中间件?  更改到此处?
+					layer.handleRequest(req, res, next);
+				} else {
+					if (layer.isRoute() && layer.matchMethod(req.method.toLowerCase())) {
+						layer.handleRequest(req, res, next);
+					} else {
+						next();
+					}
+				}
 			}
 		} else {
 			next(error);

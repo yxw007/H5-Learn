@@ -23,10 +23,22 @@ Layer.prototype.match = function (path) {
 			return path.startsWith(this.path + "/");
 		}
 	} else {
-		
+
 	}
 
 	return false;
+}
+
+Layer.prototype.matchMethod = function (method) {
+	if (!this.route) {
+		throw Error("occur logic error, please check layer and route relative code");
+	}
+
+	return this.route.methods[method];
+}
+
+Layer.prototype.isRoute = function () {
+	return !!this.route;
 }
 
 Layer.prototype.isMiddleWare = function () {
