@@ -16,8 +16,19 @@ function Router() {
 }
 
 Router.prototype.use = function (path, ...handlers) {
-	let layer = new Layer(path, handlers);
-	this.stack.push(layer);
+	if (typeof path !== 'string' && typeof path !== 'function') {
+		throw new Error("params is invalid !");
+	}
+	//! 说明：如果是方法，说明未传路径就代表根路径/
+	if (typeof path === 'function') {
+		handlers.unshift(path);
+		path = "/";
+	}
+
+	handlers.forEach(handler => {
+		let layer = new Layer(path, handler);
+		this.stack.push(layer);
+	});
 }
 
 methods.forEach(method => {
@@ -47,9 +58,17 @@ Router.prototype.handleRequest = function (req, res, out) {
 
 		let layer = this.stack[index++];
 		if (layer.match(pathname)) {
-			layer.handleRequest(req, res, next);
+			if (error) {
+				if (layer.isErrorMiddleWare()) {
+					layer.handleError(error, req, res, next);
+				} else {
+					next(error);
+				}
+			} else {
+				layer.handleRequest(req, res, next);
+			}
 		} else {
-			next();
+			next(error);
 		}
 	}
 	next();

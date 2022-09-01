@@ -12,15 +12,35 @@ function Layer(path, handler) {
 }
 
 Layer.prototype.match = function (path) {
-	if (path === '/') {
-		return true;
-	}
-
 	if (path === this.path) {
 		return true;
 	}
 
+	if (this.isMiddleWare()) {
+		if (this.path === "/") {
+			return true;
+		} else {
+			return path.startsWith(this.path + "/");
+		}
+	} else {
+		
+	}
+
 	return false;
+}
+
+Layer.prototype.isMiddleWare = function () {
+	//! 说明：无route 就是中间件
+	return !this.route;
+}
+
+Layer.prototype.isErrorMiddleWare = function () {
+	//! 说明：中间件 && 处理函数参数为4个就是错误处理中间件
+	return this.isMiddleWare() && this.handler.length === 4;
+}
+
+Layer.prototype.handleError = function (error, req, res, next) {
+	this.handler(error, req, res, next);
 }
 
 Layer.prototype.handleRequest = function (req, res, out) {
