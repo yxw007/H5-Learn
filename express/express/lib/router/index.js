@@ -58,6 +58,8 @@ proto.handleRequest = function (req, res, out) {
 	console.log("query:", query);
 
 	let index = 0;
+	//! 中间件路径前缀
+	let removed = '';
 	let next = (error) => {
 		if (index >= this.stack.length) {
 			out();
@@ -74,7 +76,12 @@ proto.handleRequest = function (req, res, out) {
 				}
 			} else {
 				if (layer.isMiddleWare()) {
-					//TODO: 需要区分子路由中间件还是普通中间件?  更改到此处?
+					//! 说明：如果layer.path 根路径就无需去前缀，否则需要去掉前缀 原因：二级路径是需要父路由path去掉，然后进内层匹配子路由的
+					removed = layer.path === '/' ? "" : layer.path;
+
+					//! 说明：如果是中间件路由，需要把父级路由path去掉
+					req.url = req.url.slice(removed.length) || "/";
+
 					layer.handleRequest(req, res, next);
 				} else {
 					if (layer.isRoute() && layer.matchMethod(req.method.toLowerCase())) {
