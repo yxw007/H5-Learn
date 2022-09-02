@@ -5,9 +5,15 @@
  * 开发版本：1.0.0
  * 相关说明：
  */
+const { pathToRegexp } = require('path-to-regexp')
 
 function Layer(path, handler) {
 	this.path = path;
+	//! 说明：getUsers/:province/:city, keys 匹配记录[{name:province,...},{name:city,...}]
+	this.keys = [];
+	this.regex = pathToRegexp(path, this.keys);
+	this.params = {};
+
 	this.handler = handler;
 }
 
@@ -23,7 +29,16 @@ Layer.prototype.match = function (path) {
 			return path.startsWith(this.path + "/");
 		}
 	} else {
-
+		let matches = pathname.match(this.regex);
+		if (matches.length >= 2) {
+			//! 说明：getUsers/gz/sz 匹配到的值 value=["gz","sz"], 第一个匹配项为正则所以过滤掉
+			let values = matches.slice(1);
+			//! 将keys和values合并成对象放置params，提供给上层使用
+			this.keys.reduce((pre, cur, index) => {
+				pre[cur.name] = values[index];
+			}, this.params);
+			return true;
+		}
 	}
 
 	return false;
