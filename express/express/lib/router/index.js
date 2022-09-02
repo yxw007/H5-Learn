@@ -68,6 +68,8 @@ proto.handleRequest = function (req, res, out) {
 
 		let layer = this.stack[index++];
 		if (layer.match(pathname)) {
+			//! 说明：将layer匹配到的restfulAPI 参数赋值给req.params
+			req.params = layer.params;
 			if (error) {
 				if (layer.isErrorMiddleWare()) {
 					layer.handleError(error, req, res, next);
