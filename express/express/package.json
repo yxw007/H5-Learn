@@ -14,6 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "methods": "^1.1.2",
-    "path-to-regexp": "^6.2.1"
+    "mime": "^3.0.0",
+    "path-to-regexp": "^6.2.1",
+    "statuses": "^2.0.1"
   }
 }

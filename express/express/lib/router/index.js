@@ -6,7 +6,6 @@
  * 相关说明：
  */
 
-const url = require("url");
 const methods = require("methods");
 const Layer = require("./layer");
 const Route = require("./route");
@@ -44,7 +43,7 @@ methods.forEach(method => {
 		let route = new Route();
 		route[method](handers);
 
-		let layer = new Layer(path, route.dispatch.bind(route));
+		let layer = new Layer(path, route.dispatch.bind(route), { sensitive: false, strict: false, end: true });
 		layer.route = route;
 
 		this.stack.push(layer);
@@ -52,11 +51,6 @@ methods.forEach(method => {
 });
 
 proto.handleRequest = function (req, res, out) {
-	const { pathname, query } = url.parse(req.url, true);
-	console.log("handleRequest:---------->");
-	console.log("pathname:", pathname);
-	console.log("query:", query);
-
 	let index = 0;
 	//! 中间件路径前缀
 	let removed = '';
@@ -67,7 +61,8 @@ proto.handleRequest = function (req, res, out) {
 		}
 
 		let layer = this.stack[index++];
-		if (layer.match(pathname)) {
+		//! 说明：由于最先内置了req,res拓展中间件，所以可直接通过req.path 获取path,如果没有就默认为/
+		if (layer.match(req.path ?? "/")) {
 			//! 说明：将layer匹配到的restfulAPI 参数赋值给req.params
 			req.params = layer.params;
 			if (error) {

@@ -7,12 +7,12 @@
  */
 const { pathToRegexp } = require('path-to-regexp')
 
-function Layer(path, handler) {
+function Layer(path, handler, regexpOption = { sensitive: false, strict: false, end: false }) {
 	this.path = path;
 	//! 说明：getUsers/:province/:city, keys 匹配记录[{name:province,...},{name:city,...}]
 	this.keys = [];
 	//! 说明：添加正则匹配参数，避免严格匹配导致匹配不到记录问题  比如：/getUsers/:provice  访问：/getUsers/gz/sz 匹配不到记录问题
-	this.regex = pathToRegexp(path, this.keys, { sensitive: false, strict: false, end: false });
+	this.regex = pathToRegexp(path, this.keys, regexpOption);
 	this.params = {};
 
 	this.handler = handler;
@@ -24,13 +24,15 @@ Layer.prototype.match = function (path) {
 	}
 
 	let matches = path.match(this.regex);
-	if (matches && matches.length >= 2) {
-		//! 说明：getUsers/gz/sz 匹配到的值 value=["gz","sz"], 第一个匹配项为正则所以过滤掉
-		let values = matches.slice(1);
-		//! 将keys和values合并成对象放置params，提供给上层使用
-		this.keys.reduce((pre, cur, index) => {
-			return (pre[cur.name] = values[index], pre);
-		}, this.params);
+	if (matches && matches.length >= 1) {//仅匹配路径
+		if (matches.length >= 2) {
+			//! 说明：getUsers/gz/sz 匹配到的值 value=["gz","sz"], 第一个匹配项为正则所以过滤掉
+			let values = matches.slice(1);
+			//! 将keys和values合并成对象放置params，提供给上层使用
+			this.keys.reduce((pre, cur, index) => {
+				return (pre[cur.name] = values[index], pre);
+			}, this.params);
+		}
 		return true;
 	}
 

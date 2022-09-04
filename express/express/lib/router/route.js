@@ -21,7 +21,7 @@ methods.forEach(method => {
 		this.methods[method] = true;
 
 		handers.forEach(handler => {
-			let layer = new Layer("", handler);
+			let layer = new Layer("", handler, { sensitive: false, strict: false, end: true });
 			//说明：具体请求，需要匹配path和method才处理
 			layer.method = method;
 			this.stack.push(layer);
