@@ -1,5 +1,6 @@
 const Application = require("./application");
 const Router = require("./router");
+const Static = require("../middleware/static");
 
 module.exports = createApplication;
 
@@ -8,3 +9,4 @@ function createApplication() {
 }
 
 createApplication.Router = Router;
+createApplication.static = Static;

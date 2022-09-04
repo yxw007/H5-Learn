@@ -3,6 +3,8 @@ const express = require("../express");
 const app = express();
 const path = require("path");
 
+app.use(express.static(__dirname));
+
 app.get("/getFile", (req, res, next) => {
 	console.log("handle request");
 	console.log(req.query);
@@ -33,6 +35,7 @@ app.get("/getJson", (req, res, next) => {
 	console.log(req.path);
 	res.send({ name: "pt", age: 18 });
 })
+
 
 app.listen(3000, () => {
 	console.log("start server 3000");
