@@ -2,8 +2,31 @@
 const express = require("../express");
 const app = express();
 const path = require("path");
+// const bodyParser = require("body-parser");
+const bodyParser = require("../express/middleware/bodyParser");
 
 app.use(express.static(__dirname));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+
+app.post("/login", (req, res, next) => {
+	console.log(req.body);
+	let { name, password } = req.body;
+	if (name === "potter" && password === "123456") {
+		res.end("login success");
+	} else {
+		res.end("login fail");
+	}
+});
+
+app.get("/login", (req, res, next) => {
+	let { name, password } = req.query;
+	if (name === "potter" && password === "123456") {
+		res.end("login success");
+	} else {
+		res.end("login fail");
+	}
+});
 
 app.get("/getFile", (req, res, next) => {
 	console.log("handle request");
