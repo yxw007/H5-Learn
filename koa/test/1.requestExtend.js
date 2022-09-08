@@ -6,7 +6,8 @@
  * 相关说明：
  */
 const url = require("url");
-const Koa = require("koa");
+// const Koa = require("koa");
+const Koa = require("../koa");
 const app = new Koa();
 
 //! 说明：回调参数是ctx，req,res都已封装至ctx中

@@ -6,7 +6,9 @@
  * 相关说明：
  */
 
+const delegate = require("./delegate");
 const request = {};
 
+delegate(request, 'req').access("url");
 
 module.exports = request;

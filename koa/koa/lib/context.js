@@ -6,6 +6,10 @@
  * 相关说明：
  */
 
+const delegate = require("./delegate");
+
 const context = {};
+
+delegate(context, "request").access("url");
 
 module.exports = context;

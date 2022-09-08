@@ -7,9 +7,12 @@
  */
 
 const http = require("http");
+const Emitter = require("events");
+const { Stream } = require("stream");
 const context = require("./context");
 const request = require("./request");
 const response = require("./response");
+
 class Application extends Emitter {
 	constructor() {
 		super();
@@ -34,7 +37,7 @@ class Application extends Emitter {
 	}
 	callback() {
 		//! 说明：避免每个请求都compse影响性能，所以通过高阶函数返回一个fn
-		const fn = compose(this.middleware);
+		const fn = this.compose(this.middleware);
 		const handleRequest = (req, res) => {
 			const ctx = this.createContext(req, res);
 			return this.handleRequest(ctx, fn);
@@ -74,8 +77,18 @@ class Application extends Emitter {
 		}
 
 		const handleResponse = () => {
-			//TODO: 处理返回结果
-			//TOOD: 修改到此处?
+			if (!ctx.body) {
+				return res.end("Not found");
+			}
+
+			if (ctx.body instanceof Stream) {
+				return ctx.body.pipe(res);
+			}
+			else if (typeof ctx.body === "object") {
+				return res.end(JSON.stringify(ctx.body));
+			} else {
+				return res.end(ctx.body);
+			}
 		}
 
 		fnMiddleware(ctx).then(handleResponse).catch(onError);
