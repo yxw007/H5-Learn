@@ -6,6 +6,15 @@
  * 相关说明：
  */
 
-const response = {};
+const response = {
+	_body: null,
+	get body() {
+		return this._body;
+	},
+	set body(val) {
+		this.res.statusCode = 200;
+		this._body = val;
+	}
+};
 
 module.exports = response;

@@ -68,12 +68,12 @@ class Application extends Emitter {
 			return dispatch(0);
 		}
 	}
-	handleRequest(ctx, fnMiddleware) {
+	async handleRequest(ctx, fnMiddleware) {
 		const res = ctx.res;
 		res.statusCode = 404;
 
 		const onError = (error) => {
-			//TODO: 处理错误
+			console.log(error);
 		}
 
 		const handleResponse = () => {

@@ -29,6 +29,9 @@ app.use((ctx) => {
 	//! 通过代理proto访问至request.url => ctx.request.req.url
 	console.log("ctx.url:", ctx.url);
 	console.log("ctx.query:", ctx.query);
+
+	console.log("ctx.request.path:", ctx.request.path);
+	console.log("ctx.path:", ctx.path);
 	//-------------------------------------------------------------------------
 	ctx.response.body = "1";
 	//! ctx.body = ctx.response.body

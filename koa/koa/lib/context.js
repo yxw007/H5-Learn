@@ -11,5 +11,9 @@ const delegate = require("./delegate");
 const context = {};
 
 delegate(context, "request").access("url");
+delegate(context, "request").access("query");
+delegate(context, "request").getter("path");
+
+delegate(context, "response").access("body");
 
 module.exports = context;
