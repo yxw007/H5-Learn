@@ -12,12 +12,11 @@ module.exports = function () {
 	return async (ctx, next) => {
 		return new Promise((resolve) => {
 			let { req } = ctx;
-
 			let data = [];
 			req.on("data", (chunk) => {
 				data.push(chunk);
 			});
-			req.on("end", () => {
+			req.on("end", async () => {
 				let type = req.headers["content-type"];
 				let buffer = Buffer.concat(data);
 				if (type === "application/json") {
@@ -27,7 +26,7 @@ module.exports = function () {
 					ctx.request.body = qs.parse(buffer.toString());
 				}
 				resolve();
-				next();
+				await next();
 			});
 		});
 	}
