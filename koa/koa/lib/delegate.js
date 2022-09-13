@@ -22,7 +22,7 @@ Delegator.prototype.method = function (name) {
 	let target = this.target;
 
 	proto[name] = function () {
-		return this[target]
+		return this[target][name].apply(this[target], arguments);
 	}
 
 	return this;

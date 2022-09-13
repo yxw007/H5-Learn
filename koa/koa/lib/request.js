@@ -21,6 +21,9 @@ const request = {
 	},
 	get path() {
 		return parse(this.req).pathname;
+	},
+	get method() {
+		return this.req.method;
 	}
 };
 
