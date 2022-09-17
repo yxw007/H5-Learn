@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+  <body>
+    <div style="height: 6em; border: 1px solid gray">
+      <!-- 疑问：未搞懂为啥margin 上下默认成不是1.5em 而是 -->
+      <p style="height: 50%; border: 1px solid blue">halft as tall</p>
+    </div>
+    <br />
+    <!-- 父节点设置成auto, p height=50%, magin上下默认为50%(左右默认为0) 也就使p垂直居中了 -->
+    <div style="width: 300px; height: auto; border: 1px solid gray">
+      <p style="height: 50%; border: 1px solid blue">halft as tall</p>
+    </div>
+  </body>
+</html>
