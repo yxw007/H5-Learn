@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "child_process": "^1.0.2",
-    "emoji-regex": "^10.1.0"
+    "emoji-regex": "^10.1.0",
+    "lodash": "^4.17.21"
   }
 }
