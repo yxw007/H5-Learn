@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <div>1.get.html</div>
+    <div id="content"></div>
+    <script>
+      async function fetchGet() {
+        let ret = await fetch("/get?name=potter&age=1", {
+          method: "GET",
+          //说明：fetch GET和HEAD 不支持给Body传数据，只能通过url拼参数传递
+          /* body: new Blob([JSON.stringify({ a: 1, b: "b" })]) */
+        }).then(async (res) => {
+          return await res.json();
+        });
+        content.textContent = JSON.stringify(ret, null, 2);
+      }
+
+      function xhrGet() {
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "/get?name=potter&age=1");
+        xhr.addEventListener("load", () => {
+          console.log(xhr.response);
+        });
+        xhr.send(JSON.stringify({ a: 1, b: "b" }));
+      }
+
+      // fetchGet();
+      xhrGet();
+    </script>
+  </body>
+</html>
