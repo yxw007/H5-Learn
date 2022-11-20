@@ -14,6 +14,20 @@ const response = {
 	set body(val) {
 		this.res.statusCode = 200;
 		this._body = val;
+	},
+	set(field, val) {
+		if (2 === arguments.length) {
+			if (Array.isArray(val)) {
+				val = val.map(v => typeof v === 'string' ? v : String(v));
+			} else if (typeof val !== 'string') {
+				val = String(val);
+			}
+			this.res.setHeader(field, val);
+		} else {
+			for (const key in field) {
+				this.set(key, field[key]);
+			}
+		}
 	}
 };
 

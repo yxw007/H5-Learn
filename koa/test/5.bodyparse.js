@@ -1,6 +1,7 @@
-const Koa = require('koa');
-const querystring = require('querystring');
-const bodyParser = require('koa-bodyparser');
+// const Koa = require('koa');
+const Koa = require("../koa");
+// const bodyParser = require('koa-bodyparser');
+const bodyParser = require("../koa/middleware/bodyparser");
 const app = new Koa();
 app.use(bodyParser());
 app.use(async (ctx) => {

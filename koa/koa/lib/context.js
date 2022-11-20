@@ -13,7 +13,9 @@ const context = {};
 delegate(context, "request").access("url");
 delegate(context, "request").access("query");
 delegate(context, "request").getter("path");
+delegate(context, "request").getter("method");
 
 delegate(context, "response").access("body");
+delegate(context, "response").method("set");
 
 module.exports = context;
