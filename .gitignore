@@ -2,3 +2,4 @@ ts/dist/
 /**/node_modules/
 .vscode/*
 .vscode/launch.json
+node/http/static/res/

@@ -26,7 +26,9 @@
         xhr.open("GET", "/get?name=potter&age=1");
         xhr.addEventListener("load", () => {
           console.log(xhr.response);
+          content.textContent = JSON.stringify(xhr.response);
         });
+        //说明：get请求，这里填的body是不会被发送给后端的，所以get请求发送body无意义，发送body请用post
         xhr.send(JSON.stringify({ a: 1, b: "b" }));
       }
 

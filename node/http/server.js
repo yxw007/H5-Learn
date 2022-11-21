@@ -2,7 +2,6 @@ const KOA = require("koa");
 const Static = require("koa-static");
 const Router = require("koa-router");
 const { koaBody } = require("koa-body");
-const formBody = require("body/form");
 const path = require("path");
 const resolve = (p) => path.resolve(__dirname, p);
 
@@ -18,23 +17,41 @@ router.get("/get", (ctx) => {
 	console.log(ctx.request.body);
 });
 
-router.post("/post", async (ctx) => {
-	function handle() {
-		return new Promise((resolve) => {
-			//TODO: 修改到此处?
-			formBody(ctx.req, () => {
-				console.log(arguments);
-				resolve();
-			})
-		});
-	}
 
-	let bd = await handle();
-	ctx.body = bd;
-	console.log(bd);
+router.post("/form-urlencoded", async (ctx) => {
+	ctx.body = ctx.request.body;
+	console.log(ctx.body);
 });
 
-app.use(koaBody());
+router.post("/formdata", async (ctx) => {
+	ctx.body = ctx.request.body;
+	console.log(ctx.body);
+});
+
+//TODO: 研究到此处，需搞懂具体格式
+router.post("/formdata-singlefile", async (ctx) => {
+	ctx.body = ctx.request.body;
+	console.log(ctx.body);
+	console.log(ctx.request.files);
+});
+
+router.post("/raw-text", (ctx) => {
+	ctx.body = ctx.request.body;
+	console.log(ctx.body);
+});
+
+router.post("/raw-javascript", (ctx) => {
+	ctx.body = ctx.request.body;
+	console.log(ctx.body);
+});
+
+app.use(koaBody({
+	urlencoded: true,
+	multipart: true,
+	formidable: {
+		uploadDir: resolve("static/res")
+	}
+}));
 app.use(router.routes());
 app.use(Static(resolve("static")));
 

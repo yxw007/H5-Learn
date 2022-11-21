@@ -10,13 +10,13 @@
     <h1>3.raw-text</h1>
     <div id="content"></div>
     <script>
-      async function rawJavascript() {
-        let ret = await fetch("/raw-javascript", {
+      async function rawText() {
+        let ret = await fetch("/raw-text", {
           method: "POST",
           headers: {
-            "Content-Type": "application/javascript",
+            "Content-Type": "text/plain",
           },
-          body: "var a=b;",
+          body: "abc",
         }).then(async (res) => {
           return await res.text();
         });
@@ -24,7 +24,7 @@
         content.textContent = ret;
       }
 
-      rawJavascript();
+      rawText();
     </script>
   </body>
 </html>
