@@ -18,7 +18,7 @@
           let charCode = str[i].charCodeAt(0);
           view.setUint8(i, charCode);
         }
-        console.log(view);
+
         const ret = await fetch("/binary", {
           method: "POST",
           headers: { "Content-Type": "application/octet-stream" },
