@@ -17,7 +17,6 @@ router.get("/get", (ctx) => {
 	console.log(ctx.request.body);
 });
 
-
 router.post("/form-urlencoded", async (ctx) => {
 	ctx.body = ctx.request.body;
 	console.log(ctx.body);
@@ -28,11 +27,21 @@ router.post("/formdata", async (ctx) => {
 	console.log(ctx.body);
 });
 
-//TODO: 研究到此处，需搞懂具体格式
 router.post("/formdata-singlefile", async (ctx) => {
 	ctx.body = ctx.request.body;
 	console.log(ctx.body);
 	console.log(ctx.request.files);
+});
+
+router.post("/formdata-multifile", async (ctx) => {
+	ctx.body = ctx.request.body;
+	console.log(ctx.body);
+	console.log(ctx.request.files);
+});
+
+router.post("/raw-json", (ctx) => {
+	ctx.body = ctx.request.body;
+	console.log(ctx.body);
 });
 
 router.post("/raw-text", (ctx) => {
@@ -40,9 +49,19 @@ router.post("/raw-text", (ctx) => {
 	console.log(ctx.body);
 });
 
-router.post("/raw-javascript", (ctx) => {
-	ctx.body = ctx.request.body;
-	console.log(ctx.body);
+router.post("/binary", async (ctx) => {
+	return new Promise(resolve => {
+		let data = []
+		ctx.req.on("data", (chunk) => {
+			data.push(...chunk);
+		});
+		ctx.req.on("end", async () => {
+			ctx.request.body = Buffer.from(data).toString();
+			console.log(ctx.request.body);
+			ctx.body = Buffer.from(data);
+			resolve();
+		});
+	});
 });
 
 app.use(koaBody({

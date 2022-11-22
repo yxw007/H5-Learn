@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <h1>3.raw-text</h1>
+    <div id="content"></div>
+    <script>
+      async function rawJSON() {
+        let data = { name: "pt", age: 12 };
+        let ret = await fetch("/raw-json", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }).then(async (res) => {
+          return await res.json();
+        });
+        console.log(ret);
+        content.textContent = JSON.stringify(ret);
+      }
+
+      rawJSON();
+    </script>
+  </body>
+</html>

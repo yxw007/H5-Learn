@@ -9,22 +9,7 @@
   <body>
     <h1>3.raw-text</h1>
     <div id="content"></div>
-    <script>
-      async function rawJavascript() {
-        let ret = await fetch("/raw-javascript", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/javascript",
-          },
-          body: "var a=b;",
-        }).then(async (res) => {
-          return await res.text();
-        });
-        console.log(ret);
-        content.textContent = ret;
-      }
-
-      rawJavascript();
-    </script>
+    <script src="./a.js"></script>
+    <script></script>
   </body>
 </html>
