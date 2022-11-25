@@ -1,18 +1,18 @@
 {
-  "name": "ts",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "rollup -c -w"
-  },
-  "author": "Potter",
-  "license": "ISC",
-  "devDependencies": {
-    "@rollup/plugin-node-resolve": "^13.0.6",
-    "rollup": "^2.58.3",
-    "rollup-plugin-serve": "^1.1.0",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "typescript": "^4.4.4"
-  }
+	"name": "ts",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "rollup -c -w"
+	},
+	"author": "Potter",
+	"license": "ISC",
+	"devDependencies": {
+		"@rollup/plugin-node-resolve": "^13.0.6",
+		"rollup": "^2.58.3",
+		"rollup-plugin-serve": "^1.1.0",
+		"rollup-plugin-typescript2": "^0.30.0",
+		"typescript": "^4.4.4"
+	}
 }
