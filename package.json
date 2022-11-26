@@ -28,8 +28,10 @@
     }
   },
   "dependencies": {
+    "@types/jquery": "^3.5.14",
+    "axios": "^1.2.0",
     "child_process": "^1.0.2",
     "emoji-regex": "^10.1.0",
-    "lodash": "^4.17.21"
+    "jquery": "^3.6.1"
   }
 }
