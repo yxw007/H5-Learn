@@ -1,20 +1,26 @@
-const Promise = require('../Promise');
-Promise.resolve().then(() => {
-	console.log(1);
-	return Promise.resolve('k'); //x = new promise -> x.then
-}).then((res) => {
-	console.log(res)
-})
+const Promise = require("../Promise");
+Promise.resolve(0)
+  .then(() => {//promise1.then
+    console.log(1);
+    return Promise.resolve("k"); //x = new promise -> x.then
+  })
+  .then((res) => {//promise2.then
+    console.log(res);
+  });
 
-Promise.resolve().then(() => {
-	console.log(2);
-}).then(() => {
-	console.log(3);
-}).then(() => {
-	console.log(4);
-}).then(() => {
-	console.log(5);
-})
+Promise.resolve(10)
+  .then(() => {//promise3.then
+    console.log(2);
+  })
+  .then(() => {//promise4.then
+    console.log(3);
+  })
+  .then(() => {
+    console.log(4);
+  })
+  .then(() => {
+    console.log(5);
+  });
 
 /* 
 [1,2] 
@@ -32,5 +38,3 @@ Promise.resolve().then(() => {
 [5]
 ==>5
 */
-
-
