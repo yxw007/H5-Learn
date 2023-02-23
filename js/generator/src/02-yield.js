@@ -1,7 +1,7 @@
 function* generator() {
-	console.log("1");
-	yield;
-	console.log("2");
+  console.log("1");
+  yield 1;
+  console.log("2");
 }
 
 const g = generator();
