@@ -46,14 +46,14 @@ const Promise = require("../Promise");
     }
   ); */
 
-//TODO: 待搞懂这个问题的流程
+//! 如需了解整个运行逻辑，请看drawio图：https://app.diagrams.net/#G10jquPnqzMllqLjxbORK_8LXae7vFIoW5
 const p = new Promise((resolve, reject) => {
   reject("fail");
 })
   .then(null, (error) => {
     //p1
     return new Promise((resolve, reject) => {
-      //p3
+      //p4
       reject("new Promise ->reject");
     });
   })
@@ -66,10 +66,8 @@ const p = new Promise((resolve, reject) => {
       console.log("then2-erro:", error);
     }
   );
+//p3 已有then产生，只是运行到此后p3没有再用了
 //-------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------
-
 /* async function register() {
 	const ret = { succes: true, message: "" };
 	return new Promise((resolve, reject) => {
