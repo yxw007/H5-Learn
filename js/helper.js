@@ -7,7 +7,10 @@
  */
 
 exports.autoRun = function (name, execute) {
-	console.log(`-------------------------------------${name}------------------------------------`);
-	execute();
-}
-
+  console.log(`-------------------------------------${name}-----------------------------`);
+  try {
+    execute();
+  } catch (e) {
+    console.error("Something went wrong while executing code:", e);
+  }
+};
