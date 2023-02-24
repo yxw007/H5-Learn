@@ -47,7 +47,7 @@ const Promise = require("../Promise");
   ); */
 
 //! 如需了解整个运行逻辑，请看drawio图：https://app.diagrams.net/#G10jquPnqzMllqLjxbORK_8LXae7vFIoW5
-const p = new Promise((resolve, reject) => {
+/* const p = new Promise((resolve, reject) => {
   reject("fail");
 })
   .then(null, (error) => {
@@ -65,25 +65,27 @@ const p = new Promise((resolve, reject) => {
     (error) => {
       console.log("then2-erro:", error);
     }
-  );
+  ); */
 //p3 已有then产生，只是运行到此后p3没有再用了
 //-------------------------------------------------------------------------
 /* async function register() {
-	const ret = { succes: true, message: "" };
-	return new Promise((resolve, reject) => {
-		//! 说明：异步抛出的异常，promise.catch 是捕获不到的
-		setTimeout(() => {
-			try {
-				throw "register fail!"
-				// resolveInner(ret);
-			} catch (error) {
-				ret.succes = false;
-				ret.message = error;
-				resolve(ret);
-			}
-		}, 100);
-	})
-} */
+  const ret = { succes: true, message: "" };
+  return new Promise((resolve, reject) => {
+    //! 说明：异步抛出的异常，promise.catch 是捕获不到的
+    setTimeout(() => {
+      try {
+        throw "register fail!";
+        // resolveInner(ret);
+      } catch (error) {
+        ret.succes = false;
+        ret.message = error;
+        resolve(ret);
+      }
+    }, 100);
+  });
+}
+
+register(); */
 
 /* async function register() {
 	const ret = { succes: true, message: "" };

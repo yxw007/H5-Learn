@@ -1,10 +1,10 @@
-const Promise = require("../Promise");
+// const Promise = require("../Promise");
 
-// delete global.Promise;
-// const Promise = require("core-js-pure/actual/promise");
+delete global.Promise;
+const Promise = require("core-js-pure/actual/promise");
 
 /* const p = new Promise((resolve, reject) => {
-	resolve("success");
+  resolve("success");
 }); */
 
 //! 说明：如果then onResolve 回调不返回值，下一个then的onResolve 收到的val值就是undefined
@@ -32,7 +32,6 @@ const Promise = require("../Promise");
 	console.log("then2:", val2);
 }); */
 
-
 /*
 p.then((val) => {
 	console.log("then:", val);
@@ -47,25 +46,30 @@ p.then((val) => {
 
 //-------------------------------------------------------------------------
 //! 说明：如果new Promise 不调用提供的resolve,reject 并且不throw 异常，就不会往后执行了
-/* 
-p.then((val) => {
-	console.log("then:", val);
-	return new Promise((resolve, reject) => {
-		throw Error("new Promise Error !");
-	});
-}).then((val2) => {
-	console.log("then2:", val2);
-}).catch(error => {
-	console.error("catch:", error);
-}); */
+
+/* p.then((val) => {
+  console.log("then:", val);
+  return new Promise((resolve, reject) => {
+    throw Error("new Promise Error !");
+  });
+})
+  .then((val2) => {
+    console.log("then2:", val2);
+  })
+  .catch((error) => {
+    console.error("catch:", error);
+  }); */
 
 const p = new Promise((resolve, reject) => {
-	reject("fail");
+  reject("fail");
 });
 
 //! 说明：如果当前then什么都不做，就会把对应的值传递给下一个存在有回调的then
-p.then().then((val) => {
-	console.log("then.success:", val);
-}, (error) => {
-	console.log("then.error:", error);
-});
+p.then().then(
+  (val) => {
+    console.log("then.success:", val);
+  },
+  (error) => {
+    console.log("then.error:", error);
+  }
+);

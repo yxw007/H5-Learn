@@ -3,3 +3,4 @@ ts/dist/
 .vscode/*
 .vscode/launch.json
 node/http/static/res/
+/**/tempCodeRunnerFile.js
