@@ -12,6 +12,8 @@
     <div id="slide">点击下一张，显示图片</div>
     <button onclick="previousSlide()">上一张</button>
     <button onclick="nextSlide()">下一张</button>
+    <button onclick="forward()">forward前进</button>
+    <button onclick="back()">back后退</button>
     <button onclick="getHistory()">查看当前history</button>
     <script>
       var currentSlide = 0;
@@ -35,6 +37,14 @@
 
       function getHistory() {
         console.log(history);
+      }
+
+      function forward() {
+        history.forward();
+      }
+
+      function back() {
+        history.back();
       }
 
       function previousSlide() {
