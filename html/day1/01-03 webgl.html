@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      let canvas = document.getElementById("canvas");
+      // Step 1: Get WebGL Context
+      let gl = canvas.getContext("webgl");
+
+      // Step 2: Vertex shader
+      let vertexShaderSource = `  attribute vec4 position; 
+                            void main() 
+                            { 
+                                gl_Position = position; 
+                            }`;
+
+      // Step 3: Fragment Shader
+      let fragmentShaderSource = ` void main() 
+                             { 
+                               gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0); 
+                             }`;
+
+      // Step 4: Create and Compile Shader Program
+      let vertexShader = gl.createShader(gl.VERTEX_SHADER);
+      gl.shaderSource(vertexShader, vertexShaderSource);
+      gl.compileShader(vertexShader);
+
+      let fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+      gl.shaderSource(fragmentShader, fragmentShaderSource);
+      gl.compileShader(fragmentShader);
+
+      let program = gl.createProgram();
+      gl.attachShader(program, vertexShader);
+      gl.attachShader(program, fragmentShader);
+      gl.linkProgram(program);
+
+      // Step 5: Creating Buffer
+      let vertices = new Float32Array([-1, 1, 1, -1, -1, -1, 1, 1]);
+
+      let positionBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+      // Step 6 : Binding Attribute
+      let positionAttributeLocation = gl.getAttribLocation(program, "position");
+      gl.enableVertexAttribArray(positionAttributeLocation);
+      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+      gl.vertexAttribPointer(positionAttributeLocation, 2, gl.FLOAT, false, 0, 0);
+
+      // Step 7 : Draw Call
+      gl.useProgram(program);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    </script>
+  </body>
+</html>

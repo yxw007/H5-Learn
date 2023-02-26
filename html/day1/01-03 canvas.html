@@ -1,0 +1,15 @@
+<html>
+  <body>
+    <canvas id="me_canvas" width="500px" height="500px"> </canvas>
+    <script type="text/javascript">
+      var canvas = document.getElementById("me_canvas");
+      var context = canvas.getContext("2d");
+      context.beginPath();
+      //Creating circle
+      context.arc(250, 250, 100, 0, 2 * Math.PI);
+      //color in the circle
+      context.fillStyle = "red";
+      context.fill();
+    </script>
+  </body>
+</html>

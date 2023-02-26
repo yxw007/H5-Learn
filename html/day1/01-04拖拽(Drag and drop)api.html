@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drag and Drop Example</title>
+    <style type="text/css">
+      #div1 {
+        width: 350px;
+        height: 70px;
+        padding: 10px;
+        border: 1px solid #aaaaaa;
+      }
+    </style>
+    <script>
+      function allowDrop(ev) {
+        //! 阻止默认行为，让其可以放置
+        ev.preventDefault();
+      }
+
+      function drag(ev) {
+        //! 设置需拖拽传送的元素id
+        ev.dataTransfer.setData("text", ev.target.id);
+      }
+
+      function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        //! 将传送的元素挂在到当前元素下
+        ev.target.appendChild(document.getElementById(data));
+      }
+    </script>
+  </head>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <body ondrop="drop(event)" ondragover="allowDrop(event)" height="920px">
+    <p>Drag the image to the div element below :</p>
+
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <br />
+    <img id="drag1" src="rose.png" draggable="true" ondragstart="drag(event)" width="40px" height="40px" />
+  </body>
+</html>
