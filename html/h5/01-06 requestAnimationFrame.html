@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <div id="animateMe" style="text-align: center"> 中国</div>
+    <script>
+      // 计数器，来跟踪动画
+      let counter = 0;
+
+      const el = document.getElementById("animateMe");
+
+      function animate() {
+        el.style.transform = `rotate(${counter}deg)`;
+        counter += 10;
+
+        requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+    </script>
+  </body>
+</html>

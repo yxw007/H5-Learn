@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <script>
+      //! 获取当前位置
+      navigator.geolocation.getCurrentPosition(function (position) {
+        console.log("Latitude: " + position.coords.latitude); //纬度
+        console.log("Longitude: " + position.coords.longitude); //经度
+      });
+
+      //! 监控位置变化
+      var watchID = navigator.geolocation.watchPosition(function (position) {
+        console.log("New Latitude: " + position.coords.latitude);
+        console.log("New Longitude: " + position.coords.longitude);
+      });
+
+      //! 停止监控
+      navigator.geolocation.clearWatch(watchID);
+    </script>
+  </body>
+</html>
