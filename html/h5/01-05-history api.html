@@ -29,11 +29,11 @@
         }
       };
 
-      window.onpopstate = function (e) {
+      window.addEventListener("popstate", function (e) {
         if (e.state != null) {
           goToSlide(e.state);
         }
-      };
+      });
 
       function getHistory() {
         console.log(history);
