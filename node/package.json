@@ -11,5 +11,9 @@
 	"license": "ISC",
 	"dependencies": {
 		"blob": "^0.1.0"
+	},
+	"devDependencies": {
+		"crypto-js": "^4.1.1",
+		"express": "^4.18.2"
 	}
 }
