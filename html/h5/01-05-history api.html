@@ -29,6 +29,7 @@
         }
       };
 
+      //说明：监听导航栏的前进后退来切换页面
       window.addEventListener("popstate", function (e) {
         if (e.state != null) {
           goToSlide(e.state);
@@ -50,6 +51,7 @@
       function previousSlide() {
         let slide = currentSlide - 1 < 1 ? 1 : currentSlide - 1;
         if (slide != currentSlide) {
+          //! 说明：切换页面就push当前页面状态，等后退or前进是可通过popstate回调参数获取到
           history.pushState(slide, null, `01-05-history api.html?slide=${slide}`);
           goToSlide(slide);
         }
