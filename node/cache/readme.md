@@ -1,1 +1,2 @@
-- 参考文献：https://www.infoq.cn/article/aiwqlgtlk2eft5yi7doy
+- 参考文献：https://mp.weixin.qq.com/s?__biz=Mzg3NTcwMTUzNA==&mid=2247486256&idx=1&sn=46f0b4161f45d69eb383e3418a1dafea&source=41#wechat_redirect
+- 相关资料：https://dev.to/vigzmv/a-simple-cache-invalidation-strategy-part-2-4alc
