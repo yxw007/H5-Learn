@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, 
+    initial-scale=1, maximum-scale=1, minimum-scale=1"
+    />
+    <title>title</title>
+    <style>
+      div {
+        width: 3.75rem; /* 需要随屏幕等比缩放，使用rem单位，比如设计稿中标注的32px这里写成0.32rem */
+        border: 1px solid #ccc; /*不需要缩放的部分用px*/
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 参考资料：https://zhuanlan.zhihu.com/p/339554395 -->
+    <script>
+      const WIDTH = 750; //如果是尺寸的设计稿在这里修改
+      const setView = () => {
+        //设置html标签的fontSize
+        document.documentElement.style.fontSize = (100 * screen.width) / WIDTH + "px";
+      };
+      window.onorientationchange = setView;
+      setView();
+    </script>
+    <div>内容</div>
+  </body>
+</html>
