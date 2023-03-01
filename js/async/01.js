@@ -8,3 +8,4 @@ async function fn2() {
 }
 fn1();
 console.log(3);
+
