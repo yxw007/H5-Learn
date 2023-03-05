@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style>
+      .flags-canada,
+      .flags-mexico,
+      .flags-usa {
+        background-image: url("./sprite.webp");
+        /* 说明：需要添加此句，否则div会用图片重复铺贴满一行 */
+        background-repeat: no-repeat;
+        margin: 10px;
+        width: 256px;
+        display: inline-block;
+        border: 1px solid;
+      }
+
+      .flags-canada {
+        height: 128px;
+        /* 起始位置为左上角，那么图片第一张图内容左上角为(-5,-5) 右下角为（-5+256,-5+128） */
+        background-position: -5px -5px;
+      }
+
+      .flags-usa {
+        height: 135px;
+        background-position: -5px -143px;
+      }
+
+      .flags-mexico {
+        height: 147px;
+        background-position: -5px -288px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="flags-canada"></div>
+    <div class="flags-usa"></div>
+    <div class="flags-mexico"></div>
+  </body>
+</html>

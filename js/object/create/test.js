@@ -17,7 +17,6 @@ autoRun("1.创建一个原型为null的对象", () => {
 	console.log(myCreateRet);
 });
 
-
 autoRun("2.创建一个指定原型的对象", () => {
 	function Animation(name, age) {
 		this.name = name;
