@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style>
+      .main,
+      .aside-left,
+      .aside-right {
+        float: left;
+        height: 300px;
+      }
+      .main {
+        width: 100%;
+      }
+      .main-inner {
+        height: 100%;
+        margin-left: 220px;
+        margin-right: 320px;
+        background-color: blue;
+      }
+      .aside-left {
+        width: 200px;
+        margin-left: -100%;
+        background-color: gray;
+      }
+      .aside-right {
+        width: 300px;
+        margin-left: -300px;
+        background-color: green;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="main-inner"></div>
+    </div>
+    <!-- 边栏将会使用负 margin 回到该显示的位置 -->
+    <div class="aside-left"> </div>
+    <div class="aside-right"> </div>
+  </body>
+</html>
