@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        background: url("./img/loading.gif") no-repeat center;
+        width: 250px;
+        height: 250px;
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <img src="./img/pixel.gif" data-url="./img/1.jpg" />
+    <img src="./img/pixel.gif" data-url="./img/2.jpg" />
+    <img src="./img/pixel.gif" data-url="./img/3.jpg" />
+    <img src="./img/pixel.gif" data-url="./img/4.jpg" />
+    <img src="./img/pixel.gif" data-url="./img/5.jpg" />
+    <img src="./img/pixel.gif" data-url="./img/6.webp" />
+
+    <script>
+      let imgs = document.getElementsByTagName("img");
+      // 1. 一上来立即执行一次
+      let io = new IntersectionObserver(function (entires) {
+        //图片进入视口时就执行回调
+        entires.forEach((item) => {
+          // 获取目标元素
+          let oImg = item.target;
+          // console.log(item);
+          // 当图片进入视口的时候，就赋值图片的真实地址
+          if (item.intersectionRatio > 0 && item.intersectionRatio <= 1) {
+            oImg.setAttribute("src", oImg.getAttribute("data-url"));
+          }
+        });
+      });
+      Array.from(imgs).forEach((element) => {
+        io.observe(element); //给每一个图片设置监听
+      });
+    </script>
+  </body>
+</html>
