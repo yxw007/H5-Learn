@@ -24,6 +24,7 @@
     <img src="./img/pixel.gif" data-url="./img/6.webp" />
 
     <script>
+      /* 相关资料：https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html */
       let imgs = document.getElementsByTagName("img");
       // 1. 一上来立即执行一次
       let io = new IntersectionObserver(function (entires) {
@@ -31,14 +32,18 @@
         entires.forEach((item) => {
           // 获取目标元素
           let oImg = item.target;
-          // console.log(item);
+          let index = Number(oImg.getAttribute("index"));
           // 当图片进入视口的时候，就赋值图片的真实地址
           if (item.intersectionRatio > 0 && item.intersectionRatio <= 1) {
             oImg.setAttribute("src", oImg.getAttribute("data-url"));
+            console.log(`第${index + 1}张,进入视口，加载对应图片`);
+          } else {
+            console.log(`第${index + 1}张,不在视口内`);
           }
         });
       });
-      Array.from(imgs).forEach((element) => {
+      Array.from(imgs).forEach((element, index) => {
+        element.setAttribute("index", index);
         io.observe(element); //给每一个图片设置监听
       });
     </script>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>JS Bin</title>
+    <style>
+      div {
+        height: 500px;
+        width: 30%;
+        margin-bottom: 50px;
+      }
+
+      #a {
+        background-color: red;
+        float: left;
+      }
+
+      #b {
+        background-color: black;
+        float: left;
+      }
+
+      #c {
+        background-color: blue;
+        clear: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="a"></div>
+    <div id="b"></div>
+    <div id="c"></div>
+    <script>
+      /* 相关资料：https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html */
+      var io = new IntersectionObserver(
+        (entries) => {
+          // 当观察的元素离开视口和进入视口，回调对应观察的元素实例
+          entries.forEach((i) => {
+            console.log("Time: " + i.time);
+            console.log("Target: " + i.target);
+            console.log("IntersectionRatio: " + i.intersectionRatio);
+            console.log("rootBounds: " + i.rootBounds);
+            console.log("boundingClientRect:", i.boundingClientRect);
+            console.log("intersectionRect:", i.intersectionRect);
+            console.log("intersectionRatio:", i.intersectionRatio);
+            console.log("================");
+          });
+        },
+        {
+          /* Using default options. Details below */
+        }
+      );
+      // !观察这2个元素
+      io.observe(document.querySelector("#a"));
+      io.observe(document.querySelector("#b"));
+    </script>
+  </body>
+</html>
