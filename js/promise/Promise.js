@@ -253,6 +253,33 @@ class Promise {
       }
     });
   }
+
+  static any(arr) {
+    if (!(arr instanceof Array)) {
+      throw Error("param must be Array");
+    }
+
+    return new Promise((resolve, reject) => {
+      let rejectCount = 0;
+      arr.forEach((p) => {
+        if (p && isFunction(p.then)) {
+          p.then(
+            (v) => {
+              resolve(v);
+            },
+            (e) => {
+              ++rejectCount;
+              if (rejectCount == arr.length) {
+                reject(new AggregateError("All promises were rejected"));
+              }
+            }
+          );
+        } else {
+          resolve(p);
+        }
+      });
+    });
+  }
 }
 
 Promise.counter = 0;

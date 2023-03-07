@@ -88,30 +88,49 @@ const Promise = require("../Promise");
 register(); */
 
 /* async function register() {
-	const ret = { succes: true, message: "" };
-	return new Promise((resolve, reject) => {
-		//! 说明：异步抛出的异常，promise.catch 是捕获不到的
-		setTimeout(() => {
-			throw "register fail!"
-			// resolveInner(ret);
-		}, 100);
-	}).then(null, error => {
-		console.log("error:===>", error);
-	}).catch(error => {
-		console.error("catch:", error);
-	})
+  const ret = { succes: true, message: "" };
+  return new Promise((resolve, reject) => {
+    //! 说明：异步抛出的异常，promise.catch 是捕获不到的
+    setTimeout(() => {
+      throw "register fail!";
+      // resolveInner(ret);
+    }, 100);
+  })
+    .then(null, (error) => {
+      console.log("error:===>", error);
+    })
+    .catch((error) => {
+      console.error("catch:", error);
+    });
 }
 
 async function goLogin() {
-	return new Promise(async (resolve, reject) => {
-		let ret = await register();
-		resolve(ret);
-	});
+  return new Promise(async (resolve, reject) => {
+    let ret = await register();
+    resolve(ret);
+  });
 }
 
 (async () => {
-	let result = await goLogin();
-	console.log("result:", result);
+  let result = await goLogin();
+  console.log("result:", result);
 })(); */
+
+(() => {
+  async function register() {
+    return new Promise((resolve, reject) => {
+      console.log(a + 1);
+    });
+  }
+
+  try {
+    let p = register();
+    p.catch((e) => {
+      console.error("p.catch:", e);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+})();
 
 //-------------------------------------------------------------------------
