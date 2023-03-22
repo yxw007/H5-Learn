@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style>
+      /* + 选择器选取紧接着的相邻连续兄弟元素 */
+      .d1 p + p {
+        color: red;
+      }
+
+      /* ~ 选择器选取后面所有的同级兄弟元素 */
+      .d2 p ~ p {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="d1">
+      <p>第一个段落</p>
+      <p>第二个段落</p>
+      <p>第二个段落</p>
+      <span>span</span>
+      <p>第三个段落</p>
+    </div>
+    <br />
+    <div class="d2">
+      <p>第一个段落</p>
+      <p>第二个段落</p>
+      <span>span</span>
+      <p>第三个段落</p>
+    </div>
+  </body>
+</html>
