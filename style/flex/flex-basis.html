@@ -5,100 +5,38 @@
     <title>title</title>
     <style>
       .container {
-        font-family: arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
         display: flex;
-        flex-wrap: wrap;
+        border: 1px solid;
       }
 
-      .flex {
-        background: #6ab6d8;
-        padding: 10px;
-        margin-bottom: 50px;
-        border: 3px solid #2e86bb;
-        color: white;
-        font-size: 20px;
-        text-align: center;
-        position: relative;
+      .item {
+        height: 200px;
       }
 
-      .flex:after {
-        position: absolute;
-        z-index: 1;
-        left: 0;
-        top: 100%;
-        margin-top: 10px;
-        width: 100%;
-        color: #333;
-        font-size: 18px;
+      .item1 {
+        /* 如何设置了flex-basis值，将忽略width的值 */
+        flex-basis: 100px;
+        width: 400px;
+        background-color: red;
       }
 
-      .flex1 {
+      .item2 {
+        flex-basis: 50%;
+        background-color: blue;
+      }
+
+      .item3 {
         flex-basis: auto;
-      }
-
-      .flex1:after {
-        content: "auto";
-      }
-
-      .flex2 {
-        flex-basis: max-content;
-      }
-
-      .flex2:after {
-        content: "max-content";
-      }
-
-      .flex3 {
-        flex-basis: min-content;
-      }
-
-      .flex3:after {
-        content: "min-content";
-      }
-
-      .flex4 {
-        flex-basis: fit-content;
-      }
-
-      .flex4:after {
-        content: "fit-content";
-      }
-
-      .flex5 {
-        flex-basis: content;
-      }
-
-      .flex5:after {
-        content: "content";
-      }
-
-      .flex6 {
-        flex-basis: fill;
-      }
-
-      .flex6:after {
-        content: "fill/-webkit-fill-available/-moz-available";
+        background-color: green;
       }
     </style>
   </head>
 
   <body>
-    <ul class="container">
-      <li class="flex flex1">1: flex-basis test</li>
-      <li class="flex flex2">2: flex-basis test</li>
-      <li class="flex flex3">3: flex-basis test</li>
-      <li class="flex flex4">4: flex-basis test</li>
-      <li class="flex flex5">5: flex-basis test</li>
-    </ul>
-
-    <ul class="container">
-      <li class="flex flex6">6: flex-basis test</li>
-    </ul>
+    <div class="container">
+      <div class="item item1">flex-basic:100px，占用父容器的100px</div>
+      <div class="item item2">flex-basic:50%，始终为父容器尺寸的50%</div>
+      <div class="item item3">flex-basis:auto，在剩余空间分配之后，根据内容自动计算大小</div>
+    </div>
   </body>
-  <script>
-    /* MDN 解释的不够清楚，更多： flex-basis：https://www.zhangxinxu.com/wordpress/2019/12/css-flex-basis/ */
-  </script>
 </html>
