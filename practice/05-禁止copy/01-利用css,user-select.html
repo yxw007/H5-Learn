@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style>
+      div {
+        background-color: gray;
+        user-select: none;
+      }
+      p {
+        background-color: green;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      这个div里面的内容都不可复制
+      <h1>禁止copy demo</h1>
+    </div>
+    <p>这个里面的文字可以copy</p>
+
+    <script>
+      /* document.body.onselectstart = (e) => {
+        e.preventDefault();
+      };
+
+      document.body.oncopy = (e) => {
+        e.preventDefault();
+      }; */
+    </script>
+  </body>
+</html>

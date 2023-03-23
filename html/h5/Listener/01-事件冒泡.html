@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <div id="outer">
+      <div id="inner"> Click me! </div>
+    </div>
+
+    <script>
+      const inner = document.getElementById("inner");
+      const outer = document.getElementById("outer");
+      /* 事件冒泡：是事件从内子元素出发吧，开始先外层父元素传递，知道最外层父元素 */
+      inner.addEventListener("click", function (event) {
+        console.log("inner clicked");
+      });
+
+      outer.addEventListener("click", function (event) {
+        console.log("outer clicked");
+      });
+    </script>
+  </body>
+</html>

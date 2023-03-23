@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>获取剪切板内容示例</title>
+  </head>
+  <body>
+    <button id="paste-btn">获取剪切板内容</button>
+
+    <script>
+      const pasteBtn = document.querySelector("#paste-btn");
+
+      pasteBtn.addEventListener("click", async () => {
+        try {
+          const text = await navigator.clipboard.readText();
+          console.log("剪切板内容：", text);
+        } catch (err) {
+          console.error("无法读取剪切板内容：", err);
+        }
+      });
+    </script>
+  </body>
+</html>

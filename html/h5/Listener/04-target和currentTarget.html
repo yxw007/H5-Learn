@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <div id="outer">
+      <div id="inner"> Click me! </div>
+    </div>
+
+    <script>
+      const inner = document.getElementById("inner");
+      const outer = document.getElementById("outer");
+      /* 
+      event.target: 始终事件触发的目标元素
+      event.currentTarget: 指向事件处理函数所绑定的元素
+       */
+      inner.addEventListener("click", function (event) {
+        console.log("冒泡阶段：target:", event.target);
+        console.log("冒泡阶段：currentTarget:", event.currentTarget);
+      });
+
+      outer.addEventListener("click", function (event) {
+        console.log("冒泡阶段：target:", event.target);
+        console.log("冒泡阶段：currentTarget:", event.currentTarget);
+      });
+
+      inner.addEventListener(
+        "click",
+        function (event) {
+          console.log("捕获阶段：target:", event.target);
+          console.log("捕获阶段：currentTarget:", event.currentTarget);
+        },
+        true
+      );
+
+      outer.addEventListener(
+        "click",
+        function (event) {
+          console.log("捕获阶段：target:", event.target);
+          console.log("捕获阶段：currentTarget:", event.currentTarget);
+        },
+        true
+      );
+    </script>
+  </body>
+</html>

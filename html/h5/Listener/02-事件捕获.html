@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <div id="outer">
+      <div id="inner"> Click me! </div>
+    </div>
+
+    <script>
+      const inner = document.getElementById("inner");
+      const outer = document.getElementById("outer");
+      /* 事件捕获: 是指事件从最外层的祖先元素开始触发，然后向下传播到内层子元素，直到到达最内层的元素 */
+      inner.addEventListener(
+        "click",
+        function (event) {
+          console.log("inner clicked");
+        },
+        true
+      );
+
+      outer.addEventListener(
+        "click",
+        function (event) {
+          console.log("outer clicked");
+        },
+        true
+      );
+    </script>
+  </body>
+</html>

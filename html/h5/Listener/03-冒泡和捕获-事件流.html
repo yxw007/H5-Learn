@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <style></style>
+  </head>
+
+  <body>
+    <div class="container" id="container">
+      <div class="item" id="item">
+        <div class="btn" id="btn"> Click me </div>
+      </div>
+    </div>
+    <script>
+      /* 执行顺序：先走捕获阶段，再走冒泡阶段 */
+      document.addEventListener(
+        "click",
+        (e) => {
+          console.log("capture Document click");
+        },
+        {
+          capture: true,
+        }
+      );
+
+      document.addEventListener("click", (e) => {
+        console.log("冒泡 Document click");
+      });
+
+      container.addEventListener("click", (e) => {
+        console.log("冒泡 container click");
+      });
+
+      container.addEventListener(
+        "click",
+        (e) => {
+          console.log("capture Container click");
+          // e.stopPropagation()
+        },
+        {
+          capture: true,
+        }
+      );
+
+      item.addEventListener("click", (e) => {
+        console.log("冒泡 Item click");
+        e.stopPropagation();
+      });
+
+      btn.addEventListener("click", (e) => {
+        console.log("冒泡 Btn click");
+      });
+
+      btn.addEventListener(
+        "click",
+        (e) => {
+          console.log("capture Btn click When Capture");
+        },
+        {
+          capture: true,
+        }
+      );
+    </script>
+  </body>
+</html>
