@@ -34,7 +34,7 @@ class Person extends Animal {
 }
 
 //! 说明：原型方法、静态方法、constructor 子类匹配调用父类对应的方法即可用super，否则可能会报错
-let p = new Person();
+let t = new Person();
 // p.say()
 // Person.say2()
 Person.prototype.say();
