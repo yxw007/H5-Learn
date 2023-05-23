@@ -39,6 +39,7 @@ autoRun("1.利用栈拍平数组(后序遍历)", () => {
 
   let stack = [];
   for (let i = 0; i < arr.length; i++) {
+    arr[i].level = 1;
     stack.push(arr[i]);
     while (stack.length != 0) {
       let item = stack.pop();
@@ -46,6 +47,7 @@ autoRun("1.利用栈拍平数组(后序遍历)", () => {
         let list = item.list;
         for (let j = list.length - 1; j >= 0; j--) {
           list[j].parent_id = item.id;
+          list[j].level = item.level + 1;
           stack.push(list[j]);
         }
         item.list = null;
