@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible"
+				content="ie=edge">
+	<title>windows环境探测是否安装了某个exe程序</title>
+	<style>
+	</style>
+	<h1>windows环境探测是否安装了某个exe程序</h1>
+	<script>
+		var url = "http://192.168.5.17";
+	</script>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script src="js/protocolcheck.js"></script>
+</head>
+
+<body>
+	<div id="app">
+	</div>
+	<script>
+		/* 参考资料：https://github.com/vireshshah/custom-protocol-check */
+		const {createApp, ref} = Vue
+		function goto(flag) {
+			switch (flag) {
+				case 1: {
+					//! TODO: 处理打开逻辑
+					console.log("处理打开逻辑");
+					break;
+				}
+				case 2: {
+					window.open(url + ":8082/gologin.do");
+					//! TODO: 处理登录逻辑
+					console.log("处理登录逻辑");
+					break;
+				}
+				default: {
+					//! TODO: 去下载APP
+					window.open(url + ":8082/Download/app.exe");
+					console.log("处理去下载");
+					break;
+				}
+			}
+		}
+
+		const Status = {
+			"OPEN": 1,
+			"GO_LOGIN": 2,
+			"GO_DOWNLOAD": 3,
+		};
+
+		createApp({
+			template: `
+				<button ref="button" class="button" @click="onClick"
+					href="WebStartupExe://WebStartupExe?%1">
+					{{status == Status.OPEN ? "打开App" : "去下载App"}} - {{status}}
+				</button>
+			`,
+			setup(context) {
+				const status = ref(null);
+				const isInited = ref(false);
+				function onClick(event) {
+					if (!isInited.value) {
+						return;
+					}
+					goto(status.value);
+				}
+				return {
+					isInited,
+					Status,
+					status,
+					onClick
+				}
+			},
+			mounted() {
+				let self = this;
+				window.protocolCheck(this.$refs.button.getAttribute("href"),
+					function fail() {
+						console.error("protocol not recognized");
+						self.isInited = true;
+						self.status = Status.GO_DOWNLOAD;
+					},
+					function success() {
+						console.warn("protocol recognized");
+						self.isInited = true;
+						self.status = Status.OPEN;
+						event.preventDefault ? event.preventDefault() : event.returnValue = false;
+					},
+					function unSupport() {
+						console.error("protocol unSupport");
+						self.isInited = true;
+						self.status = Status.GO_DOWNLOAD;
+					}
+				);
+			},
+		}).mount('#app')
+
+	</script>
+</body>
+
+</html>
