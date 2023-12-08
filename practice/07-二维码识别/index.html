@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, initial-scale=1.0">
+	<title>QR Code Scanner</title>
+	<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+</head>
+
+<body>
+	<div>上传图片识别</div>
+	<input type="file"
+				 id="fileInput"
+				 accept="image/*">
+	<br>
+
+	<div>识别内容如下：</div>
+	<textarea id="result"
+						style="width: 600px; height: 200px;"></textarea>
+
+	<script>
+		document.getElementById('fileInput').addEventListener('change', handleFile);
+
+		function handleFile(event) {
+			const file = event.target.files[0];
+			if (file) {
+				const reader = new FileReader();
+				reader.onload = async function (e) {
+					const imageData = await getImageData(e.target.result);
+					const qrCode = decodeQRCode(imageData);
+
+					if (qrCode) {
+						document.getElementById('result').innerText = qrCode;
+					} else {
+						document.getElementById('result').innerText = 'No QR Code found.';
+					}
+				};
+
+				reader.readAsDataURL(file);
+			}
+		}
+
+		function getImageData(dataUrl) {
+			return new Promise((resolve, reject) => {
+				const img = new Image();
+				img.src = dataUrl;
+				img.addEventListener("load", () => {
+					const canvas = document.createElement('canvas');
+					const ctx = canvas.getContext('2d');
+
+					canvas.width = img.width;
+					canvas.height = img.height;
+					ctx.drawImage(img, 0, 0, img.width, img.height);
+
+					resolve(ctx.getImageData(0, 0, img.width, img.height));
+				});
+			});
+
+		}
+
+		function decodeQRCode(imageData) {
+			const code = jsQR(imageData.data, imageData.width, imageData.height);
+			return code ? code.data : null;
+		}
+	</script>
+</body>
+
+</html>
