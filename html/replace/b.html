@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>b.html page</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<p>This is <code style="color:red">b.html</code> page ! Go to <a id="jumper"
+			 href="c.html">c.html</a> page !</p>
+
+	<script type="text/javascript">
+		var jumper = document.getElementById("jumper");
+		jumper.onclick = function (event) {
+			var e = event || window.event;
+			if (e.preventDefault) {
+				e.preventDefault();
+			} else {
+				e.returnValue = true;
+			}
+			location.replace(this.href);
+			jumper = null;
+		}
+	</script>
+</body>
