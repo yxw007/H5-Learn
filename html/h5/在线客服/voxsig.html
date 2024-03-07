@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>title</title>
+	<style>
+	</style>
+</head>
+
+<body>
+	<script>
+		(function (d, t) {
+			var BASE_URL = "https://app.voxsig.com";
+			var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+			g.src = BASE_URL + "/packs/js/sdk.js";
+			g.defer = true;
+			g.async = true;
+			s.parentNode.insertBefore(g, s);
+			g.onload = function () {
+				window.chatwootSDK.run({
+					websiteToken: 'LLuwcr4jj22Q32EoW7suqHam',
+					baseUrl: BASE_URL
+				})
+			}
+		})(document, "script");
+	</script>
+</body>
+
+</html>
