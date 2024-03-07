@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>clear right</title>
+	<style>
+		.wrapper {
+			border: 1px solid black;
+			padding: 10px;
+		}
+
+		.black {
+			float: right;
+			margin: 0;
+			background-color: black;
+			color: #fff;
+			width: 20%;
+		}
+
+		.red {
+			float: right;
+			margin: 0;
+			background-color: pink;
+			width: 20%;
+		}
+
+		.right {
+			border: 1px solid black;
+			clear: right;
+		}
+
+		p {
+			width: 50%;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<p class="black">
+			Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus sit amet
+			diam. Duis mattis varius dui. Suspendisse eget dolor.
+		</p>
+		<p class="red">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+		<p class="right">This paragraph clears right.</p>
+	</div>
+
+</body>
+
+</html>
