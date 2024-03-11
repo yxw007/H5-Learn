@@ -56,3 +56,13 @@ let sum = [].reduce((pre, current) => {
 
 console.log(sum);
 //-------------------------------------------------------------------------
+let tArr = Uint8Array.from([1, 2]);
+console.log(tArr);
+for (const item of tArr) {
+  console.log(item);
+}
+for (const item in tArr) {
+  console.log(item);
+  console.log(tArr[item]);
+}
+//-------------------------------------------------------------------------
