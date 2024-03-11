@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, initial-scale=1.0">
+	<title>Holy Grail Layout</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		header,
+		footer {
+			background-color: #ccc;
+			padding: 10px;
+		}
+
+		#container {
+			display: flex;
+			flex-direction: row;
+			/* 设置容器高度，保证footer可以在底部 */
+			min-height: 100vh;
+		}
+
+		#main {
+			flex: 1;
+			/* 中间内容列占满剩余空间 */
+			padding: 10px;
+			background-color: #f0f0f0;
+		}
+
+		#left,
+		#right {
+			flex-basis: 200px;
+			/* 侧边栏宽度 */
+			padding: 10px;
+			background-color: #ddd;
+		}
+
+		#left {
+			order: -1;
+			/* 调整顺序，使左侧栏在前 */
+		}
+
+		#right {
+			order: 1;
+			/* 调整顺序，使右侧栏在后 */
+		}
+	</style>
+</head>
+
+<body>
+
+	<header>
+		<h1>Header</h1>
+	</header>
+
+	<div id="container">
+		<div id="main">
+			<h2>Main Content</h2>
+			<p>This is the main content of the page.</p>
+		</div>
+
+		<div id="left">
+			<h3>Left Sidebar</h3>
+			<p>This is the left sidebar.</p>
+		</div>
+
+		<div id="right">
+			<h3>Right Sidebar</h3>
+			<p>This is the right sidebar.</p>
+		</div>
+	</div>
+
+	<footer>
+		<p>Footer</p>
+	</footer>
+
+</body>
+
+</html>

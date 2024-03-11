@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, initial-scale=1.0">
+	<style>
+		.grid-container {
+			display: grid;
+			grid-template-columns: repeat(3, 100px);
+			grid-gap: 10px;
+		}
+
+		.grid-item {
+			background-color: lightblue;
+			padding: 10px;
+		}
+
+		.full-width {
+			grid-column: 1 / -1;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="grid-container">
+		<div class="grid-item">1</div>
+		<div class="grid-item">2</div>
+		<div class="grid-item">3</div>
+		<div class="grid-item full-width">4 (Full Width)</div>
+		<div class="grid-item">5</div>
+		<div class="grid-item">6</div>
+	</div>
+</body>
+
+</html>
