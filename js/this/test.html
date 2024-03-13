@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>title</title>
-    <style></style>
-  </head>
 
-  <body>
-    <script>
-      var a = "a";
-      {
-        console.log(this.a);
-      }
+<head>
+  <meta charset="UTF-8" />
+  <title>title</title>
+  <style></style>
+</head>
 
-      let b = "b";
-      function fn1() {
-        console.log(this.b);
-      }
-      fn1();
+<body>
+  <script>
+    var a = "a";
+    {
+      console.log(this.a);
+    }
 
-      function fn2() {
-        console.log(this == window);
-      }
-      const obj = "xx";
-      fn2.call(obj);
-    </script>
-  </body>
+    function f0() {
+      //! 函数内无this, 所以this 指向window
+      console.log("f0:", this);
+    }
+    f0();
+
+    function f1() {
+      //! 函数内无this+箭头还是业务this指向, 所以this 指向window
+      var fn = () => console.log("f1:", this);
+      fn();
+    }
+    f1();
+
+    let b = "b";
+    function fn2() {
+      console.log(this.b);
+    }
+    fn2();
+
+    function fn3() {
+      console.log(this == window);
+    }
+    const obj = "xx";
+    fn3.call(obj);
+  </script>
+</body>
+
 </html>
