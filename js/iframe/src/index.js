@@ -22,7 +22,7 @@ app.get("/iframe/index", (req, res, next) => {
     <title>iframe长轮询</title>
 </head>
 <body>
- 	<iframe src="/iframe/message" width="300" height="200" frameborder="0"></iframe>
+ 	<iframe src="/iframe/message" style="display: none;"></iframe>
 	<h1 id="clock"></h1>
 </body>
 </html>
