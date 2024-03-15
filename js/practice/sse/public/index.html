@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, initial-scale=1.0">
+	<title>SSE Demo</title>
+</head>
+
+<body>
+	<h1>Server-Sent Events Demo</h1>
+	<div id="sseData"></div>
+
+	<script>
+		const eventSource = new EventSource('/events');
+		const sseData = document.getElementById('sseData');
+
+		eventSource.onmessage = function (event) {
+			const data = JSON.parse(event.data);
+			sseData.innerHTML += `<p>${data.message}</p>`;
+		};
+	</script>
+</body>
+
+</html>
