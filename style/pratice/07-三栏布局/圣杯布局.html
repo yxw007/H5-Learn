@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, initial-scale=1.0">
+	<title>Double Wings Layout</title>
+	<style>
+		div {
+			height: 100px;
+		}
+
+		.header,
+		.footer {
+			background-color: rgb(184, 188, 192);
+		}
+
+		.middle {
+			background-color: aqua;
+			float: left;
+			width: 100%;
+		}
+
+		.wrapper {
+			position: relative;
+			padding: 0 100px;
+			overflow: hidden;
+		}
+
+		.left,
+		.middle,
+		.right {
+			position: relative;
+			float: left;
+		}
+
+		.left {
+			background-color: bisque;
+			width: 100px;
+			margin-left: -100%;
+			left: -100px;
+		}
+
+		.right {
+			background-color: burlywood;
+			width: 100px;
+			margin-right: -100%;
+		}
+
+		.footer {
+			clear: both;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="header">header</div>
+	<div class="content wrapper">
+		<div class="middle">middle</div>
+		<div class="left">left</div>
+		<div class="right">right</div>
+	</div>
+	<div class="footer">footer</div>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>title</title>
+  <style></style>
+</head>
+
+<body>
+  <button id="start">start</button>
+  <button id="cancel">cancel</button>
+
+  <script>
+    class CancelToken {
+      constructor(cancelFn) {
+        this.promise = new Promise((resolve, reject) => {
+          this._resolve = resolve;
+          this._reject = reject;
+        });
+      }
+      resolve() {
+        this._resolve();
+      }
+      then(act) {
+        return this.promise.then(act)
+      }
+    }
+
+    const startBtn = document.getElementById("start");
+    const cancelBtn = document.getElementById("cancel");
+
+    function processPromise(delay) {
+      console.log("start process");
+
+      return new Promise((resolve, reject) => {
+        //! 延迟时间到，自动解决
+        const processId = setTimeout(() => {
+          console.log("process complete");
+          resolve();
+        }, delay);
+
+        let cancelPromise = new CancelToken(cancel);
+        cancelBtn.addEventListener("click", () => {
+          cancelPromise.resolve();
+        });
+
+        //! 主动调用取消，让执行promise一直卡住pending状态，就相当于取消了promise
+        cancelPromise.then(() => clearTimeout(processId));
+      });
+    }
+
+    startBtn.addEventListener("click", () => {
+      let p = processPromise(5000);
+      setTimeout(() => {
+        console.log("result p:", p);
+      }, 10 * 1000);
+    });
+  </script>
+</body>
+
+</html>

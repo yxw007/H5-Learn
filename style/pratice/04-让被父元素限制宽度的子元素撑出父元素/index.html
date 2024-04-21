@@ -1,0 +1,40 @@
+<!-- 相关资料：https://stackoverflow.com/questions/31391459/how-can-i-expand-a-child-div-to-100-screen-width-if-the-container-div-is-smalle -->
+<div id="parent">
+	<div id="something">Red</div>
+	<div id="wide-div">Wide</div>
+	<div id="something-else">Other content</div>
+</div>
+
+<style>
+	/* 注意：由于子元素撑满后会出现水平滚动条，所以需要添加此语句消除 */
+	body {
+		overflow-x: hidden;
+	}
+
+	div {
+		min-height: 40px;
+		box-sizing: border-box;
+	}
+
+	#parent {
+		width: 400px;
+		border: 1px solid black;
+		margin: 0 auto;
+		overflow-x: visible;
+	}
+
+	#something {
+		border: 2px solid red;
+	}
+
+	#something-else {
+		border: 2px solid red;
+	}
+
+	#wide-div {
+		width: 100vw;
+		margin-left: calc(-50vw + 50%);
+
+		border: 2px solid green;
+	}
+</style>

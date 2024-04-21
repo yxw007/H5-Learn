@@ -18,5 +18,5 @@ class Person extends Animal {
 	}
 }
 
-let p = new Person();
+let t = new Person();
 

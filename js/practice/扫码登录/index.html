@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en"
+			data-url=https://dc-static.wondershare.cn/wsid/cn />
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv=X-UA-Compatible" content="IE=edge">
+	<meta name="apple-mobile-web-app-capable"
+				content=yes>
+	<meta name="robots"
+				content="noindex, nofollow">
+	<meta name="viewport"
+				content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+	<meta http-equiv="Content-Security-Policy"
+				content="connect-src *">
+	<link rel="icon"
+				href="https://dc-static.wondershare.cn/wsid/cn/favicon.ico">
+	<title>Wondershare Account Center</title>
+	<link rel="dns-prefetch"
+				href=https://dc-static.wondershare.com>
+	<link href="https://dc-static.wondershare.cn/wsid/cn/css/app.8cdd010c.css"
+				rel=preload
+				as=style>
+	<link href="https://dc-static.wondershare.cn/wsid/cn/js/app.144467ed.js"
+				rel=preload
+				as=script>
+	<link href="https://dc-static.wondershare.cn/wsid/cn/css/app.8cdd010c.css"
+				rel=stylesheet>
+</head>
+
+<body><noscript><strong>We're sorry but this page doesn't work properly without JavaScript enabled. Please enable it to
+			continue.</strong></noscript>
+	<div id="app"></div>
+	<script>//查看https://confluence.300624.cn/pages/viewpage.action?pageId=747604782中该函数的使用
+		// window.__getNotiUnreadInfoAndAddMsgListen("250390000",850,true,'message-menu','is-dot','system-info-menu','is-dot');</script>
+	<script>// 端内用户中心国内支付mock
+		if (window.location.search.indexOf("ws_cn_sku_mock_switch=1") !== -1) {
+			var wsCnSkuMockSwitchKey = "___ws_cn_sku_mock_switch___";
+			localStorage.setItem(wsCnSkuMockSwitchKey, "1");
+			var wsCnThemeMockKey = "___ws_cn_theme_mock___";
+			localStorage.setItem(wsCnThemeMockKey, "dark")
+			if (window.location.search.indexOf("theme=dark") !== -1) {
+				localStorage.setItem(wsCnThemeMockKey, "dark");
+			}
+			if (window.location.search.indexOf("theme=light") !== -1) {
+				localStorage.setItem(wsCnThemeMockKey, "light");
+			}
+		}</script>
+	<script>
+		// var vConsole = new VConsole();
+		let base_url = document.documentElement.getAttribute("data-url");
+		if (location.host !== "accounts.wondershare.cc" &&
+			location.host !== "accounts.wondershare.cn") {
+			// 谷歌一键登录
+			var s = document.createElement("script");
+			s.src = base_url + "static/utils/google-onetap-sdk.js";
+			document.body.appendChild(s);
+		}
+
+
+		(function (para) {
+			var p = para.sdk_url,
+				n = para.name,
+				w = window,
+				d = document,
+				s = "script",
+				x = null,
+				y = null;
+			if (typeof w["sensorsDataAnalytic201505"] !== "undefined") {
+				return false;
+			}
+			w["sensorsDataAnalytic201505"] = n;
+			w[n] =
+				w[n] ||
+				function (a) {
+					return function () {
+						(w[n]._q = w[n]._q || []).push([a, arguments]);
+					};
+				};
+			var ifs = [
+				"track",
+				"quick",
+				"register",
+				"registerPage",
+				"registerOnce",
+				"clearAllRegister",
+				"trackSignup",
+				"trackAbtest",
+				"setProfile",
+				"setOnceProfile",
+				"appendProfile",
+				"incrementProfile",
+				"deleteProfile",
+				"unsetProfile",
+				"identify",
+				"login",
+				"logout",
+				"trackLink",
+				"deleteItem",
+				"setItem",
+			];
+			for (var i = 0; i < ifs.length; i++) {
+				w[n][ifs[i]] = w[n].call(null, ifs[i]);
+			}
+			if (!w[n]._t) {
+				(x = d.createElement(s)), (y = d.getElementsByTagName(s)[0]);
+				x.async = 1;
+				x.src = p;
+				x.setAttribute("charset", "UTF-8");
+				w[n].para = para;
+				y.parentNode.insertBefore(x, y);
+			}
+		})({
+			sdk_url:
+				base_url + "static/sensors/sensors.js",
+			name: "sensors",
+			server_url:
+				// "https://analytics.wondershare.cc:8106/sa?project=UA_CscOperation_Web_test",
+				"https://analytics.wondershare.cc:8106/sa?project=UA_CscOperation_Web",
+			is_track_single_page: false, // 单页面配置，默认开启，若页面中有锚点设计，需要将该配置删除，否则触发锚点会多触发 $pageview 事件
+			use_client_time: true,
+			send_type: "beacon",
+			heatmap: {
+				//是否开启点击图，default 表示开启，自动采集 $WebClick 事件，可以设置 'not_collect' 表示关闭。
+				clickmap: "not_collect",
+				//是否开启触达图，not_collect 表示关闭，不会自动采集 $WebStay 事件，可以设置 'default' 表示开启。
+				scroll_notice_map: "not_collect",
+			},
+		});
+	</script>
+	<script src="https://dc-static.wondershare.cn/wsid/cn/libs/vendor.502c585497da3b2745f3.js"></script>
+	<script src="https://dc-static.wondershare.cn/wsid/cn/js/app.144467ed.js"></script>
+</body>
+
+</html>

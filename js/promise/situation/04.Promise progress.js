@@ -21,7 +21,7 @@ class TrackablePromise extends Promise {
 	}
 }
 
-let p = new TrackablePromise((resolve, reject, nodify) => {
+let t = new TrackablePromise((resolve, reject, nodify) => {
 	//2
 	function countdown(x) {
 		//3
@@ -37,10 +37,10 @@ let p = new TrackablePromise((resolve, reject, nodify) => {
 });
 
 //5
-p.notify((x) => {
+t.notify((x) => {
 	setTimeout(console.log, 0, `a:`, x)
 });
 // p.notify((x) => setTimeout(console.log, 0, `b:`, x));
 
 
-p.then(() => setTimeout(console.log, 0, 'completed'));
+t.then(() => setTimeout(console.log, 0, 'completed'));

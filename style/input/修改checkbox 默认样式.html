@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			display: flex;
+			justify-content: center;
+		}
+
+		h1 {
+			color: green;
+		}
+
+		.root {
+			padding: 20px;
+		}
+
+		.main {
+			display: block;
+			position: relative;
+			padding-left: 45px;
+			margin-bottom: 15px;
+			cursor: pointer;
+			font-size: 20px;
+		}
+
+		.main input[type=checkbox] {
+			visibility: hidden;
+		}
+
+		.checkbox-container {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 25px;
+			width: 25px;
+			background-color: transparent;
+			border: 2px solid #000;
+		}
+
+		/* Hover effect */
+		.main:hover input~.checkbox-container {
+			background-color: yellow;
+		}
+
+		/* Active effect */
+		.main input:active~.checkbox-container {
+			background-color: red;
+		}
+
+		/* Checked effect */
+		.main input:checked~.checkbox-container {
+			background-color: green;
+		}
+
+		/* Checkmark */
+		.checkbox-container::after {
+			content: "";
+			position: absolute;
+			display: none;
+			left: 7px;
+			top: 3px;
+			width: 6px;
+			height: 12px;
+			border: solid white;
+			border-width: 0 2px 2px 0;
+			transform: rotate(45deg);
+		}
+
+		/* Display checkmark when checked */
+		.main input:checked~.checkbox-container::after {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="root">
+		<!-- 相关文章链接：https://www.geeksforgeeks.org/how-to-style-a-checkbox-using-css/ -->
+		<h1>Best Computer Science Platform</h1>
+
+		<label class="main">CodeX
+			<input type="checkbox">
+			<span class="checkbox-container"></span>
+		</label>
+	</div>
+
+</body>
+
+</html>
