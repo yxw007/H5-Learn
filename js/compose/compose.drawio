@@ -1,13 +1,13 @@
 <mxfile host="65bd71144e">
     <diagram id="hi3ZVOCKC-8nSe9lWUJY" name="Page-1">
-        <mxGraphModel dx="3007" dy="1431" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1033" dy="536" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="54" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=#3700CC;fillColor=#6a00ff;fontColor=#ffffff;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" vertex="1" parent="1">
+                <mxCell id="54" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=#3700CC;fillColor=#6a00ff;fontColor=#ffffff;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;locked=0;" parent="1" vertex="1">
                     <mxGeometry x="593" y="250" width="223.5" height="223.5" as="geometry"/>
                 </mxCell>
-                <mxCell id="12" value="2" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#FF0000;strokeWidth=2;" edge="1" parent="1" source="2" target="13">
+                <mxCell id="12" value="2" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#FF0000;strokeWidth=2;" parent="1" source="2" target="13" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="-106" y="367" as="targetPoint"/>
                         <Array as="points">
@@ -18,10 +18,10 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="2" value="&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;function&lt;/span&gt; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;compose&lt;/span&gt;(...&lt;span style=&quot;color: #9cdcfe;&quot;&gt;fns&lt;/span&gt;) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;span style=&quot;color: #c586c0;&quot;&gt;return&lt;/span&gt; (&lt;span style=&quot;color: #9cdcfe;&quot;&gt;args&lt;/span&gt;) &lt;span style=&quot;color: #569cd6;&quot;&gt;=&amp;gt;&lt;/span&gt; {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&quot;color: #c586c0;&quot;&gt;for&lt;/span&gt; (&lt;span style=&quot;color: #569cd6;&quot;&gt;let&lt;/span&gt; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;i&lt;/span&gt; = &lt;span style=&quot;color: #9cdcfe;&quot;&gt;fns&lt;/span&gt;.&lt;span style=&quot;color: #9cdcfe;&quot;&gt;length&lt;/span&gt; - &lt;span style=&quot;color: #b5cea8;&quot;&gt;1&lt;/span&gt;; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;i&lt;/span&gt; &amp;gt;= &lt;span style=&quot;color: #b5cea8;&quot;&gt;0&lt;/span&gt;; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;i&lt;/span&gt;--) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;args&lt;/span&gt; = &lt;span style=&quot;color: #9cdcfe;&quot;&gt;fns&lt;/span&gt;[&lt;span style=&quot;color: #9cdcfe;&quot;&gt;i&lt;/span&gt;](&lt;span style=&quot;color: #9cdcfe;&quot;&gt;args&lt;/span&gt;);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&quot;color: #c586c0;&quot;&gt;return&lt;/span&gt; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;args&lt;/span&gt;;&lt;/div&gt;&lt;div&gt;&amp;nbsp; }&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="2" value="&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;function&lt;/span&gt; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;compose&lt;/span&gt;(...&lt;span style=&quot;color: #9cdcfe;&quot;&gt;fns&lt;/span&gt;) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;span style=&quot;color: #c586c0;&quot;&gt;return&lt;/span&gt; (&lt;span style=&quot;color: #9cdcfe;&quot;&gt;args&lt;/span&gt;) &lt;span style=&quot;color: #569cd6;&quot;&gt;=&amp;gt;&lt;/span&gt; {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&quot;color: #c586c0;&quot;&gt;for&lt;/span&gt; (&lt;span style=&quot;color: #569cd6;&quot;&gt;let&lt;/span&gt; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;i&lt;/span&gt; = &lt;span style=&quot;color: #9cdcfe;&quot;&gt;fns&lt;/span&gt;.&lt;span style=&quot;color: #9cdcfe;&quot;&gt;length&lt;/span&gt; - &lt;span style=&quot;color: #b5cea8;&quot;&gt;1&lt;/span&gt;; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;i&lt;/span&gt; &amp;gt;= &lt;span style=&quot;color: #b5cea8;&quot;&gt;0&lt;/span&gt;; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;i&lt;/span&gt;--) {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;args&lt;/span&gt; = &lt;span style=&quot;color: #9cdcfe;&quot;&gt;fns&lt;/span&gt;[&lt;span style=&quot;color: #9cdcfe;&quot;&gt;i&lt;/span&gt;](&lt;span style=&quot;color: #9cdcfe;&quot;&gt;args&lt;/span&gt;);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; }&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&quot;color: #c586c0;&quot;&gt;return&lt;/span&gt; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;args&lt;/span&gt;;&lt;/div&gt;&lt;div&gt;&amp;nbsp; }&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="-228" y="8" width="380" height="164" as="geometry"/>
                 </mxCell>
-                <mxCell id="22" value="6" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;strokeColor=#00FF00;strokeWidth=2;" edge="1" parent="1" source="3" target="4">
+                <mxCell id="22" value="6" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;strokeColor=#00FF00;strokeWidth=2;" parent="1" source="3" target="4" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="-244" y="275"/>
@@ -31,10 +31,10 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="3" value="&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;let&lt;/span&gt; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;promise&lt;/span&gt; = &lt;span style=&quot;color: #9cdcfe;&quot;&gt;next&lt;/span&gt; &lt;span style=&quot;color: #569cd6;&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;action&lt;/span&gt; &lt;span style=&quot;color: #569cd6;&quot;&gt;=&amp;gt;&lt;/span&gt; {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;console&lt;/span&gt;.&lt;span style=&quot;color: #dcdcaa;&quot;&gt;log&lt;/span&gt;(&lt;span style=&quot;color: #ce9178;&quot;&gt;&quot;promise&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;next&lt;/span&gt;(&lt;span style=&quot;color: #9cdcfe;&quot;&gt;action&lt;/span&gt;);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="3" value="&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;let&lt;/span&gt; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;promise&lt;/span&gt; = &lt;span style=&quot;color: #9cdcfe;&quot;&gt;next&lt;/span&gt; &lt;span style=&quot;color: #569cd6;&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;action&lt;/span&gt; &lt;span style=&quot;color: #569cd6;&quot;&gt;=&amp;gt;&lt;/span&gt; {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;console&lt;/span&gt;.&lt;span style=&quot;color: #dcdcaa;&quot;&gt;log&lt;/span&gt;(&lt;span style=&quot;color: #ce9178;&quot;&gt;&quot;promise&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;next&lt;/span&gt;(&lt;span style=&quot;color: #9cdcfe;&quot;&gt;action&lt;/span&gt;);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="-224" y="231" width="272" height="88" as="geometry"/>
                 </mxCell>
-                <mxCell id="24" value="7" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;strokeColor=#00FF00;strokeWidth=2;" edge="1" parent="1" source="4" target="6">
+                <mxCell id="24" value="7" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;strokeColor=#00FF00;strokeWidth=2;" parent="1" source="4" target="6" edge="1">
                     <mxGeometry x="0.2627" relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="-244" y="455"/>
@@ -43,10 +43,10 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="4" value="&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;let&lt;/span&gt; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;logger&lt;/span&gt; = &lt;span style=&quot;color: #9cdcfe;&quot;&gt;next&lt;/span&gt; &lt;span style=&quot;color: #569cd6;&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;action&lt;/span&gt; &lt;span style=&quot;color: #569cd6;&quot;&gt;=&amp;gt;&lt;/span&gt; {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;console&lt;/span&gt;.&lt;span style=&quot;color: #dcdcaa;&quot;&gt;log&lt;/span&gt;(&lt;span style=&quot;color: #ce9178;&quot;&gt;&quot;logger&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;next&lt;/span&gt;(&lt;span style=&quot;color: #9cdcfe;&quot;&gt;action&lt;/span&gt;);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;connectable=1;" vertex="1" parent="1">
+                <mxCell id="4" value="&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;let&lt;/span&gt; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;logger&lt;/span&gt; = &lt;span style=&quot;color: #9cdcfe;&quot;&gt;next&lt;/span&gt; &lt;span style=&quot;color: #569cd6;&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;action&lt;/span&gt; &lt;span style=&quot;color: #569cd6;&quot;&gt;=&amp;gt;&lt;/span&gt; {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;console&lt;/span&gt;.&lt;span style=&quot;color: #dcdcaa;&quot;&gt;log&lt;/span&gt;(&lt;span style=&quot;color: #ce9178;&quot;&gt;&quot;logger&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;next&lt;/span&gt;(&lt;span style=&quot;color: #9cdcfe;&quot;&gt;action&lt;/span&gt;);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;connectable=1;" parent="1" vertex="1">
                     <mxGeometry x="-224" y="401" width="264" height="107" as="geometry"/>
                 </mxCell>
-                <mxCell id="10" value="0" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0.1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="5" target="9">
+                <mxCell id="10" value="0" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0.1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" parent="1" source="5" target="9" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="-382" y="577"/>
@@ -54,13 +54,13 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="5" value="&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;composed&lt;/span&gt; = &lt;span style=&quot;color: #dcdcaa;&quot;&gt;compose&lt;/span&gt;(&lt;span style=&quot;color: #dcdcaa;&quot;&gt;promise&lt;/span&gt;, &lt;span style=&quot;color: #dcdcaa;&quot;&gt;logger&lt;/span&gt;);&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="5" value="&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;composed&lt;/span&gt; = &lt;span style=&quot;color: #dcdcaa;&quot;&gt;compose&lt;/span&gt;(&lt;span style=&quot;color: #dcdcaa;&quot;&gt;promise&lt;/span&gt;, &lt;span style=&quot;color: #dcdcaa;&quot;&gt;logger&lt;/span&gt;);&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="-228" y="561" width="341" height="31" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;dispatch&lt;/span&gt; = () &lt;span style=&quot;color: #569cd6;&quot;&gt;=&amp;gt;&lt;/span&gt; {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;console&lt;/span&gt;.&lt;span style=&quot;color: #dcdcaa;&quot;&gt;log&lt;/span&gt;(&lt;span style=&quot;color: #ce9178;&quot;&gt;&quot;this is origin dispatch function&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="6" value="&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color: #dcdcaa;&quot;&gt;dispatch&lt;/span&gt; = () &lt;span style=&quot;color: #569cd6;&quot;&gt;=&amp;gt;&lt;/span&gt; {&lt;/div&gt;&lt;div&gt;&amp;nbsp; &lt;span style=&quot;color: #9cdcfe;&quot;&gt;console&lt;/span&gt;.&lt;span style=&quot;color: #dcdcaa;&quot;&gt;log&lt;/span&gt;(&lt;span style=&quot;color: #ce9178;&quot;&gt;&quot;this is origin dispatch function&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="-218" y="661" width="403" height="69" as="geometry"/>
                 </mxCell>
-                <mxCell id="11" value="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;fillColor=#60a917;strokeColor=#FF0000;strokeWidth=2;" edge="1" parent="1" source="7" target="2">
+                <mxCell id="11" value="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;fillColor=#60a917;strokeColor=#FF0000;strokeWidth=2;" parent="1" source="7" target="2" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="383" y="814"/>
@@ -68,10 +68,10 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="7" value="&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color: #4fc1ff;&quot;&gt;newDispatch&lt;/span&gt; = &lt;span style=&quot;color: #dcdcaa;&quot;&gt;composed&lt;/span&gt;(&lt;span style=&quot;color: #dcdcaa;&quot;&gt;dispatch&lt;/span&gt;);&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="7" value="&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;const&lt;/span&gt; &lt;span style=&quot;color: #4fc1ff;&quot;&gt;newDispatch&lt;/span&gt; = &lt;span style=&quot;color: #dcdcaa;&quot;&gt;composed&lt;/span&gt;(&lt;span style=&quot;color: #dcdcaa;&quot;&gt;dispatch&lt;/span&gt;);&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="-218" y="798" width="318" height="31" as="geometry"/>
                 </mxCell>
-                <mxCell id="14" value="5" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;strokeColor=#00FF00;strokeWidth=2;" edge="1" parent="1" source="8" target="3">
+                <mxCell id="14" value="5" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;strokeColor=#00FF00;strokeWidth=2;" parent="1" source="8" target="3" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="-37" y="425" as="targetPoint"/>
                         <Array as="points">
@@ -80,16 +80,16 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="8" value="&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;newDispatch&lt;/span&gt;({ &lt;span style=&quot;color: #9cdcfe;&quot;&gt;type&lt;/span&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;:&lt;/span&gt; &lt;span style=&quot;color: #ce9178;&quot;&gt;&quot;add&quot;&lt;/span&gt; });&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="8" value="&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #dcdcaa;&quot;&gt;newDispatch&lt;/span&gt;({ &lt;span style=&quot;color: #9cdcfe;&quot;&gt;type&lt;/span&gt;&lt;span style=&quot;color: #9cdcfe;&quot;&gt;:&lt;/span&gt; &lt;span style=&quot;color: #ce9178;&quot;&gt;&quot;add&quot;&lt;/span&gt; });&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="-212.5" y="885" width="241" height="31" as="geometry"/>
                 </mxCell>
-                <mxCell id="9" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;rotation=-180;" vertex="1" parent="1">
+                <mxCell id="9" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;rotation=-180;" parent="1" vertex="1">
                     <mxGeometry x="-248" y="44" width="20" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="13" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;rotation=-90;" vertex="1" parent="1">
+                <mxCell id="13" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;rotation=-90;" parent="1" vertex="1">
                     <mxGeometry x="-60.5" y="328" width="20" height="134" as="geometry"/>
                 </mxCell>
-                <mxCell id="17" value="3" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0.461;entryY=0.011;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=classic;endFill=1;exitX=0.1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#FF0000;strokeWidth=2;" edge="1" parent="1" source="15" target="3">
+                <mxCell id="17" value="3" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0.461;entryY=0.011;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=classic;endFill=1;exitX=0.1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#FF0000;strokeWidth=2;" parent="1" source="15" target="3" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="-18" y="480"/>
@@ -99,16 +99,16 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="15" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;rotation=90;" vertex="1" parent="1">
+                <mxCell id="15" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;rotation=90;" parent="1" vertex="1">
                     <mxGeometry x="-28" y="406" width="20" height="74" as="geometry"/>
                 </mxCell>
-                <mxCell id="16" value="next=dispatch" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="16" value="next=dispatch" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="-155" y="359" width="92" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="18" value="next=logger.action" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="18" value="next=logger.action" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="-150" y="179" width="116" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="20" value="4" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;strokeColor=#FF0000;strokeWidth=2;" edge="1" parent="1" source="19" target="7">
+                <mxCell id="20" value="4" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;strokeColor=#FF0000;strokeWidth=2;" parent="1" source="19" target="7" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="261" y="264"/>
@@ -117,64 +117,64 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="19" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;rotation=90;" vertex="1" parent="1">
+                <mxCell id="19" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;rotation=90;" parent="1" vertex="1">
                     <mxGeometry x="-17" y="227" width="20" height="74" as="geometry"/>
                 </mxCell>
-                <mxCell id="21" value="action={type:'add'}" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="21" value="action={type:'add'}" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="-56" y="212" width="116" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="53" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=default;fillColor=#00FF00;align=left;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" vertex="1" parent="1">
+                <mxCell id="53" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=default;fillColor=#00FF00;align=left;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;locked=0;" parent="1" vertex="1">
                     <mxGeometry x="636" y="294" width="142" height="142" as="geometry"/>
                 </mxCell>
-                <mxCell id="52" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=default;fillColor=#FF0000;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" vertex="1" parent="1">
+                <mxCell id="52" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeColor=default;fillColor=#FF0000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;locked=0;" parent="1" vertex="1">
                     <mxGeometry x="668.5" y="319" width="77" height="77" as="geometry"/>
                 </mxCell>
-                <mxCell id="55" value="logger" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;movable=0;rotatable=0;deletable=0;editable=0;connectable=0;" vertex="1" parent="1">
-                    <mxGeometry x="664" y="301" width="51" height="26" as="geometry"/>
+                <mxCell id="55" value="promise" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;connectable=1;locked=0;" parent="1" vertex="1">
+                    <mxGeometry x="674.25" y="296" width="61" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="56" value="dispatch" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;movable=0;rotatable=0;deletable=0;editable=0;connectable=0;" vertex="1" parent="1">
+                <mxCell id="56" value="dispatch" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;connectable=1;locked=0;" parent="1" vertex="1">
                     <mxGeometry x="675.5" y="327" width="63" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="57" value="promise" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;movable=0;rotatable=0;deletable=0;editable=0;connectable=0;" vertex="1" parent="1">
-                    <mxGeometry x="668.5" y="259" width="61" height="26" as="geometry"/>
+                <mxCell id="57" value="logger" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;connectable=1;locked=0;" parent="1" vertex="1">
+                    <mxGeometry x="673.5" y="259" width="51" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="58" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF0000;strokeWidth=1;elbow=vertical;" edge="1" parent="1">
+                <mxCell id="58" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF0000;strokeWidth=1;elbow=vertical;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="549" y="299" as="sourcePoint"/>
                         <mxPoint x="612" y="299" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="59" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF0000;strokeWidth=1;elbow=vertical;" edge="1" parent="1">
+                <mxCell id="59" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF0000;strokeWidth=1;elbow=vertical;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="614" y="300" as="sourcePoint"/>
                         <mxPoint x="651" y="323" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="62" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF0000;strokeWidth=1;elbow=vertical;" edge="1" parent="1">
+                <mxCell id="62" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF0000;strokeWidth=1;elbow=vertical;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="650" y="323" as="sourcePoint"/>
                         <mxPoint x="674" y="342" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="63" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF0000;strokeWidth=1;elbow=vertical;" edge="1" parent="1">
+                <mxCell id="63" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF0000;strokeWidth=1;elbow=vertical;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="668.5" y="353" as="sourcePoint"/>
                         <mxPoint x="636" y="359" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="64" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF0000;strokeWidth=1;elbow=vertical;" edge="1" parent="1">
+                <mxCell id="64" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF0000;strokeWidth=1;elbow=vertical;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="636" y="362" as="sourcePoint"/>
                         <mxPoint x="596" y="381" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="65" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF0000;strokeWidth=1;elbow=vertical;" edge="1" parent="1">
+                <mxCell id="65" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF0000;strokeWidth=1;elbow=vertical;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="596" y="382" as="sourcePoint"/>
                         <mxPoint x="548" y="384" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="66" value="说明：&lt;br style=&quot;font-size: 24px;&quot;&gt;红色：代表包裹过程&lt;br style=&quot;font-size: 24px;&quot;&gt;绿色：代表执行过程" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#6F0000;fillColor=#a20025;fontColor=#ffffff;fontSize=24;" vertex="1" parent="1">
+                <mxCell id="66" value="说明：&lt;br style=&quot;font-size: 24px;&quot;&gt;红色：代表包裹过程&lt;br style=&quot;font-size: 24px;&quot;&gt;绿色：代表执行过程" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#6F0000;fillColor=#a20025;fontColor=#ffffff;fontSize=24;" parent="1" vertex="1">
                     <mxGeometry x="463" y="56" width="234" height="98" as="geometry"/>
                 </mxCell>
             </root>
