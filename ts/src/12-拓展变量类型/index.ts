@@ -78,6 +78,32 @@ console.log(Seasons.Autumn);//Autumn
 	personInfo = { age: 11, name: "pt", address: "123" };
 })();
 //-------------------------------------------------------------------------
+(() => {
+	enum Status {
+		FOO = 'foo',
+		BAR = 'bar',
+		Da = 12,
+	};
+
+	type Reverse<T> = T[keyof T];
+	//! 获取枚举Keys类型
+	type Keys = keyof typeof Status; // "FOO" | "BAR" | "Da"
+	let k: Keys = "FOO";
+
+	//! 获取枚举Values类型
+	type Values = Reverse<typeof Status>; // 'foo' | 'bar';
+	let v: Values = Status.BAR;
+	v = Status.Da;
+
+	//! 获取数组的联合类型
+	const values = ["foo", "bar", 12] as const; //注意：后面要加as const，否则会导致赋任意string 和 number都是可以的
+	type Values2 = typeof values[number];
+	let v2: Values2 = Status.BAR;
+	v2 = Status.Da
+	v2 = "234"; //error
+})();
+//-------------------------------------------------------------------------
+
 export default {}
 
 
