@@ -16,16 +16,16 @@ function getType(data) {
 }
 
 /**
- * 将arg2合并至arg1，并返回合并结果
+ * 将arg2与arg1合并，并返回合并结果
  * @param {*} arg1 
  * @param {*} arg2 
  */
 function merge(arg1, arg2) {
-	if (!arg1) {
+	if (!!!arg1) {
 		return arg2;
 	}
 
-	if (!arg2) {
+	if (!arg2 || arg2 === "") {
 		return arg1;
 	}
 
@@ -47,12 +47,21 @@ function merge(arg1, arg2) {
 		}
 	} else if (isObject(arg1)) {
 		res = {};
-		let useKeys = new Set();
-		for (let key of Object.keys(arg2)) {
-			let a1 = arg1[key];
-			let a2 = arg2[key];
-			res[key] = merge(a1, a2);
-			useKeys.add(key);
+		const useKeys = new Set();
+		for (const key of Object.keys(arg2)) {
+			const a1 = arg1[key];
+			const a2 = arg2[key];
+			// 如果a1不存在，且a2也不存在或者为空字符串，则跳过
+			if (!a1 && (!a2 || a2 === "")) {
+				continue;
+			}
+			// 如果a2存在，且a2为空字符串，则使用a1
+			if (isString(a2) && a2 === "") {
+				res[key] = a1;
+			} else {
+				res[key] = merge(a1, a2);
+				useKeys.add(key);
+			}
 		}
 		for (const key of Object.keys(arg1)) {
 			if (!useKeys.has(key)) {
@@ -61,14 +70,11 @@ function merge(arg1, arg2) {
 		}
 		useKeys.clear();
 	} else {
-		console.log("arg1:", arg1);
-		console.log("arg2:", arg2);
-		throw new Error("");
+		res = (arg2 != null && arg2 !== "") ? arg2 : arg1;
 	}
 
 	return res;
 }
-
 let arg1 = [{
 	a: 1,
 	b: "b",
@@ -95,6 +101,3 @@ let arg2 = [{
 
 let res = merge(arg1, arg2);
 console.log(JSON.stringify(res, null, 2));
-
-let res2 = Object.assign(arg1, arg2);
-console.log(JSON.stringify(res2, null, 2));
