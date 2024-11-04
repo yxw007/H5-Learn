@@ -103,7 +103,26 @@ console.log(Seasons.Autumn);//Autumn
 	v2 = "234"; //error
 })();
 //-------------------------------------------------------------------------
+(() => {
 
+	interface A {
+		name: string
+	}
+
+	interface B {
+		age: number
+	}
+
+	type C = A | B;
+	let c: C = { name: 'pt' };
+	if(c instanceof A){
+		c.name;
+
+	}
+	c.age = 12;
+	c.name = 'pt';
+
+})();
 export default {}
 
 
