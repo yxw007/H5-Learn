@@ -32,6 +32,7 @@
     "axios": "^1.2.0",
     "child_process": "^1.0.2",
     "emoji-regex": "^10.1.0",
+    "glob": "^11.0.0",
     "jquery": "^3.6.1"
   }
 }
