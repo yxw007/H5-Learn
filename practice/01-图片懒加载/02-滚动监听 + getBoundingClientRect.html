@@ -1,64 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
 
-      img {
-        background: url("./img/loading.gif") no-repeat center;
-        width: 250px;
-        height: 250px;
-        display: block;
-      }
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible"
+        content="IE=edge" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
 
-  <body>
-    <img src="./img/pixel.gif" data-url="./img/1.jpg" />
-    <img src="./img/pixel.gif" data-url="./img/2.jpg" />
-    <img src="./img/pixel.gif" data-url="./img/3.jpg" />
-    <img src="./img/pixel.gif" data-url="./img/4.jpg" />
-    <img src="./img/pixel.gif" data-url="./img/5.jpg" />
-    <img src="./img/pixel.gif" data-url="./img/6.webp" />
+    img {
+      background: url("./img/loading.gif") no-repeat center;
+      width: 250px;
+      height: 250px;
+      display: block;
+    }
+  </style>
+</head>
 
-    <script>
-      let imgs = document.getElementsByTagName("img");
-      // 1. 一上来立即执行一次
-      fn();
-      // 2. 监听滚动事件
-      window.onscroll = lazyload(fn, true);
-      function fn() {
-        // 获取视口高度和内容的偏移量
-        let offsetHeight = window.innerHeight || document.documentElement.clientHeight;
-        Array.from(imgs).forEach((item, index) => {
-          let oBounding = item.getBoundingClientRect(); //返回一个矩形对象，包含上下左右的偏移值
-          console.log(index, oBounding.top, offsetHeight);
-          if (0 <= oBounding.top && oBounding.top <= offsetHeight) {
-            console.log(`index:${index} 进入可视区，加载图片`);
-            item.setAttribute("src", item.getAttribute("data-url"));
-          }
-        });
-      }
-      // 函数节流
-      function lazyload(fn, immediate) {
-        let timer = null;
-        return function () {
-          let context = this;
-          if (!timer) {
-            timer = setTimeout(() => {
-              fn.apply(this);
-              timer = null;
-            }, 200);
-          }
-        };
-      }
-    </script>
-  </body>
+<body>
+  <img src="./img/pixel.gif"
+       data-url="./img/1.jpg" />
+  <img src="./img/pixel.gif"
+       data-url="./img/2.jpg" />
+  <img src="./img/pixel.gif"
+       data-url="./img/3.jpg" />
+  <img src="./img/pixel.gif"
+       data-url="./img/4.jpg" />
+  <img src="./img/pixel.gif"
+       data-url="./img/5.jpg" />
+  <img src="./img/pixel.gif"
+       data-url="./img/6.webp" />
+
+  <script>
+    let imgs = document.getElementsByTagName("img");
+    // 1. 一上来立即执行一次
+    fn();
+    // 2. 监听滚动事件
+    window.onscroll = lazyload(fn, true);
+    function fn() {
+      // 获取视口高度和内容的偏移量
+      let offsetHeight = window.innerHeight || document.documentElement.clientHeight;
+      Array.from(imgs).forEach((item, index) => {
+        let oBounding = item.getBoundingClientRect(); //返回一个矩形对象，包含上下左右的偏移值
+        console.log(index, oBounding.top, offsetHeight);
+        if (0 <= oBounding.top && oBounding.top <= offsetHeight) {
+          console.log(`index:${index} 进入可视区，加载图片`);
+          item.setAttribute("src", item.getAttribute("data-url"));
+        }
+      });
+    }
+    // 函数节流
+    function lazyload(fn, immediate) {
+      let timer = null;
+      return function () {
+        let context = this;
+        if (!timer) {
+          timer = setTimeout(() => {
+            fn.apply(this);
+            timer = null;
+          }, 200);
+        }
+      };
+    }
+  </script>
+</body>
+
 </html>

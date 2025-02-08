@@ -108,7 +108,7 @@ class Animal {
     }
 }
 
-let animal:Animal = new Animal();
+let animal: Animal = new Animal();
 console.log(animal);
 console.log("xxx");
 
