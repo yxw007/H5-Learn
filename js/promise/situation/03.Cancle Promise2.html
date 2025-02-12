@@ -13,7 +13,7 @@
 
   <script>
     class CancelToken {
-      constructor(cancelFn) {
+      constructor() {
         this.promise = new Promise((resolve, reject) => {
           this._resolve = resolve;
           this._reject = reject;
@@ -40,7 +40,7 @@
           resolve();
         }, delay);
 
-        let cancelPromise = new CancelToken(cancel);
+        let cancelPromise = new CancelToken();
         cancelBtn.addEventListener("click", () => {
           cancelPromise.resolve();
         });

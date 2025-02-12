@@ -9,7 +9,7 @@
 
 const PENDING = "PENDING";
 const FULFILLED = "FULFILLED";
-const REJECTED = "rejected";
+const REJECTED = "REJECTED";
 
 function generateID() {
   return ++Promise.counter;
@@ -107,8 +107,8 @@ class Promise {
     onRejected = isFunction(onRejected)
       ? onRejected
       : (err) => {
-          throw err;
-        };
+        throw err;
+      };
 
     let promise2 = new Promise((resolve, reject) => {
       //! 此时回调执行函数，promise2 还在构造函数中未初始化完，所以promise2处于未定义状态

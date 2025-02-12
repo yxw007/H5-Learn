@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>HTML 注入示例</title>
+</head>
+
+<body>
+	<h1>发表评论</h1>
+	<form id="commentForm">
+		<textarea id="comment"
+							name="comment"
+							placeholder="<img src='x' onerror='alert('XSS!')'>"></textarea><br>
+		<button type="submit">提交</button>
+	</form>
+	<div id="comments">
+	</div>
+
+	<script>
+		const commentForm = document.getElementById('commentForm');
+		const commentsDiv = document.getElementById('comments');
+
+
+		commentForm.addEventListener('submit', (event) => {
+			event.preventDefault();
+			const comment = document.getElementById('comment').value;
+			const commentElement = document.createElement('p');
+			commentElement.textContent = comment;
+			// commentsDiv.appendChild(commentElement);
+			// commentsDiv.innerHTML += `<p>${comment}</p>`;
+		});
+	</script>
+</body>
+
+</html>

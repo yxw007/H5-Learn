@@ -34,7 +34,7 @@
   function fn() {
     a3 = "case3";
   }
-  fn(); //说明：如果不调用fn,case2 输出就是is not defined
+  fn(); //说明：如果不调用fn,case3 输出就是is not defined
   console.log("case3:", a3); //output: case3:case3
 })();
 //-------------------------------------------------------------------------
