@@ -1,0 +1,32 @@
+{
+  "name": "build-a-lib",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "./dist/node/index.cjs",
+  "module": "./dist/node/index.js",
+  "exports": {
+    ".": {
+      "browser": {
+        "require": "./dist/browser/index.cjs",
+        "default": "./dist/browser/index.esm.js"
+      },
+      "default": {
+        "require": "./dist/node/index.cjs",
+        "default": "./dist/node/index.js"
+      }
+    }
+  },
+  "scripts": {
+    "build": "rolldown -c rolldown.config.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "rolldown": "latest",
+    "typescript": "latest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.33.0"
+}
