@@ -141,6 +141,9 @@ importers:
 
   rolldown/buildALib:
     devDependencies:
+      crypto-js:
+        specifier: ^4.2.0
+        version: 4.2.0
       rolldown:
         specifier: latest
         version: 1.0.0-rc.12(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)
@@ -2791,8 +2794,8 @@ packages:
     resolution: {integrity: sha512-9KdhO4GgkhOhiv8m9Qr4FjjcDzzJVIBrVqioU+WiW5jCFfRTS/PPEa+ZV8TUKtIJPPiMhBx+dRTN4agGc1tdEw==}
     engines: {node: '>=8.11'}
 
-  koa-body-parsers@https://codeload.github.com/tunnckocore/body-parsers/tar.gz/7788b9cf82d84f90bbd543f8753affb82baf3a96:
-    resolution: {tarball: https://codeload.github.com/tunnckocore/body-parsers/tar.gz/7788b9cf82d84f90bbd543f8753affb82baf3a96}
+  koa-body-parsers@git+https://git@github.com:tunnckocore/body-parsers.git#7788b9cf82d84f90bbd543f8753affb82baf3a96:
+    resolution: {commit: 7788b9cf82d84f90bbd543f8753affb82baf3a96, repo: git@github.com:tunnckocore/body-parsers.git, type: git}
     version: 3.1.0
 
   koa-body@5.0.0:
@@ -7041,9 +7044,9 @@ snapshots:
     dependencies:
       extend-shallow: 3.0.2
       formidable: 1.2.6
-      koa-body-parsers: https://codeload.github.com/tunnckocore/body-parsers/tar.gz/7788b9cf82d84f90bbd543f8753affb82baf3a96
+      koa-body-parsers: git+https://git@github.com:tunnckocore/body-parsers.git#7788b9cf82d84f90bbd543f8753affb82baf3a96
 
-  koa-body-parsers@https://codeload.github.com/tunnckocore/body-parsers/tar.gz/7788b9cf82d84f90bbd543f8753affb82baf3a96:
+  koa-body-parsers@git+https://git@github.com:tunnckocore/body-parsers.git#7788b9cf82d84f90bbd543f8753affb82baf3a96:
     dependencies:
       raw-body: 2.5.3
 

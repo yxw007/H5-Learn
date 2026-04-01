@@ -21,7 +21,11 @@
     "build": "rolldown -c rolldown.config.ts",
     "prepublishOnly": "npm run build"
   },
+  "peerDependencies": {
+    "crypto-js": "^4.2.0"
+  },
   "devDependencies": {
+    "crypto-js": "^4.2.0",
     "rolldown": "latest",
     "typescript": "latest"
   },

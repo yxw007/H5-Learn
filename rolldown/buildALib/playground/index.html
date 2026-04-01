@@ -4,13 +4,15 @@
     <meta charset="UTF-8" />
     <title>title</title>
     <style></style>
-    <script src="../dist/browser/index.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@latest/crypto-js.min.js"></script>
+    <script src="../dist/browser/index.umd.js"></script>
   </head>
 
   <body>
     <script>
-      const { sum } = BuildALib;
+      const { sum, md5 } = BuildALib;
       console.log(sum(1, 2));
+      console.log(md5("hello world"));
     </script>
   </body>
 </html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>esm demo</title>
+    <style></style>
+    <script type="importmap">
+      {
+        "imports": {
+          "crypto-js": "https://cdn.jsdelivr.net/npm/crypto-js@latest/+esm"
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>esm demo</h1>
+
+    <script type="module">
+      import CryptoJS from "crypto-js";
+      import { sum, md5 } from "../dist/browser/index.esm.js";
+
+      console.log("crypto-js esm:", CryptoJS.MD5("hello world").toString());
+      console.log("build-a-lib esm sum:", sum(1, 2));
+      console.log("build-a-lib esm md5:", md5("hello world"));
+    </script>
+  </body>
+</html>

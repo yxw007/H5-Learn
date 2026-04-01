@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>global + min demo</title>
+    <style></style>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@latest/crypto-js.min.js"></script>
+    <script src="../dist/browser/index.global.js"></script>
+  </head>
+
+  <body>
+    <h1>global + min demo</h1>
+
+    <script>
+      console.log("crypto-js global:", CryptoJS.MD5("hello world").toString());
+      console.log("build-a-lib global sum:", BuildALib.sum(1, 2));
+      console.log("build-a-lib global md5:", BuildALib.md5("hello world"));
+    </script>
+  </body>
+</html>
